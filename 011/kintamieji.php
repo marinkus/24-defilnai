@@ -21,24 +21,27 @@ echo '<br>';
  */
 echo 'Uzduotis nr. 2';
 echo '<br>';
- $randomNumberOne = rand(0, 4);
- $randomNumberTwo = rand(0, 4);
+echo '<br>';
+$randomNumberOne = rand(0, 4);
+$randomNumberTwo = rand(0, 4);
 
- echo "Pirmas skaicius: $randomNumberOne";
- echo '<br>';
- echo "Antras skaicius: $randomNumberTwo";
- echo '<br>';
+echo "Pirmas skaicius: $randomNumberOne";
+echo '<br>';
+echo "Antras skaicius: $randomNumberTwo";
+echo '<br>';
 
- if ($randomNumberOne > $randomNumberTwo && $randomNumberTwo !== 0) {
+if ($randomNumberOne > $randomNumberTwo && $randomNumberTwo !== 0) {
     echo $randomNumberOne / $randomNumberTwo;
- } else if ($randomNumberOne < $randomNumberTwo && $randomNumberOne !== 0) {
+} else if ($randomNumberOne < $randomNumberTwo && $randomNumberOne !== 0) {
     echo $randomNumberTwo / $randomNumberOne;
- } else {
-    echo 1;
- };
+} else {
+    echo 'dalyba is 0 negalima';
+};
 
- /* 3. Naudokite funkcija rand(). Sukurkite tris kintamuosius ir naudodamiesi funkcija rand() jiems priskirkite atsitiktines reikšmes nuo 0 iki 25. Raskite ir atspausdinkite kintąmąjį turintį vidurinę reikšmę.
- */
+/* 3. Naudokite funkcija rand(). Sukurkite tris kintamuosius ir naudodamiesi funkcija rand() jiems priskirkite atsitiktines reikšmes nuo 0 iki 25. Raskite ir atspausdinkite kintąmąjį turintį vidurinę reikšmę.
+*/
+echo '<br>';
+echo '<br>';
 echo 'Uzduotis nr. 3';
 echo '<br>';
  $random1 = rand(0, 25);
@@ -55,6 +58,8 @@ echo '<br>';
 
  /* 4. Įvedami skaičiai -a, b, c –kraštinių ilgiai, trys kintamieji (naudokite ​rand()​ funkcija nuo 1 iki 10). Parašykite PHP programą, kuri nustatytų, ar galima sudaryti trikampį ir atsakymą atspausdintų. 
  */
+echo '<br>';
+echo '<br>';
 echo 'Uzduotis nr. 4';
 echo '<br>';
  $a = rand(1, 10); //trikampio krastine
@@ -90,6 +95,8 @@ reikšmes nuo 0 iki 2. Suskaičiuokite kiek yra nulių, vienetų ir dvejetų. (s
  } if ($randNumber4 === 0) {
     $countOfZeros++;
  };
+ echo '<br>';
+ echo '<br>';
 echo 'Uzduotis nr. 5';
 echo '<br>';
  echo "$randNumber1, $randNumber2, $randNumber3, $randNumber4";
@@ -99,6 +106,8 @@ echo '<br>';
 
 /* 6. Naudokite funkcija rand(). Sugeneruokite atsitiktinį skaičių nuo 1 iki 6 ir jį atspausdinkite atitinkame h tage. Pvz skaičius 3- rezultatas: <h3>3</h3>
  */
+echo '<br>';
+echo '<br>';
 echo 'Uzduotis nr. 6';
 echo '<br>';
 $randomBetween1and6 = rand(1, 6);
@@ -108,6 +117,8 @@ echo '<br>';
 
 /* 7. Naudokite funkcija rand(). Atspausdinkite 3 skaičius nuo -10 iki 10. Skaičiai mažesni už 0 turi būti žali, 0 - raudonas, didesni už 0 mėlyni.  */
 
+echo '<br>';
+echo '<br>';
 echo 'Uzduotis nr. 7';
 echo '<br>';
 
@@ -143,6 +154,8 @@ echo '<br>';
 /* 8. Įmonė parduoda žvakes po 1 EUR. Perkant daugiau kaip už 1000 EUR taikoma 3 % nuolaida, daugiau kaip už 2000 EUR - 4 % nuolaida. Parašykite programą, kuri skaičiuos žvakių kainą ir atspausdintų atsakymą kiek žvakių ir kokia kaina perkama. Žvakių kiekį generuokite ​rand()​ funkcija nuo 5 iki 3000.
   */
 
+  echo '<br>';
+  echo '<br>';
 echo 'Uzduotis nr. 8';
 echo '<br>';
 
@@ -213,6 +226,10 @@ while ($seconds > 60) {
     $seconds -= 60;
     $minutes += 1;
 };
+if ($minutes >= 60) {
+    $minutes -= 60;
+    $hours += 1;
+};
 
 echo "$hours : $minutes : $seconds";
 echo '<br>';
@@ -221,6 +238,17 @@ echo '<br>';
 
 echo 'Uzduotis nr. 11';
 echo '<br>';
+
+$number1 = rand(1000, 9999);
+$number2 = rand(1000, 9999);
+$number3 = rand(1000, 9999);
+$number4 = rand(1000, 9999);
+$number5 = rand(1000, 9999);
+$number6 = rand(1000, 9999);
+
+
+
+
 
 
 
