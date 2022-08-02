@@ -91,3 +91,7 @@ switch ($siuntinukoDydis) {
     case 'XL':
         echo "<br>Tikriname XL";
 };
+
+$zodis = 'Pernuogąbybį';
+
+echo mb_strlen($zodis);
