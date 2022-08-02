@@ -211,9 +211,9 @@ echo '<br>';
 echo 'Uzduotis nr. 10';
 echo '<br>';
 
-$hours = 4;
-$minutes = 15;
-$seconds = 0;
+$hours = rand(0, 23);
+$minutes = rand(0, 59);
+$seconds = rand(0, 59);
 
 echo "$hours : $minutes : $seconds";
 echo '<br>';
@@ -229,6 +229,9 @@ while ($seconds > 60) {
 if ($minutes >= 60) {
     $minutes -= 60;
     $hours += 1;
+};
+if ($hours >= 24) {
+    $hours -= 24;
 };
 
 echo "$hours : $minutes : $seconds";
