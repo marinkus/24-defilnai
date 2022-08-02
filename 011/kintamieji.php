@@ -79,29 +79,41 @@ echo '<br>';
 reikšmes nuo 0 iki 2. Suskaičiuokite kiek yra nulių, vienetų ir dvejetų. (sprendimui masyvo nenaudoti).
  */
 
- $randNumber1 = rand(0, 2);
- $randNumber2 = rand(0, 2);
- $randNumber3 = rand(0, 2);
- $randNumber4 = rand(0, 2);
 
- $countOfZeros = 0;
-
- if ($randNumber1 === 0) {
-    $countOfZeros++;
- } if ($randNumber2 === 0) {
-    $countOfZeros++;
- } if ($randNumber3 === 0) {
-    $countOfZeros++;
- } if ($randNumber4 === 0) {
-    $countOfZeros++;
- };
  echo '<br>';
  echo '<br>';
 echo 'Uzduotis nr. 5';
 echo '<br>';
- echo "$randNumber1, $randNumber2, $randNumber3, $randNumber4";
- echo '<br>';
- echo $countOfZeros;
+$_1 = rand(0, 2);
+$_2 = rand(0, 2);
+$_3 = rand(0, 2);
+$_4 = rand(0, 2);
+
+$two = 0;
+
+if ($_1 == 2)
+{
+    $two++;
+};
+if ($_2 == 2)
+{
+    $two++;
+};
+if ($_3 == 2)
+{
+    $two++;
+};
+if ($_4 == 2)
+{
+    $two++;
+};
+
+$suma = $_1 + $_2 + $_3 + $_4;
+
+$one = $suma - (2 * $two);
+$zero = 4 - $one - $two;
+
+echo "$_1 $_2 $_3 $_4 ----- $zero : $one : $two";
  echo '<br>';
 
 /* 6. Naudokite funkcija rand(). Sugeneruokite atsitiktinį skaičių nuo 1 iki 6 ir jį atspausdinkite atitinkame h tage. Pvz skaičius 3- rezultatas: <h3>3</h3>
