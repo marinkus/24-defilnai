@@ -227,7 +227,7 @@ $hours = rand(0, 23);
 $minutes = rand(0, 59);
 $seconds = rand(0, 59);
 
-echo "$hours : $minutes : $seconds";
+echo sprintf('%02d:%02d:%02d', $hours, $minutes, $seconds);
 echo '<br>';
 
 $addSeconds = rand(0, 300);
@@ -246,7 +246,7 @@ if ($hours >= 24) {
     $hours -= 24;
 };
 
-echo "$hours : $minutes : $seconds";
+echo sprintf('%02d:%02d:%02d', $hours, $minutes, $seconds);
 echo '<br>';
 
 /* 11. Naudokite funkcija rand(). Sugeneruokite 6 kintamuosius su atsitiktinem reikšmėm nuo 1000 iki 9999. Atspausdinkite reikšmes viename strige, išrūšiuotas nuo didžiausios iki mažiausios, atskirtas tarpais. Naudoti ciklų ir masyvų NEGALIMA. */
