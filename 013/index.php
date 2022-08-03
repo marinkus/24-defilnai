@@ -17,5 +17,8 @@ do {
     while ($y < 5) {
         echo "O Dabar: $y \n";
         $y++;
+        for ($i = 0; $i != 10; $i++) {
+    echo "Ir ateina FOras $i \n";
+};
     };
 } while ($x < 7);
