@@ -110,9 +110,11 @@ echo '<br><br> Uzduotis nr. 11 --------------- <br>';
 
 $mergedArraysOfWords = array_merge($words, $words2);
 
+$indexes = range(0, 23);
+shuffle($indexes);
 $stringOfRandomWords = '';
 
 for ($i = 0; $i < 10; $i++) {
-    $stringOfRandomWords = $stringOfRandomWords . ' ' . $mergedArraysOfWords[rand(0, 23)];
+    $stringOfRandomWords = $stringOfRandomWords . ' ' . $mergedArraysOfWords[$indexes[$i]];
 };
 echo $stringOfRandomWords;
