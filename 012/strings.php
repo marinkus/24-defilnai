@@ -74,7 +74,7 @@ echo '<br><br> Uzduotis nr. 8 --------------- <br>';
 $starWars = 'Star Wars: Episode '.str_repeat(' ', rand(0,5)). rand(1,9) . ' - A New Hope';
 
 echo "$starWars <br>";
-echo preg_replace('/[^0-9]/', '', $starWars);
+echo preg_replace('/[^1-9]/', '', $starWars);
 
 /* 9. Suskaičiuoti kiek stringe “Don't Be a Menace to South Central While Drinking Your Juice in the Hood” yra žodžių trumpesnių arba lygių nei 5 raidės. Pakartokite kodą su stringu “Tik nereikia gąsdinti Pietų Centro, geriant sultis pas save kvartale”. */
 
