@@ -79,7 +79,8 @@ echo preg_replace('/[^0-9]/', '', $starWars);
 /* 9. Suskaičiuoti kiek stringe “Don't Be a Menace to South Central While Drinking Your Juice in the Hood” yra žodžių trumpesnių arba lygių nei 5 raidės. Pakartokite kodą su stringu “Tik nereikia gąsdinti Pietų Centro, geriant sultis pas save kvartale”. */
 
 echo '<br><br> Uzduotis nr. 9 --------------- <br>';
-$words = explode(' ', "Don't Be a Menace to South Central While Drinking Your Juice in the Hood");
+$wordsWithoutCommas = strtr("Don't Be a Menace to South Central While Drinking Your Juice in the Hood", array('.' => '', ',' => ''));
+$words = explode(' ', $wordsWithoutCommas);
 $wordCount = 0;
 
 for ($i = 0; $i < count($words); $i++) {
@@ -89,7 +90,9 @@ for ($i = 0; $i < count($words); $i++) {
 };
 echo $wordCount;
 echo '<br>';
-$words2 = explode(' ', "Tik nereikia gąsdinti Pietų Centro, geriant sultis pas save kvartale");
+
+$wordsWithoutCommas2 = strtr("Tik nereikia gąsdinti Pietų Centro, geriant sultis pas save kvartale", array('.' => '', ',' => ''));
+$words2 = explode(' ', $wordsWithoutCommas2);
 $wordCount2 = 0;
 
 for ($i = 0; $i < count($words2); $i++) {
