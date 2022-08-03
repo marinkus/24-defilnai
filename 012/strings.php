@@ -103,3 +103,16 @@ echo '<br><br> Uzduotis nr. 10 --------------- <br>';
 $arrayOfLetters = array_merge(range('A', 'Z'), range('a', 'z'));
 $randomString = $arrayOfLetters[rand(0, 51)] . $arrayOfLetters[rand(0, 51)] . $arrayOfLetters[rand(0, 51)];
 echo $randomString;
+
+/* 11. PAPILDOMAS. Parašykite kodą, kuris generuotų atsitiktinį stringą su 10 atsitiktine tvarka išdėliotų žodžių, o žodžius generavimui imtų iš 9-me uždavinyje pateiktų dviejų stringų. Žodžiai neturi kartotis. (reikės masyvo) */
+
+echo '<br><br> Uzduotis nr. 11 --------------- <br>';
+
+$mergedArraysOfWords = array_merge($words, $words2);
+
+$stringOfRandomWords = '';
+
+for ($i = 0; $i < 10; $i++) {
+    $stringOfRandomWords = $stringOfRandomWords . ' ' . $mergedArraysOfWords[rand(0, 23)];
+};
+echo $stringOfRandomWords;
