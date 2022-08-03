@@ -4,8 +4,8 @@
 /* 1. Sukurti du kintamuosius. Jiems priskirti savo mylimo aktoriaus vardą ir pavardę kaip stringus (Jonas Jonaitis). Atspausdinti trumpesnį stringą. */
 echo 'Uzduotis nr. 1 --------------- <br>';
 
-$actorName = 'Johnny';
-$actorSurname = 'Depp';
+$actorName = 'Sasha';
+$actorSurname = 'Grey';
 
 if (strlen($actorName) > strlen($actorSurname)) {
     echo $actorName;
