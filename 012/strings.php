@@ -55,14 +55,17 @@ echo $letterCount;
 
 echo '<br><br> Uzduotis nr. 7 --------------- <br>';
 
-echo preg_replace('#[aeiou\s]+#i', '', $anAmericanInParis);
+echo preg_replace('#[aeiou]+#i', '', $anAmericanInParis);
 
 $movieName1 = "Breakfast at Tiffany's";
 $movieName2 = '2001: A Space Odyssey';
 $movieName3 = "It's a Wonderful Life";
-echo preg_replace('#[aeiouy\s]+#i', '', $movieName1);
-echo preg_replace('#[aeiouy\s]+#i', '', $movieName2);
-echo preg_replace('#[aeiouy\s]+#i', '', $movieName3);
+echo preg_replace('#[aeiouy]+#i', '', $movieName1);
+echo '<br>';
+echo preg_replace('#[aeiouy]+#i', '', $movieName2);
+echo '<br>';
+echo preg_replace('#[aeiou]+#i', '', $movieName3);
+echo '<br>';
 
 /* 8. Stringe, kurį generuoja toks kodas: 'Star Wars: Episode '.str_repeat(' ', rand(0,5)). rand(1,9) . ' - A New Hope'; Surasti ir atspausdinti epizodo numerį.*/
 
