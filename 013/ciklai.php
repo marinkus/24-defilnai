@@ -190,12 +190,76 @@ echo "<div class='rombas'>$rombas<div>$romboEilute</div></div>";
 // 10. Sumodeliuokite vinies kalimą. Įkalimo gylį sumodeliuokite pasinaudodami rand() funkcija. Vinies ilgis 8.5cm (pilnai sulenda į lentą).
 // 10. a) “Įkalkite” 5 vinis mažais smūgiais. Vienas smūgis vinį įkala 5-20 mm. Suskaičiuokite kiek reikia smūgių.
 
-echo '<br><br>Uzduotis 10 -----<br><br>';
+echo '<br><br>Uzduotis 10a -----<br><br>';
 
+$smugiai = 0;
+$vinys = 5;
+$gylis = 0;
 
+do {
+    $vinys--;
+    while ($gylis < 85) {
+        $x = rand(5, 25);
+        $gylis += $x;
+        $smugiai++;
+    }
+    $gylis = 0;
+} while ($vinys > 0);
 
+echo "reikia smugiu: $smugiai <br>";
 
+// 10. b) “Įkalkite” 5 vinis dideliais smūgiais. Vienas smūgis vinį įkala 20-30 mm, bet yra 50% tikimybė (pasinaudokite rand() funkcija tikimybei sumodeliuoti), kad smūgis nepataikys į vinį. Suskaičiuokite kiek reikia smūgių.
 
+echo '<br><br>Uzduotis 10b -----<br><br>';
 
+$smugiaiDideli = 0;
+$vinysDideli = 5;
+$miss = 0;
+
+do {
+    $vinysDideli--;
+    while ($gylis < 85) {
+        $chance = rand(0, 1);
+        if ($chance === 1) {
+        $x = rand(20, 30);
+        $gylis += $x;
+        $smugiaiDideli++;
+        } else {
+        $smugiaiDideli++;
+        $miss++;
+        }
+    }
+    $gylis = 0;
+} while ($vinysDideli > 0);
+
+echo "Prireike smugiu: $smugiaiDideli, is ju nepataike: $miss<br>";
+
+// 11. Sugeneruokite stringą, kurį sudarytų 50 atsitiktinių skaičių nuo 1 iki 200, atskirtų tarpais. Skaičiai turi būti unikalūs (t.y. nesikartoti). Sugeneruokite antrą stringą, pasinaudodami pirmu, palikdami jame tik pirminius skaičius (t.y tokius, kurie dalinasi be liekanos tik iš 1 ir patys savęs). Skaičius stringe sudėliokite didėjimo tvarka, nuo mažiausio iki didžiausio.
+
+echo '<br><br>Uzduotis 11 -----<br><br>';
+
+$arrayOf200 = range(1, 200);
+shuffle($arrayOf200);
+
+$array50 = [];
+$newArrOfUnique = [];
+
+for ($i = 0; $i < 50; $i++) {
+    $array50[$i] = $arrayOf200[$i];
+};
+
+$firstString = implode(' ', $array50);
+echo "$firstString<br>";
+
+for ($i = 0; $i < count($array50) - 1; $i++) {
+    if ($array50[$i] % 2 != 0) {
+        $newArrOfUnique[$i] = $array50[$i];
+    }
+    continue;
+}
+sort($newArrOfUnique);
+echo '<br>';
+
+echo implode(' ', $newArrOfUnique);
 
 
