@@ -34,5 +34,33 @@ unset($value);
 
 print_r($colors);
 
+$unitedColorsOfBenneton = [
+    ['red', 'black', 'yellow', 'green'],
+    ['roplys', 'gyvate', 'ozys', 'runkelis'],
+    [77, 12]
+];
 
+echo $unitedColorsOfBenneton[1][0];
+echo '<br>';
 
+foreach ($unitedColorsOfBenneton as $stalcius) {
+    foreach ($stalcius as $daiktas) {
+        echo "$daiktas \n";
+    };
+};
+
+$masyvas = [[range(1, 3)],[range(4, 6)],[range(7, 9)]];
+
+var_dump($masyvas);
+
+$_3x3 = [];
+$count = 0;
+foreach (range(1, 3) as $_) {
+    $_3 = [];
+    foreach (range(1, 3) as $_) {
+        $_3[] = ++$count;
+    };
+    $_3x3[] = $_3;
+};
+
+print_r($_3x3);
