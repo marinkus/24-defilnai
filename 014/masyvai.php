@@ -2,7 +2,7 @@
 
 <?php
 
-// echo '<pre>';
+echo '<pre>';
 // 1. Sugeneruokite masyvą iš 30 elementų (indeksai nuo 0 iki 29), kurių reikšmės yra atsitiktiniai skaičiai nuo 5 iki 25.
 
 echo '<br><br>Uzduotis nr. 1 ----- <br><br>';
@@ -175,7 +175,117 @@ print_r($arrayUnique);
 // 6. Sugeneruokite du masyvus, kurių reikšmės yra atsitiktiniai skaičiai nuo 100 iki 999. Masyvų ilgiai 100. Masyvų reikšmės turi būti unikalios savo masyve (t.y. neturi kartotis).
 echo '<br><br>Uzduotis nr. 6 ----- <br><br>';
 
+$arrHundred1 = [];
+$arrHundred2 = [];
+
+while (count($arrHundred1) < 100) {
+    $number = rand(100, 999);
+    if (!in_array($number, $arrHundred1)) {
+        $arrHundred1[] = $number;
+    }
+}
+print_r($arrHundred1);
+
+echo '<br><br>';
+
+while (count($arrHundred2) < 100) {
+    $number = rand(100, 999);
+    if (!in_array($number, $arrHundred2)) {
+        $arrHundred2[] = $number;
+    }
+}
+print_r($arrHundred2);
+echo '<br><br>';
+
+// 7. Sugeneruokite masyvą, kuris būtų sudarytas iš reikšmių, kurios yra pirmame 6 uždavinio masyve, bet nėra antrame 6 uždavinio masyve.
+echo '<br><br>Uzduotis nr. 7 ----- <br><br>';
+
+$arrayFrom1and2 = [];
+
+foreach ($arrHundred1 as $value) {
+    if (!in_array($value, $arrHundred2)) {
+        $arrayFrom1and2[] = $value;
+    }
+}
+
+print_r($arrayFrom1and2);
+echo '<br><br>';
+
+// 8. Sugeneruokite masyvą iš elementų, kurie kartojasi abiejuose 6 uždavinio masyvuose.
+
+echo '<br><br>Uzduotis nr. 8 ----- <br><br>';
+$repeatedNumbers = [];
+foreach ($arrHundred1 as $value) {
+    if (in_array($value, $arrHundred2)) {
+        $repeatedNumbers[] = $value;
+    }
+}
+
+print_r($repeatedNumbers);
+echo '<br><br>';
+
+// 9. Sugeneruokite masyvą, kurio indeksus sudarytų pirmo 6 uždavinio masyvo reikšmės, o jo reikšmės iš būtų antrojo masyvo.
+
+echo '<br><br>Uzduotis nr. 9 ----- <br><br>';
+
+$valuesAsIndexes = [];
 
 
+foreach ($arrHundred1 as $index => $value) {
+    $valuesAsIndexes[$value]=$arrHundred2[$index];
+}
+
+print_r($valuesAsIndexes);
+
+// 10. Sugeneruokite 10 skaičių masyvą pagal taisyklę: Du pirmi skaičiai- atsitiktiniai nuo 5 iki 25. Trečias, pirmo ir antro suma. Ketvirtas- antro ir trečio suma. Penktas trečio ir ketvirto suma ir t.t.
+
+echo '<br><br>Uzduotis nr. 10 ----- <br><br>';
+
+$array10 = [rand(5, 25), rand(5, 25)];
+
+for ($i = 2; $i <10; $i++) {
+    $array10[] = $array10[$i-2] + $array10[$i-1];
+}
+
+print_r($array10);
+
+// 11. Sugeneruokite 101 elemento masyvą su atsitiktiniais skaičiais nuo 0 iki 300. Reikšmes kurios tame masyve yra ne unikalios pergeneruokite iš naujo taip, kad visos reikšmės masyve būtų unikalios. Išrūšiuokite masyvą taip, kad jo didžiausia reikšmė būtų masyvo viduryje, o einant nuo jos link masyvo pradžios ir pabaigos reikšmės mažėtų. Paskaičiuokite pirmos ir antros masyvo dalies sumas (neskaičiuojant vidurinės). Jeigu sumų skirtumas (modulis, absoliutus dydis) yra didesnis nei | 30 | rūšiavimą kartokite. (Kad sumos nesiskirtų viena nuo kitos daugiau nei per 30)
+
+echo '<br><br>Uzduotis nr. 11 ----- <br><br>';
+
+$array101 = [];
 
 
+while (count($array101) < 101) {
+    $array101[] = rand(0, 300);
+}
+
+foreach ($array101 as &$value) {
+    if (in_array($value, $array101)) {
+        $value = rand(0, 300);
+    }
+}
+unset($value);
+
+print_r($array101);
+echo '<br><br><br><br>';
+// $test = array_unique($array101);
+// print_r($test);
+
+sort($array101);
+
+
+$arrOne = [];
+$arrTwo = [];
+
+foreach ($array101 as $index => $value) {
+    if ($index % 2 == 0) {
+        $arrOne[] = $value;
+    } else {
+        $arrTwo[] = $value;
+    }
+}
+rsort($arrTwo);
+
+$sortedArray = array_merge($arrOne, $arrTwo);
+print_r($sortedArray);
