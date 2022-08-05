@@ -2,7 +2,7 @@
 
 <?php
 
-echo '<pre>';
+// echo '<pre>';
 // 1. Sugeneruokite masyvą iš 30 elementų (indeksai nuo 0 iki 29), kurių reikšmės yra atsitiktiniai skaičiai nuo 5 iki 25.
 
 echo '<br><br>Uzduotis nr. 1 ----- <br><br>';
@@ -107,4 +107,48 @@ print_r($firstArray);
 
 // 3. Sugeneruokite masyvą, kurio reikšmės atsitiktinės raidės A, B, C ir D, o ilgis 200. Suskaičiuokite kiek yra kiekvienos raidės.
 echo '<br><br>Uzduotis nr. 3 ----- <br><br>';
+
+$letters = ['A','B','C','D'];
+$arrOfLetters = [];
+
+while (count($arrOfLetters) < 200) {
+    $arrOfLetters[] = $letters[rand(0, 3)];
+}
+
+print_r($arrOfLetters);
+
+$countOfLetters = ['A' => 0, 'B' => 0, 'C' => 0, 'D' => 0];
+$countA = 0;
+$countB = 0;
+$countC = 0;
+$countD = 0;
+
+foreach ($arrOfLetters as $letter) {
+    if ($letter == 'A') {
+        $countA++;
+    } elseif ($letter == 'B') {
+        $countB++;
+    } elseif ($letter == 'C') {
+        $countC++;
+    } elseif ($letter == 'D') {
+        $countD++;
+    }
+}
+echo "<br>A: $countA, B: $countB, C: $countC, D: $countD\n";
+
+// 4. Išrūšiuokite 3 uždavinio masyvą pagal abecėlę.
+echo '<br><br>Uzduotis nr. 4 ----- <br><br>';
+
+sort($arrOfLetters);
+print_r($arrOfLetters);
+
+// 5. Sugeneruokite 3 masyvus pagal 3 uždavinio sąlygą. Sudėkite masyvus, sudėdami atitinkamas reikšmes. Paskaičiuokite kiek unikalių (po vieną, nesikartojančių) reikšmių ir kiek unikalių kombinacijų gavote.
+echo '<br><br>Uzduotis nr. 5 ----- <br><br>';
+
+// 6. Sugeneruokite du masyvus, kurių reikšmės yra atsitiktiniai skaičiai nuo 100 iki 999. Masyvų ilgiai 100. Masyvų reikšmės turi būti unikalios savo masyve (t.y. neturi kartotis).
+echo '<br><br>Uzduotis nr. 6 ----- <br><br>';
+
+
+
+
 
