@@ -289,3 +289,4 @@ rsort($arrTwo);
 
 $sortedArray = array_merge($arrOne, $arrTwo);
 print_r($sortedArray);
+
