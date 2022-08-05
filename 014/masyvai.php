@@ -145,6 +145,28 @@ print_r($arrOfLetters);
 // 5. Sugeneruokite 3 masyvus pagal 3 uždavinio sąlygą. Sudėkite masyvus, sudėdami atitinkamas reikšmes. Paskaičiuokite kiek unikalių (po vieną, nesikartojančių) reikšmių ir kiek unikalių kombinacijų gavote.
 echo '<br><br>Uzduotis nr. 5 ----- <br><br>';
 
+$arrOfLetters1 = [];
+
+while (count($arrOfLetters1) < 200) {
+    $arrOfLetters1[] = $letters[rand(0, 3)];
+}
+
+
+$arrOfLetters2 = [];
+
+while (count($arrOfLetters2) < 200) {
+    $arrOfLetters2[] = $letters[rand(0, 3)];
+}
+
+
+$arrOfLetters3 = [];
+
+while (count($arrOfLetters3) < 200) {
+    $arrOfLetters3[] = $letters[rand(0, 3)];
+}
+
+
+
 // 6. Sugeneruokite du masyvus, kurių reikšmės yra atsitiktiniai skaičiai nuo 100 iki 999. Masyvų ilgiai 100. Masyvų reikšmės turi būti unikalios savo masyve (t.y. neturi kartotis).
 echo '<br><br>Uzduotis nr. 6 ----- <br><br>';
 
