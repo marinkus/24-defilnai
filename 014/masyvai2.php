@@ -83,6 +83,7 @@ foreach($array as $ind => $arr) {
 print_r($arraySum);
 
 // 3. Sukurkite masyvą iš 10 elementų. Kiekvienas masyvo elementas turi būti masyvas su atsitiktiniu kiekiu nuo 2 iki 20 elementų. Elementų reikšmės atsitiktinai parinktos raidės iš intervalo A-Z. Išrūšiuokite antro lygio masyvus pagal abėcėlę (t.y. tuos kur su raidėm).
+echo '<br><br>Uzduotis nr. 3 ----- <br><br>';
 
 $arrayOfLetters = [];
 
@@ -100,3 +101,8 @@ foreach($arrayOfLetters as &$arr) {
 unset($arr);
 
 print_r($arrayOfLetters);
+
+// 4. Išrūšiuokite trečio uždavinio pirmo lygio masyvą taip, kad elementai kurių masyvai trumpiausi eitų pradžioje. Masyvai kurie turi bent vieną.
+echo '<br><br>Uzduotis nr. 4 ----- <br><br>';
+
+
