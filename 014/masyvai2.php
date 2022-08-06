@@ -47,14 +47,26 @@ foreach ($array as $arr) {
 echo $maxValue;
 
 // 2c Suskaičiuokite kiekvieno antro lygio masyvų su vienodais indeksais sumas (t.y. suma reikšmių turinčių indeksą 0, 1 ir t.t.)
+echo '<br><br>Uzduotis nr. 2c ----- <br><br>';
 
-$sumOfSameIndex = [];
+$sumOfSameIndex = range(0, 4);
 
 foreach ($array as $index => $arr) {
     foreach($arr as $ind => $num) {
-        
+        $sumOfSameIndex[$ind] += $num;
     }
 }
+print_r($sumOfSameIndex);
 
 // 2d Visus masyvus “pailginkite” iki 7 elementų
+echo '<br><br>Uzduotis nr. 2d ----- <br><br>';
+
+foreach($array as &$arr) {
+    $arr[]=rand(5, 25);
+    $arr[]=rand(5, 25);
+}
+unset($arr);
+
+print_r($array);
+
 // 2e Suskaičiuokite kiekvieno iš antro lygio masyvų elementų sumą atskirai ir sumas panaudokite kaip reikšmes sukuriant naują masyvą. T.y. pirma naujo masyvo reikšmė turi būti lygi mažesnio masyvo, turinčio
