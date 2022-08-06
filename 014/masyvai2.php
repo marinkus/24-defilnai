@@ -69,4 +69,34 @@ unset($arr);
 
 print_r($array);
 
-// 2e Suskaičiuokite kiekvieno iš antro lygio masyvų elementų sumą atskirai ir sumas panaudokite kaip reikšmes sukuriant naują masyvą. T.y. pirma naujo masyvo reikšmė turi būti lygi mažesnio masyvo, turinčio
+// 2e Suskaičiuokite kiekvieno iš antro lygio masyvų elementų sumą atskirai ir sumas panaudokite kaip reikšmes sukuriant naują masyvą. T.y. pirma naujo masyvo reikšmė turi būti lygi mažesnio masyvo, turinčio indeksą 0 dideliame masyve, visų elementų sumai
+echo '<br><br>Uzduotis nr. 2e ----- <br><br>';
+
+$arraySum = range(0, 9);
+
+foreach($array as $ind => $arr) {
+    foreach ($arr as $index => $val) {
+        $arraySum[$ind] += $val;
+    }
+}
+
+print_r($arraySum);
+
+// 3. Sukurkite masyvą iš 10 elementų. Kiekvienas masyvo elementas turi būti masyvas su atsitiktiniu kiekiu nuo 2 iki 20 elementų. Elementų reikšmės atsitiktinai parinktos raidės iš intervalo A-Z. Išrūšiuokite antro lygio masyvus pagal abėcėlę (t.y. tuos kur su raidėm).
+
+$arrayOfLetters = [];
+
+foreach(range(0, 9) as $arr) {
+    $masyvas = [];
+    foreach(range(0, rand(2, 20)) as $val) {
+        $masyvas[]=chr(rand(65,90));
+    }
+    $arrayOfLetters[] = $masyvas;
+}
+
+foreach($arrayOfLetters as &$arr) {
+    sort($arr);
+}
+unset($arr);
+
+print_r($arrayOfLetters);
