@@ -1,3 +1,10 @@
+<style>
+    .square {
+        width: 10%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+</style>
 <h2>Homework: Masyvai 2</h2>
 
 <?php
@@ -202,11 +209,66 @@ print_r($users);
 // 8. Sukurkite masyvą iš 10 elementų. Masyvo reikšmes užpildykite pagal taisyklę: generuokite skaičių nuo 0 iki 5. Ir sukurkite tokio ilgio masyvą. Jeigu reikšmė yra 0 masyvo nekurkite. Antro lygio masyvo reikšmes užpildykite atsitiktiniais skaičiais nuo 0 iki 10. Ten kur masyvo nekūrėte reikšmę nuo 0 iki 10 įrašykite tiesiogiai.
 echo '<br><br>Uzduotis nr. 8 ----- <br><br>';
 
+$arrayOf10 = [];
+foreach(range(0, 9) as $arr) {
+    $number = rand(0, 5);
+    foreach(range(0, $number) as $_) {
+        if ($number !== 0) {
+            $arrayOf10[$arr][] = rand(0, 10);
+        } else {
+            $arrayOf10[] = rand(0, 10);
+        }
+    }
+}
+print_r($arrayOf10);
+
 
 
 // 9. Paskaičiuokite 8 uždavinio masyvo visų reikšmių sumą ir išrūšiuokite masyvą taip, kad pirmiausiai eitų mažiausios masyvo reikšmės arba jeigu reikšmė yra masyvas, to masyvo reikšmių sumos.
+echo '<br><br>Uzduotis nr. 9 ----- <br><br>';
+
+$sum = 0;
+foreach($arrayOf10 as $_) {
+    if (is_numeric($_)) {
+        $sum += $_;
+    } else {
+        foreach($_ as $num) {
+            $sum += $num;
+        }
+    }
+}
+echo "Suma: $sum <br>";
+
+function sortArray($a, $b) {
+    return (!is_numeric($a) ? array_sum($a) : $a) <=> (!is_numeric($b) ? array_sum($b) : $b);
+}
+usort($arrayOf10, 'sortArray');
+print_r($arrayOf10);
+
 
 
 // 10. Sukurkite masyvą iš 10 elementų. Jo reikšmės masyvai iš 10 elementų. Antro lygio masyvų reikšmės masyvai su dviem elementais value ir color. Reikšmė value vienas iš atsitiktinai parinktų simbolių: #%+*@裡, o reikšmė color atsitiktinai sugeneruota spalva formatu: #XXXXXX. Pasinaudoję masyvų atspausdinkite “kvadratą” kurį sudarytų masyvo reikšmės nuspalvintos spalva color.
+echo '<br><br>Uzduotis nr. 10 ----- <br><br>';
 
+$zenklai = ['#', '%', '+', '*', '@', '裡'];
+$masyvas10 = [];
+foreach(range(0, 9) as $arr) {
+    foreach(range(0, 1) as $_) {
+        $masyvas10[$arr]['value'] = $zenklai[rand(0, 5)];
+        $masyvas10[$arr]['color'] = '#' . str_pad(dechex(rand(0x000000, 0xFFFFFF)), 6, 0, STR_PAD_LEFT);;
+    }
+}
 
+print_r($masyvas10);
+?>
+<div class='square'>
+    <?php
+for ($i = 0; $i < 10; $i++) {
+foreach ($masyvas10 as $symbol) {
+    ?>
+    <p style="font-size: 12px; color: <?php echo $symbol['color'] ?>"><?php echo $symbol['value']?></p>
+<?php
+}
+}
+?>
+</div>
