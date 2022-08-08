@@ -28,9 +28,20 @@ echo $countHigherThan10;
 
 // 2. b) Raskite didžiausią masyvo reikšmę ir jos indeksą arba indeksus jeigu yra keli;
 echo '<br><br>Uzduotis nr. 2b ----- <br><br>';
-$maxValueIndex = array_search(max($firstArray), $firstArray);
-$maxValue = max($firstArray);
-echo "Index: $maxValueIndex, value: $maxValue";
+$max = $firstArray[0];
+
+$indexes = [];
+
+foreach ($firstArray as $ind => $val) {
+    if ($val > $max) {
+        $max = $val;
+        $indexes = [];
+        $indexes[]=$ind;
+    } elseif ($max == $val) {
+        $indexes[] = $ind;
+    }
+}
+print_r($indexes);
 
 // 2. c) Suskaičiuokite visų porinių (lyginių) indeksų reikšmių sumą;
 echo '<br><br>Uzduotis nr. 2c ----- <br><br>';
