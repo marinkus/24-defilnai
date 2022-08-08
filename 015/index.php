@@ -63,3 +63,10 @@ echo doPrint( // Vienoje eiluteje, reikia returno doPrint'e
     'GRYBAS2777'
 );
 
+// example
+
+$masyvas = [5, 9, 11, 0, 54, 7];
+
+usort($masyvas, fn($a, $b) => $b <=> $a);
+
+print_r($masyvas);
