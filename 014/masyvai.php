@@ -108,16 +108,16 @@ print_r($firstArray);
 // 3. Sugeneruokite masyvą, kurio reikšmės atsitiktinės raidės A, B, C ir D, o ilgis 200. Suskaičiuokite kiek yra kiekvienos raidės.
 echo '<br><br>Uzduotis nr. 3 ----- <br><br>';
 
-$letters = ['A','B','C','D'];
+$letters = range('A', 'D');
 $arrOfLetters = [];
 
-while (count($arrOfLetters) < 200) {
+foreach(range(1, 200) as $_) {
     $arrOfLetters[] = $letters[rand(0, 3)];
 }
 
 print_r($arrOfLetters);
 
-$countOfLetters = ['A' => 0, 'B' => 0, 'C' => 0, 'D' => 0];
+// $countOfLetters = ['A' => 0, 'B' => 0, 'C' => 0, 'D' => 0];
 $countA = 0;
 $countB = 0;
 $countC = 0;
