@@ -157,12 +157,39 @@ function funFunc($arr) {
             }
     }
 }
-print_r(funFunc($arr3));
+// print_r(funFunc($arr3));
 
 // 10. Sugeneruokite masyvą iš 10 elementų, kurie yra masyvai iš 10 elementų, kurie yra atsitiktiniai skaičiai nuo 1 iki 100. Jeigu tokio didelio masyvo (ne atskirai mažesnių) pirminių skaičių vidurkis mažesnis už 70, suraskite masyve mažiausią skaičių (nebūtinai pirminį) ir prie jo pridėkite 3. Vėl paskaičiuokite masyvo pirminių skaičių vidurkį ir jeigu mažesnis nei 70 viską kartokite. 
 echo '<br><br>Uzduotis nr. 10 ----- <br><br>';
 
 $array10 = [];
-foreach(range(1, 3) as $_) {
-    $arr3[] = rand(1, 33);
+
+foreach (range(1, 10) as $value) {
+    $arr = [];
+    foreach (range(1, 10) as $value) {
+        $arr[] = rand(1, 100);
+    }
+    $array10[] = $arr;
+};
+// print_r($array10);
+
+function wholeAverage($arr) {
+    $sum = 0;
+    $count = 0;
+    foreach($arr as $_) {
+        if (!is_array($_) && count(wholeNumbs($_)) == 0) {
+            $sum += $_;
+            $count++;
+        } else {
+            foreach($_ as $num) {
+                if (count(wholeNumbs($num)) == 0) {
+                    $sum += $num;
+                    $count++;
+                }
+            }
+        }
+    }
+    return $sum / $count;
 }
+
+echo wholeAverage($array10);
