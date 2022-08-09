@@ -6,7 +6,7 @@
 echo '<br><br>Uzduotis nr. 1 ----- <br><br>';
 
 function headingConstructor($a = 'Heading') {
-    return "<h1>$a</h2>";
+    return "<h1>$a</h1>";
 }
 
 // echo headingConstructor('Labas rytas');
@@ -24,10 +24,25 @@ function headingGenerator($text, $tag) {
 // 3. Generuokite atsitiktinį stringą, pasinaudodami kodu md5(time()). Visus skaitmenis stringe įdėkite į h1 tagą. Raides palikite. Jegu iš eilės eina keli skaitmenys, juos į tagą reikią dėti kartu (h1 atsidaro prieš pirmą ir užsidaro po paskutinio) Keitimui naudokite pirmo patobulintą (jeigu reikia) uždavinio funkciją ir preg_replace_callback();
 echo '<br><br>Uzduotis nr. 3 ----- <br><br>';
 
+$string = md5(time()); // labai "idomi" uzduotis ir jos sprendimas
+    function randomStringCut(string $str) {
+        return preg_replace_callback('/\d+/', fn($match) => headingConstructor($match[0]), $str);
+    }
+// echo randomStringCut($string);
 
 // 4. Parašykite funkciją, kuri skaičiuotų, iš kiek sveikų skaičių jos argumentas dalijasi be liekanos (išskyrus vienetą ir patį save) Argumentą užrašykite taip, kad būtų galima įvesti tik sveiką skaičių;
 echo '<br><br>Uzduotis nr. 4 ----- <br><br>';
 
+function wholeNumbs(int $integer) {
+    $wholeNumbers = [];
+    foreach(range(1, $integer) as $int) {
+        if ($int !== 1 && $integer !== $int && $integer % $int == 0) {
+            $wholeNumbers[] = $int;
+        }
+    }
+    return $wholeNumbers;
+}
+// print_r(wholeNumbs(99));
 
 // 5. Sugeneruokite masyvą iš 100 elementų, kurio reikšmės atsitiktiniai skaičiai nuo 33 iki 77. Išrūšiuokite masyvą pagal daliklių be liekanos kiekį mažėjimo tvarka, panaudodami ketvirto uždavinio funkciją.
 echo '<br><br>Uzduotis nr. 5 ----- <br><br>';
