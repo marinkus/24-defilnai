@@ -3,10 +3,21 @@
 // echo "start\n";
 // $data = require __DIR__ . '/d.php';
 // print_r($data);
-header("Content-type: text/html; charset=UTF-8");
-$data = file_get_contents(__DIR__ . '/labas.txt');
-echo $data;
+// header("Content-type: text/html; charset=UTF-8");
+// $data = file_get_contents(__DIR__ . '/labas.txt');
+// echo $data;
 
+$x = ['labas' => 'pats tu toks'];
+
+$j = json_encode($x);
+
+echo $j;
+
+// file_put_contents(__DIR__ . '/x.json', $j);
+
+$h = json_decode(file_get_contents(__DIR__ . '/x.json'), 1);
+
+print_r($h);
 
 // echo __DIR__; parodo absoliutu kelia
 
