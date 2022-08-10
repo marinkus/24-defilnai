@@ -1,5 +1,7 @@
 <?php
-
+    if (!file_exists(__DIR__ . '/data.json')) {
+        file_put_contents(__DIR__ . '/data.json', json_encode([]));
+    }
 $cat = 'Murka';
 
 // POST scenarijus
@@ -7,9 +9,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
     
     $rap = $_POST['rapolas'] ?? 'Nieko nera'; 
 
-    if (!file_exists(__DIR__ . '/data.json')) {
-        file_put_contents(__DIR__ . '/data.json', json_encode([]));
-    }
+
 
     $data = json_decode(file_get_contents(__DIR__ . '/data.json', 1));
 
@@ -42,7 +42,11 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
         <input type="text" name="rapolas">
         <button type="submit"><?= $cat ?></button>
     </form>
-
+        <ul>
+            <?php foreach(json_decode(file_get_contents(__DIR__ . '/data.json', 1)) as $val) : ?>
+                <li><?= $val ?></li>
+            <?php endforeach ?>
+        </ul>
 
 
 </body>
