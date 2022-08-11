@@ -4,7 +4,7 @@ if ('GET' === $_SERVER['REQUEST_METHOD']) {
     $color = $_GET['color'] ?? 2;
 
     if ($color == 2) {
-        $bgColor = 'red';
+        $bgColor = 'black';
     } else {
         $bgColor = $color;
     }
@@ -22,9 +22,10 @@ if ('GET' === $_SERVER['REQUEST_METHOD']) {
     <link rel="stylesheet" href="./base.css">
 </head>
 <body style="background-color: #<?=$bgColor?>">
-    <h2 class='title'>#2</h2>
-    <div class="container">
-        <a href="http://localhost/defilnai/017/homework2.php?color=" class="link" method="get">Link #1</a>
-    </div>
+    <h2 class='title'>#3</h2>
+    <form action="http://localhost/defilnai/017/homework3.php?color=" method="get">
+        <input type="text" name="color">
+        <button type="submit">Submit</button>
+    </form>
 </body>
 </html>
