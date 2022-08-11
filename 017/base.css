@@ -1,0 +1,15 @@
+.title {
+    color: crimson;
+}
+.link {
+    color: magenta;
+    text-decoration: none;
+    font-size: 30px;
+}
+.container {
+    width: 300px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
