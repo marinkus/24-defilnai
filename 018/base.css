@@ -21,3 +21,15 @@ body {
     padding: 20px;
     flex-direction: column;
 }
+.button {
+    padding: 25px;
+    border: 2px solid blue;
+    background-color: beige;
+    border-radius: 25px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    transition: 0.7s;
+}
+.button:hover {
+    background-color: aquamarine;
+}

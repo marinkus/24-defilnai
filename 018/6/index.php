@@ -12,10 +12,10 @@
         <div class="container">    
             <h2 class='title'>Uzduotis #6</h2>
             <form action="http://localhost/defilnai/018/6/index.php" method="get">
-                <button type="submit">GET</button>
+                <button type="submit" class='button'>GET</button>
             </form>
             <form action="http://localhost/defilnai/018/6/index.php" method="post">
-                <button type="submit">POST</button>
+                <button type="submit" class='button'>POST</button>
             </form>
             </div>
     </div>
