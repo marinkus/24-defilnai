@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    margin-left: calc(50% - 150px);
+}
+.title {
+    color: crimson;
+}
+.link {
+    color: magenta;
+    text-decoration: none;
+    font-size: 30px;
+    padding: 20px;
+}
+.container {
+    width: 300px;
+    background-color: bisque;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    padding: 20px;
+    flex-direction: column;
+}
