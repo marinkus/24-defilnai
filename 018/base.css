@@ -29,6 +29,7 @@ body {
     font-family: 'Times New Roman', Times, serif;
     font-size: 20px;
     transition: 0.7s;
+    text-decoration: none;
 }
 .button:hover {
     background-color: aquamarine;
