@@ -1,9 +1,6 @@
 <?php
-if ('GET' == $_SERVER['REQUEST_METHOD']) {
-    $redir = $_GET['redir'] ?? 2;
-    if ($redir == 1) {
-        header("Location: http://localhost/defilnai/018/5/red.php");
-    }
+if (isset($_GET['go'])) {
+    header("Location: http://localhost/defilnai/018/5/red.php");
 }
 ?>
 <!DOCTYPE html>
@@ -12,10 +9,12 @@ if ('GET' == $_SERVER['REQUEST_METHOD']) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HW#4</title>
+    <title>Homework 5</title>
+    <link rel="stylesheet" href="../base.css">
 </head>
-<body style="background-color: red">
-    <a href="http://localhost/defilnai/018/5/blue.php?redir=1" method="get">CLICK ME</a>
-    
+<body style="background-color: lightblue">
+    <div class="container">    
+        <a href="http://localhost/defilnai/018/5/blue.php?go" method="get" class="link">CLICK ME</a>
+    </div>
 </body>
 </html>
