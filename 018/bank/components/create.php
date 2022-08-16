@@ -8,7 +8,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
     $name = $_POST['fname'] ?? 'No name';
     $surname = $_POST['surname'] ?? 'No surname';
     $iban = $_POST['iban'] ?? 'No IBAN';
-    $personalcode = $_POST['peronalcode'] ?? 'No ID';
+    $personalcode = $_POST['personalcode'] ?? 'No ID';
 
     $acc = [$name, $surname, $iban, $personalcode];
 
