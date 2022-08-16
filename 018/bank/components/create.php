@@ -9,8 +9,9 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
     $surname = $_POST['surname'] ?? 'No surname';
     $iban = $_POST['iban'] ?? 'No IBAN';
     $personalcode = $_POST['personalcode'] ?? 'No ID';
+    $funds = 0;
 
-    $acc = [$name, $surname, $iban, $personalcode];
+    $acc = [$name, $surname, $iban, $personalcode, $funds];
 
     $data = json_decode(file_get_contents(__DIR__ . '/data.json', 1));
     $data[] = $acc;

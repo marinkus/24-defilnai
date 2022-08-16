@@ -14,7 +14,7 @@ $data = json_decode(file_get_contents(__DIR__ . '/data.json', 1), true);
 <body>
     <ul>
     <?php foreach(json_decode(file_get_contents(__DIR__ . '/data.json', 1)) as $account) : ?>
-                <li><?= $account[0] ?> <?= $account[1] ?> <?= $account[2] ?> <?= $account[3] ?></li>
+                <li><?= $account[0] ?> <?= $account[1] ?> <?= $account[2] ?> <?= $account[3] ?> Funds: <?= $account[4] ?></li>
             <?php endforeach ?>
     </ul>
     
