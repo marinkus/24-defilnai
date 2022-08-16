@@ -1,6 +1,9 @@
 <?php
 
 $data = json_decode(file_get_contents(__DIR__ . '/data.json', 1), true);
+$data[]=$acc;
+
+if(isset($_POST)) 
 
 ?>
 <!DOCTYPE html>
@@ -20,6 +23,8 @@ $data = json_decode(file_get_contents(__DIR__ . '/data.json', 1), true);
 <?php foreach(json_decode(file_get_contents(__DIR__ . '/data.json', 1)) as $account) : ?>
                 <option><?= $account[0] ?> <?= $account[1] ?></option>
             <?php endforeach ?>
+            <input type="number" method="post">
+            <input type="submit" value="Submit">
 </select>
     </div>
 </body>
