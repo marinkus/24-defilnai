@@ -5,14 +5,19 @@ if (!file_exists(__DIR__ . '/data.json')){
 }
 
 if ('POST' == $_SERVER['REQUEST_METHOD']) {
-    $acc = $_POST['fname'] ?? 'Enter your info';
+    $name = $_POST['fname'] ?? 'No name';
+    $surname = $_POST['surname'] ?? 'No surname';
+    $iban = $_POST['iban'] ?? 'No IBAN';
+    $personalcode = $_POST['peronalcode'] ?? 'No ID';
+
+    $acc = [$name, $surname, $iban, $personalcode];
 
     $data = json_decode(file_get_contents(__DIR__ . '/data.json', 1));
-    $data = $acc;
+    $data[] = $acc;
 
     file_put_contents(__DIR__ . '/data.json', json_encode($data));
 
-    header("Location: http://localhost/defilnai/018/bank/components/");
+    header("Location: http://localhost/defilnai/018/bank/components/create.php");
     die;
 }
 
@@ -31,13 +36,13 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
     <div class="form">
     <form action="http://localhost/defilnai/018/bank/components/create.php" method="post">
         <label for="fname">Name</label>
-        <input type="text" id="fname" class="input">
+        <input type="text" name="fname" class="input">
         <label for="surname">Surname</label>
-        <input type="text" id="surname" class="input">
+        <input type="text" name="surname" class="input">
         <label for="iban">IBAN number</label>
-        <input type="text" id="iban" class="input">
+        <input type="text" name="iban" class="input">
         <label for="personalcode">Personal code</label>
-        <input type="text" id="personalcode" class="input">
+        <input type="text" name="personalcode" class="input">
         <button type="submit">Create</button>
     </div>
     </form>
