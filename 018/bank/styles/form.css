@@ -1,0 +1,10 @@
+.form {
+    margin: 0;
+    border: 2px solid rgba(14, 14, 168, 0.671);
+    display: flex;
+    width: 160px;
+}
+.input {
+    width: 150px;
+    border: 2px solid rgba(14, 14, 168, 0.671);
+}
