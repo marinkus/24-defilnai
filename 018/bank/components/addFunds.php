@@ -1,9 +1,25 @@
 <?php
 
-$data = json_decode(file_get_contents(__DIR__ . '/data.json', 1), true);
-$data[]=$acc;
+if ('GET' == $_SERVER['REQUEST_METHOD']) {
+    $iban = $_GET['iban'] ?? '';
+}
 
-if(isset($_POST)) 
+if ('POST' == $_SERVER['REQUEST_METHOD']) {
+    $funds = $_POST['funds'];
+    $ibanNumber = $_POST['iban'];
+    $data = json_decode(file_get_contents(__DIR__ . '/data.json', 1), true);
+    foreach ($data as &$account) {
+        if (in_array($ibanNumber, $account)) {
+            $account[4] += $funds;
+        }
+    }
+    file_put_contents(__DIR__ . '/data.json', json_encode($data));
+    $iban = '';
+}
+
+
+
+
 
 ?>
 <!DOCTYPE html>
@@ -15,17 +31,14 @@ if(isset($_POST))
     <title>Document</title>
 </head>
 <body>
-    <h2>Add funds</h2>
     <div class="form">
-    <label for="accounts">Select account:</label>
-        
-<select name="accounts">
-<?php foreach(json_decode(file_get_contents(__DIR__ . '/data.json', 1)) as $account) : ?>
-                <option><?= $account[0] ?> <?= $account[1] ?></option>
-            <?php endforeach ?>
-            <input type="number" method="post">
+        <label for="accounts">Enter amount:</label>    
+        <form name="accounts" method="post">
+            <h2>Add funds</h2>
+            <input name="funds" type="number">
+            <input name="iban" type="text" value="<?=$iban?>" readonly autocomplete="off">
             <input type="submit" value="Submit">
-</select>
+</form>
     </div>
 </body>
 </html>

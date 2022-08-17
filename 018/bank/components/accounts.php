@@ -14,7 +14,7 @@ $data = json_decode(file_get_contents(__DIR__ . '/data.json', 1), true);
 <body>
     <ul>
     <?php foreach(json_decode(file_get_contents(__DIR__ . '/data.json', 1)) as $account) : ?>
-                <li><?= $account[0] ?> <?= $account[1] ?> <?= $account[2] ?> <?= $account[3] ?> Funds: <?= $account[4] ?></li>
+                <li>Name: <?= $account[0] ?>, Surname: <?= $account[1] ?> IBAN: <?= $account[2] ?>, AK: <?= $account[3] ?>, Funds: <?= $account[4] ?><a href="http://localhost/defilnai/018/bank/components/addFunds.php?iban=<?=$account[2]?>">Add funds</a></li>
             <?php endforeach ?>
     </ul>
     
