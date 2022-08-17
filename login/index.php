@@ -62,18 +62,25 @@ function doLogin() {
             if ($user['password'] == md5($_POST['psw'])) {
                 $_SESSION['login'] = 1;
                 $_SESSION['user'] = $user;
+                makeMsg('magenta', 'Lb gerai');
                 redirect('client');
             }
         }
     }
+    makeMsg('red', 'Viskas blogai');
     redirect('login');
 }
 
 function doLogout() {
     unset($_SESSION['login'], $_SESSION['user']);
+    makeMsg('indigo', 'Ko gero viso gero');
     redirect('login');
 }
 
 function isLogged() {
     return isset($_SESSION['login']) && $_SESSION['login'] == 1;
+}
+
+function makeMsg($type, $text) {
+    $_SESSION['msg'] = ['type' => $type, 'text' => $text];
 }
