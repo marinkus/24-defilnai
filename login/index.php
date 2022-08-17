@@ -18,10 +18,16 @@ function router() {
     $method = $_SERVER['REQUEST_METHOD'];
 
     if ($method == 'GET' && count($url) == 1 && $url[0] == 'login') {
+    if(isLogged()) {
+        redirect('');
+    }
         view('login');
     }
     else if ($method == 'POST' && count($url) == 1 && $url[0] == 'login') {
         doLogin();
+    }
+    else if ($method == 'POST' && count($url) == 1 && $url[0] == 'logout') {
+        doLogout();
     }
     else if ($method == 'GET' && count($url) == 1 && $url[0] == '') {
         view('home');
@@ -32,6 +38,7 @@ function router() {
         }
         view('client');
     }
+    
     else {echo '404';}
     // require DIR . 'inc/' . 'home.php';
 }
@@ -59,6 +66,11 @@ function doLogin() {
             }
         }
     }
+    redirect('login');
+}
+
+function doLogout() {
+    unset($_SESSION['login'], $_SESSION['user']);
     redirect('login');
 }
 
