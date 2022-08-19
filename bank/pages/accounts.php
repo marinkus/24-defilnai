@@ -3,7 +3,7 @@
 view('top');
 ?>
 
-<h2>Welcome to "Sberbank</h2>
+
 
 
 

@@ -1,9 +1,10 @@
 <?php
 session_start();
 
+
 define('INSTALL', '/defilnai/bank/');
 define('DIR', __DIR__ . '/');
-define('URL', 'http://localhost/defilnai/bank/pages/');
+define('URL', 'http://localhost/defilnai/bank/');
 
 router();
 
@@ -16,6 +17,15 @@ function router() {
     if ($method == 'GET' && count($url) == 1 && $url[0] == 'home') {
         view('home');
     }
+    else if ($method == 'GET' && count($url) == 1 && $url[0] == 'create') {
+        view('create');
+    }
+    else if ($method == 'POST' && count($url) == 1 && $url[0] == 'create') {
+        redirect('home');
+    }
+    else if ($method == 'POST' && count($url) == 1 && $url[0] == 'home') {
+        redirect('home');
+    }
 
 }
 
@@ -24,7 +34,7 @@ function view($tmp) {
 }
 
 function redirect($location) {
-    header('Location: '. URL . $location . '.php');
+    header('Location: '. URL . 'pages/' . $location . '.php');
     die;
 }
 
