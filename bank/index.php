@@ -1,8 +1,9 @@
 <?php
+session_start();
 
-define('INSTALL', '/defilnai/login/');
-define('DIR', __DIR__. '/');
-define('URL', 'http://localhost/defilnai/login/');
+define('INSTALL', '/defilnai/bank/');
+define('DIR', __DIR__ . '/');
+define('URL', 'http://localhost/defilnai/bank/pages/');
 
 router();
 
@@ -10,8 +11,12 @@ function router() {
     $url = $_SERVER['REQUEST_URI'];
     $url = str_replace(INSTALL, '', $url);
     $url = explode('/', $url);
-    $method = $SERVER['REQUEST_METHOD'];
+    $method = $_SERVER['REQUEST_METHOD'];
     
+    if ($method == 'GET' && count($url) == 1 && $url[0] == 'home') {
+        view('home');
+    }
+
 }
 
 function view($tmp) {
@@ -19,7 +24,7 @@ function view($tmp) {
 }
 
 function redirect($location) {
-    header('Location: '. URL . $location);
+    header('Location: '. URL . $location . '.php');
     die;
 }
 
