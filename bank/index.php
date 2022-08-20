@@ -21,12 +21,11 @@ function router() {
         view('create');
     }
     else if ($method == 'POST' && count($url) == 1 && $url[0] == 'create') {
-        redirect('home');
+        view('create');
     }
-    else if ($method == 'POST' && count($url) == 1 && $url[0] == 'home') {
-        redirect('home');
+    else if ($method == 'GET' && count($url) == 1 && $url[0] == 'accounts') {
+        view('accounts');
     }
-
 }
 
 function view($tmp) {
@@ -34,7 +33,7 @@ function view($tmp) {
 }
 
 function redirect($location) {
-    header('Location: '. URL . 'pages/' . $location . '.php');
+    header('Location: '. URL . $location . '.php');
     die;
 }
 

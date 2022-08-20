@@ -3,7 +3,7 @@
 view('top');
 ?>
 
-
+<h2>Accounts list:</h2>
 
 
 

@@ -3,9 +3,9 @@
 view('top');
 ?>
 
-<h2>Welcome to "Sberbank</h2>
+<h2>Creation successful!</h2>
 
-<a href="<?=URL ?>create" method='get'>Create account</a>
+<a href="<?=URL ?>create" method='get'>Create another account</a>
 <a href="<?=URL ?>accounts" method='get'>Accounts list</a>
 
 
