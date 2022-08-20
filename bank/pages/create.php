@@ -24,8 +24,8 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
     ?> 
     <h2>Creation successful!</h2>
 
-        <a href="<?=URL ?>create" method='get'>Create another account</a>
-        <a href="<?=URL ?>accounts" method='get'>Accounts list</a>
+        <a href="<?=URL ?>create" method='get' class="btn btn-primary">Create another account</a>
+        <a href="<?=URL ?>accounts" method='get' class="btn btn-primary">Accounts list</a>
 
 
     
@@ -33,19 +33,25 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 } else {
 ?>
 <h2>Create new bank account:</h2>
-    <div class="form">
-    <form action="<?= URL ?>create" method="POST">
-        <label for="fname">Name</label>
-        <input type="text" name="fname" class="input">
-        <label for="surname">Surname</label>
-        <input type="text" name="surname" class="input">
-        <label for="iban">IBAN number</label>
-        <input type="text" name="iban" class="input">
-        <label for="personalcode">Personal code</label>
-        <input type="number" name="personalcode" class="input">
-        <button type="submit">Create</button>
-    </form>
+<form action="<?= URL ?>create" method="POST">
+    <div class="mb-3" style="width: 500px">
+        <label class='form-label' for="fname">Name</label>
+        <input type="text" class="form-control" name="fname" class="input">
     </div>
+    <div class="mb-3" style="width: 500px">
+        <label class='form-label' for="surname">Surname</label>
+        <input type="text" class="form-control" name="surname" class="input">
+    </div>
+    <div class="mb-3" style="width: 500px">
+        <label class='form-label' for="iban">IBAN number</label>
+        <input type="text" class="form-control" name="iban" class="input">
+    </div>
+    <div class="mb-3" style="width: 500px">
+    <label class='form-label' for="personalcode">Personal code</label>
+    <input type="number" class="form-control" name="personalcode" class="input">
+    </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
 <?php
 }
 view('bottom');
