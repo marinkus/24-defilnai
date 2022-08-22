@@ -17,8 +17,10 @@ $kibiras2 = new Kibiras;
 $kibiras1->prideti1Akmeni();
 $kibiras1->prideti1Akmeni();
 $kibiras1->prideti1Akmeni();
+$kibiras1->pridetiDaugAkmenu(8);
 
 $kibiras2->prideti1Akmeni();
+$kibiras2->pridetiDaugAkmenu(15);
 $kibiras2->pridetiDaugAkmenu(15);
 
 echo '1: ' . $kibiras1->kiekPririnktaAkmenu();
@@ -26,3 +28,5 @@ echo "\n";
 echo '2: ' . $kibiras2->kiekPririnktaAkmenu();
 echo "\n";
 echo 'Akmenu kiekis visuose kibiruose: ' . $kibiras1->isVisoAkmenu();
+echo "\n";
+echo 'Akmenu kiekis visuose kibiruose: ' . Kibiras::kiekYraAkmenu();
