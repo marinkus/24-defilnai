@@ -10,7 +10,8 @@ view('top');
     <ul class="list-group">
     <?php foreach(json_decode(file_get_contents(__DIR__ . '/../users.json', 1)) as $user) : ?>
         <li class="list-group-item">Name, surname: <?=$user->name . ' ' . $user->surname?> ID: <?=$user->id?> IBAN: <?= $user->iban?>  Balance: <?=$user->funds?>
-        <a class="btn btn-primary" class="btn btn-primary" href="<?=URL?>addFunds?id=<?=$user->id?>">Add funds</a>
+        <a class="btn btn-primary"href="<?=URL?>addFunds?id=<?=$user->id?>">Add funds</a>
+        <a class="btn btn-secondary" href="<?=URL?>chargeFunds?id=<?=$user->id?>">Charge funds</a>
         </li>
     <?php endforeach ?>
     </ul>
