@@ -21,17 +21,19 @@ function router() {
         if ($method == 'GET' && count($url) == 1 && $url[0] == "addFunds?id=$user->id") {
             view('addFunds');
         }
-        else if ('POST' == $_SERVER['REQUEST_METHOD']) {
+        else if ('POST' == $method) {
+            $users = json_decode(file_get_contents(__DIR__ . '/users.json', 1));
             $funds = $_POST['funds'];
             $idNumber = $_POST['id'];
-            $users = json_decode(file_get_contents(__DIR__ . '/users.json', 1));
-            foreach ($users as &$user) {
+            foreach ($users as $user) {
                 if ($idNumber == $user->id) {
-                    $user->id += $funds;
-                }
+                    $user->funds += $funds;
+                    file_put_contents(__DIR__ . '/users.json', json_encode($users));
+                    if ($method == 'POST' && count($url) == 1 && $url[0] == "addFunds?id=$user->id") {
+                        view('addFunds');
+                    }
+                } 
             }
-            file_put_contents(__DIR__ . '/users.json', json_encode($users));
-            $id = '';
         }
     }
     if ($method == 'GET' && count($url) == 1 && $url[0] == 'home') {
@@ -47,9 +49,6 @@ function router() {
         view('create');
     }
     else if ($method == 'GET' && count($url) == 1 && $url[0] == 'accounts') {
-        view('accounts');
-    }
-    else if ($method == 'POST' && count($url) == 1 && $url[0] == 'accounts') {
         view('accounts');
     }
     else if ($method == 'POST' && count($url) == 1 && $url[0] == 'accounts') {
