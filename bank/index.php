@@ -35,6 +35,7 @@ function router() {
                     }
                 } 
             }
+            unset($users);
         }
         else if ($method == 'GET' && count($url) == 1 && $url[0] == "chargeFunds?id=$user->id") {
             view('chargeFunds');
@@ -54,6 +55,22 @@ function router() {
                     }
                 } 
             }
+            unset($users);
+        }
+        else if ($method == 'GET' && count($url) == 1 && $url[0] == "delete?id=$user->id") {
+            view('delete');
+        }
+        else if ($method == 'POST' && count($url) == 1 && $url[0] == "delete?id=$user->id") {
+            $users = json_decode(file_get_contents(__DIR__ . '/users.json', 0));
+            $idNumber = $_POST['id'];
+            foreach ($users as &$user) {
+                if ($user->id == $idNumber) {
+                    unset($user);
+                    file_put_contents(__DIR__ . '/users.json', json_encode($users));
+                    view('delete');
+                }
+            }
+            unset($user);
         }
     }
     if ($method == 'GET' && count($url) == 1 && $url[0] == 'home') {
@@ -70,6 +87,9 @@ function router() {
     }
     else if ($method == 'GET' && count($url) == 1 && $url[0] == 'accounts') {
         view('accounts');
+    }
+    else if ($method == 'GET' && count($url) == 1 && $url[0] == 'delete') {
+        view('home');
     }
     else if ($method == 'POST' && count($url) == 1 && $url[0] == 'accounts') {
         view('accounts');

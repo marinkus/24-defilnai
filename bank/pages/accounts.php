@@ -13,6 +13,7 @@ view('top');
         <li class="list-group-item">Name: <?=$user->name . ' ' . $user->surname?> ID: <?=$user->id?> Balance: <?=$user->funds?> rupies.
         <a class="btn btn-primary"href="<?=URL?>addFunds?id=<?=$user->id?>">Add funds</a>
         <a class="btn btn-secondary" href="<?=URL?>chargeFunds?id=<?=$user->id?>">Charge funds</a>
+        <a class="btn btn-warning" href="<?=URL?>delete?id=<?=$user->id?>">DELETE</a>
         </li>
     <?php endforeach ?>
     </ul>
