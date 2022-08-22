@@ -3,7 +3,6 @@ if (!file_exists(__DIR__ . '/../users.json')){
     file_put_contents(__DIR__ . '/../users.json', json_encode([]));
 }
 if ('POST' == $_SERVER['REQUEST_METHOD']) {
-    require(__DIR__ . '/../classes/Account.php');
     $name = $_POST['fname'] ?? 'No name';
     if (!preg_match("/^([a-zA-Z' ]+)$/", $name)) {
         view('error');
@@ -23,7 +22,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
     $funds = 0;
     $users = json_decode(file_get_contents(__DIR__ . '/../users.json', 0));
     // Validation for duplicates
-    foreach ($users as $user) {
+    foreach ($users as &$user) {
         if ($user->id == $personalcode) {
             view('error');
             die;
@@ -45,7 +44,7 @@ view('top');
 <?php
 if ('POST' == $_SERVER['REQUEST_METHOD']) {
     ?>
-    <h2>"Sberbank</h2>
+    <h2>Sberbank</h2>
     <h3>Creation successful!</h3>
 
         <a href="<?=URL ?>create" method='get' class="btn btn-primary">Create another account</a>
@@ -56,7 +55,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
     <?php
 } else {
 ?>
-<h2>"Sberbank</h2>
+<h2>Sberbank</h2>
 <h3>Create new bank account:</h3>
 <form action="<?= URL ?>create" method="POST">
     <div class="mb-3" style="width: 500px">
