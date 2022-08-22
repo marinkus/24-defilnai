@@ -11,8 +11,10 @@ require __DIR__ . '/Kibiras.php';
 // var_dump($tv1);
 
 
-$kibiras1 = new Kibiras;
-$kibiras2 = new Kibiras;
+$kibiras1 = Kibiras::naujasKibiras();
+$kibiras2 = Kibiras::naujasKibiras();
+// $kibiras2 = unserialize(serialize($kibiras1));
+// $kibiras2 = clone($kibiras1);
 
 $kibiras1->prideti1Akmeni();
 $kibiras1->prideti1Akmeni();
