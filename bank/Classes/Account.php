@@ -6,6 +6,7 @@ class Account {
     public $id;
     public $iban;
     public $funds;
+    static public $usersCount = 0;
 
 
 public function __construct($name, $surname, $id, $iban, $funds) {
@@ -14,6 +15,7 @@ public function __construct($name, $surname, $id, $iban, $funds) {
     $this->id = $id;
     $this->iban = $iban;
     $this->funds = 0;
+    self::$usersCount++;
 }
 public function __get($x) {
     return $this->$x;
@@ -21,6 +23,5 @@ public function __get($x) {
 public function __set($whom, $what) {
     $this->$whom = $what;
 }
-
 
 }

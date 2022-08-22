@@ -5,7 +5,7 @@ session_start();
 define('INSTALL', '/defilnai/bank/');
 define('DIR', __DIR__ . '/');
 define('URL', 'http://localhost/defilnai/bank/');
-
+require DIR . '/classes/Account.php';
 router();
 
 
@@ -21,9 +21,10 @@ function router() {
         if ($method == 'GET' && count($url) == 1 && $url[0] == "addFunds?id=$user->id") {
             view('addFunds');
         }
-        else if ('POST' == $method) {
+        else if ('POST' == $method && count($url) == 1 && $url[0] == "addFunds?id=$user->id") {
             $users = json_decode(file_get_contents(__DIR__ . '/users.json', 1));
             $funds = $_POST['funds'];
+            validateNegativeNumber($funds);
             $idNumber = $_POST['id'];
             foreach ($users as $user) {
                 if ($idNumber == $user->id) {
@@ -38,12 +39,14 @@ function router() {
         else if ($method == 'GET' && count($url) == 1 && $url[0] == "chargeFunds?id=$user->id") {
             view('chargeFunds');
         }
-        else if ('POST' == $method) {
+        else if ('POST' == $method && count($url) == 1 && $url[0] == "chargeFunds?id=$user->id") {
             $users = json_decode(file_get_contents(__DIR__ . '/users.json', 1));
             $funds = $_POST['funds'];
+            validateNegativeNumber($funds);
             $idNumber = $_POST['id'];
             foreach ($users as $user) {
                 if ($idNumber == $user->id) {
+                    negativeBalance($user->funds, $funds);
                     $user->funds -= $funds;
                     file_put_contents(__DIR__ . '/users.json', json_encode($users));
                     if ($method == 'POST' && count($url) == 1 && $url[0] == "chargeFunds?id=$user->id") {
@@ -71,6 +74,10 @@ function router() {
     else if ($method == 'POST' && count($url) == 1 && $url[0] == 'accounts') {
         view('accounts');
     }
+    else if ($method == 'GET' && count($url) == 1 && $url[0] == "addFunds?id=$user->id") {
+        view('addFunds');
+    }
+    
 
 
 }
@@ -82,5 +89,20 @@ function view($tmp) {
 function redirect($location) {
     header('Location: '. URL . $location . '.php');
     die;
+}
+
+// Validations
+
+function validateNegativeNumber ($number) {
+    if ($number <= 0) {
+        view('errorValidNumber');
+        die;
+    }
+}
+function negativeBalance($balance, $value) {
+    if ($balance - $value < 0) {
+        view('errorNegativeBalance');
+        die;
+    }
 }
 

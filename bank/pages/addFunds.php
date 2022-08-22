@@ -22,7 +22,8 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
         <h2>Add funds</h2>
         <label for="accounts">Enter amount:</label>    
         <form name="accounts" method="post">
-            <input name="funds" type="number">
+    
+            <input name="funds" type="number" placeholder='rupies'>
             <input name="id" type="text" value="<?=$id?>" readonly>
             <input type="submit" value="Submit">
         </form>
