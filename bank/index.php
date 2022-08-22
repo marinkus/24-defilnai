@@ -9,6 +9,7 @@ define('URL', 'http://localhost/defilnai/bank/');
 router();
 
 
+
 function router() {
     $url = $_SERVER['REQUEST_URI'];
     $url = str_replace(INSTALL, '', $url);
@@ -17,8 +18,22 @@ function router() {
 
     $users = json_decode(file_get_contents(__DIR__ . '/users.json', 1));
     foreach ($users as $user) {
-}
-    
+        if ($method == 'GET' && count($url) == 1 && $url[0] == "addFunds?id=$user->id") {
+            view('addFunds');
+        }
+        else if ('POST' == $_SERVER['REQUEST_METHOD']) {
+            $funds = $_POST['funds'];
+            $idNumber = $_POST['id'];
+            $users = json_decode(file_get_contents(__DIR__ . '/users.json', 1));
+            foreach ($users as &$user) {
+                if ($idNumber == $user->id) {
+                    $user->id += $funds;
+                }
+            }
+            file_put_contents(__DIR__ . '/users.json', json_encode($users));
+            $id = '';
+        }
+    }
     if ($method == 'GET' && count($url) == 1 && $url[0] == 'home') {
         view('home');
     }
@@ -39,9 +54,6 @@ function router() {
     }
     else if ($method == 'POST' && count($url) == 1 && $url[0] == 'accounts') {
         view('accounts');
-    }
-    else if ($method == 'GET' && count($url) == 1 && $url[0] == "addFunds?id=$user->id") {
-        view('addFunds');
     }
 
 
