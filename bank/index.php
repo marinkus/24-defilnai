@@ -74,9 +74,6 @@ function router() {
     else if ($method == 'POST' && count($url) == 1 && $url[0] == 'accounts') {
         view('accounts');
     }
-    else if ($method == 'GET' && count($url) == 1 && $url[0] == "addFunds?id=$user->id") {
-        view('addFunds');
-    }
     
 
 

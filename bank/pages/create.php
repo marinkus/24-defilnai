@@ -75,6 +75,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
     <input type="number" class="form-control" name="personalcode" class="input">
     </div>
         <button type="submit" class="btn btn-primary">Create</button>
+        <a href="<?=URL ?>accounts" method='get' class="btn btn-primary">Accounts list</a>
     </form>
 <?php
 }

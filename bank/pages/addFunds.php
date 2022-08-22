@@ -17,12 +17,11 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 } else {
 ?>
 
-<h2>"Sberbank</h2>
+<h2>Sberbank</h2>
     <div class="form">
         <h2>Add funds</h2>
-        <label for="accounts">Enter amount:</label>    
+        <label for="accounts">Enter amount of rupies:</label>    
         <form name="accounts" method="post">
-    
             <input name="funds" type="number" placeholder='rupies'>
             <input name="id" type="text" value="<?=$id?>" readonly>
             <input type="submit" value="Submit">
