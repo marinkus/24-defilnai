@@ -21,9 +21,20 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
         die;
     }
     $funds = 0;
-    
-    $account = new Account($name, $surname, $personalcode, $iban, $funds);
     $users = json_decode(file_get_contents(__DIR__ . '/../users.json', 0));
+    // Validation for duplicates
+    foreach ($users as $user) {
+        if ($user->id == $personalcode) {
+            view('error');
+            die;
+        }
+        if ($user->iban == $iban) {
+            view('error');
+            die;
+        }
+    }
+
+    $account = new Account($name, $surname, $personalcode, $iban, $funds);
     $users[] = $account;
 
     file_put_contents(__DIR__ . '/../users.json', json_encode($users));
