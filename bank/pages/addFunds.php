@@ -16,7 +16,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 } else {
 ?>
 
-<h2>Welcome to "Sberbank</h2>
+<h2>"Sberbank</h2>
     <div class="form">
         <h2>Add funds</h2>
         <label for="accounts">Enter amount:</label>    

@@ -44,8 +44,9 @@ view('top');
 ?>
 <?php
 if ('POST' == $_SERVER['REQUEST_METHOD']) {
-    ?> 
-    <h2>Creation successful!</h2>
+    ?>
+    <h2>"Sberbank</h2>
+    <h3>Creation successful!</h3>
 
         <a href="<?=URL ?>create" method='get' class="btn btn-primary">Create another account</a>
         <a href="<?=URL ?>accounts" method='get' class="btn btn-primary">Accounts list</a>
@@ -55,7 +56,8 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
     <?php
 } else {
 ?>
-<h2>Create new bank account:</h2>
+<h2>"Sberbank</h2>
+<h3>Create new bank account:</h3>
 <form action="<?= URL ?>create" method="POST">
     <div class="mb-3" style="width: 500px">
         <label class='form-label' for="fname">Name</label>
