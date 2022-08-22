@@ -61,7 +61,7 @@ function router() {
             view('delete');
         }
         else if ($method == 'POST' && count($url) == 1 && $url[0] == "delete?id=$user->id") {
-            $users = json_decode(file_get_contents(__DIR__ . '/users.json', 0));
+            $users = json_decode(file_get_contents(__DIR__ . '/users.json', 1), true);
             $idNumber = $_POST['id'];
             foreach ($users as &$user) {
                 if ($user->id == $idNumber) {
