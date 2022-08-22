@@ -5,9 +5,21 @@ if (!file_exists(__DIR__ . '/../users.json')){
 if ('POST' == $_SERVER['REQUEST_METHOD']) {
     require(__DIR__ . '/../classes/Account.php');
     $name = $_POST['fname'] ?? 'No name';
+    if (!preg_match("/^([a-zA-Z' ]+)$/", $name)) {
+        view('error');
+        die;
+    }
     $surname = $_POST['surname'] ?? 'No surname';
+    if (!preg_match("/^([a-zA-Z' ]+)$/", $surname)) {
+        view('error');
+        die;
+    }
     $iban = $_POST['iban'] ?? 'No IBAN';
     $personalcode = $_POST['personalcode'] ?? 'No ID';
+    if (strlen($personalcode) != 11) {
+        view('error');
+        die;
+    }
     $funds = 0;
     
     $account = new Account($name, $surname, $personalcode, $iban, $funds);

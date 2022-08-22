@@ -8,14 +8,22 @@ define('URL', 'http://localhost/defilnai/bank/');
 
 router();
 
+
 function router() {
     $url = $_SERVER['REQUEST_URI'];
     $url = str_replace(INSTALL, '', $url);
     $url = explode('/', $url);
     $method = $_SERVER['REQUEST_METHOD'];
+
+    $users = json_decode(file_get_contents(__DIR__ . '/users.json', 1));
+    foreach ($users as $user) {
+}
     
     if ($method == 'GET' && count($url) == 1 && $url[0] == 'home') {
         view('home');
+    }
+    if ($method == 'GET' && count($url) == 1 && $url[0] == 'error') {
+        view('error');
     }
     else if ($method == 'GET' && count($url) == 1 && $url[0] == 'create') {
         view('create');
@@ -29,6 +37,14 @@ function router() {
     else if ($method == 'POST' && count($url) == 1 && $url[0] == 'accounts') {
         view('accounts');
     }
+    else if ($method == 'POST' && count($url) == 1 && $url[0] == 'accounts') {
+        view('accounts');
+    }
+    else if ($method == 'GET' && count($url) == 1 && $url[0] == "addFunds?id=$user->id") {
+        view('addFunds');
+    }
+
+
 }
 
 function view($tmp) {
