@@ -94,6 +94,9 @@ function router() {
     else if ($method == 'POST' && count($url) == 1 && $url[0] == 'accounts') {
         view('accounts');
     }
+    else if ($method == 'GET' && $url[0] == 'index.php') {
+        view('home');
+    }
     
 
 
