@@ -1,0 +1,19 @@
+{
+    "name": "edvin/024",
+    "description": "Aprashimas",
+    "autoload": {
+        "psr-4": {
+            "Petro\\": "01/",
+            "Zigmo\\": "02/",
+            "\\": "01/"
+
+        }
+    },
+    "authors": [
+        {
+            "name": "marinkus",
+            "email": "marinkus@gmail.com"
+        }
+    ],
+    "require": {}
+}
