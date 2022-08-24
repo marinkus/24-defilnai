@@ -6,5 +6,7 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Edvin\\024\\' => array($baseDir . '/src'),
+    'Zigmo\\' => array($baseDir . '/02'),
+    'Petro\\' => array($baseDir . '/01'),
+    '' => array($baseDir . '/01'),
 );
