@@ -16,8 +16,7 @@ class MarsoPalydovas {
             return self::$palydovai[rand(0, 1)];
         }
     }
-
-
+    
     private function __construct($title) {
         $this->title = $title;
     }
