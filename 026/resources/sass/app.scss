@@ -5,3 +5,36 @@ h1 {
         color: skyblue;
     }
 }
+.line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    &__content {
+        display: flex;
+        justify-content: flex-start;
+        margin: 4px;
+        gap: 20px;
+        &__type {
+            font-size: 18px;
+            font-weight: 600px;
+            color: skyblue;
+            margin-right: 10px;
+            line-height: 20px;
+        }
+        &__weight {
+            font-size: 16px;
+            font-weight: 600px;
+            color: grey;
+        }
+        &__tail {
+            width: 20px;
+            height: 20px;
+            background-color: crimson;
+        }
+    }
+    &__buttons {
+        display: flex;
+        justify-content: flex-end;
+    }
+}

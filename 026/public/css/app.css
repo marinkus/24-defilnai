@@ -10909,3 +10909,37 @@ h1, .h1 {
 h1 span, .h1 span {
   color: skyblue;
 }
+
+.line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.line__content {
+  display: flex;
+  justify-content: flex-start;
+  margin: 4px;
+  gap: 20px;
+}
+.line__content__type {
+  font-size: 18px;
+  font-weight: 600px;
+  color: skyblue;
+  margin-right: 10px;
+  line-height: 20px;
+}
+.line__content__weight {
+  font-size: 16px;
+  font-weight: 600px;
+  color: grey;
+}
+.line__content__tail {
+  width: 20px;
+  height: 20px;
+  background-color: crimson;
+}
+.line__buttons {
+  display: flex;
+  justify-content: flex-end;
+}

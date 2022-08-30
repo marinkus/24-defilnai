@@ -28,8 +28,8 @@ App\App::view('top', ['title' => $title]);
                                         <?php }  ?>
                                     </div>
                                     <div class="line__buttons">
-                                        <a href=""></a>
-                                        <a href=""></a>
+                                    <button type="button" class="btn btn-outline-success m-2">Edit</button>
+                                    <button type="button" class="btn btn-outline-danger m-2">Delete</button>
                                     </div>
                                 </div>
                             </li>
