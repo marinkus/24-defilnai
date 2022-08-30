@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Controllers\HomeController as HC;
+use App\Controllers\AnimalController as AC;
 
 class App {
 
@@ -21,6 +22,9 @@ class App {
 
         if ($method == 'GET' && count($url) == 1 && $url[0] == '') {
             return ((new HC) -> home());
+        }
+        else if ($method == 'GET' && count($url) == 2 && $url[0] == 'animals' && $url[1] == 'create') {
+            return ((new AC) -> create());
         }
     }
 
