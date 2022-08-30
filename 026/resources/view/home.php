@@ -3,7 +3,7 @@
 App\App::view('top', $data);
 ?>
 
-<h1>Namai</h1>
+<h1><?=$welcome?></h1>
 
 
 <?php
