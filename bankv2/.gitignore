@@ -1,3 +1,4 @@
 /src
 /vendor
 composer.json
+/node_modules
