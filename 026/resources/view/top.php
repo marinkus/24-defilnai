@@ -9,4 +9,7 @@
     <title><?= $title ?? 'Gyvuneliai' ?></title>
 </head>
 <body>
+
+<?php
+App\App::view('nav');
     

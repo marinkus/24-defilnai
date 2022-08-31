@@ -35,6 +35,15 @@ class App
         if ($method == 'GET' && count($url) == 1 && $url[0] == 'animals') {
             return ((new AC)->list()); //  && $url[1] == 'list' ir count 2 gali but
         }
+        if ($method == 'GET' && count($url) == 3 && $url[0] == 'animals' && $url[1] == 'edit') {
+            return ((new AC)->edit((int) $url[2]));
+        }
+        if ($method == 'POST' && count($url) == 3 && $url[0] == 'animals' && $url[1] == 'update') {
+            return ((new AC)->update((int) $url[2]));
+        }
+        if ($method == 'POST' && count($url) == 3 && $url[0] == 'animals' && $url[1] == 'delete') {
+            return ((new AC)->delete((int) $url[2]));
+        }
     }
 
     static public function view($name, $data = [])
