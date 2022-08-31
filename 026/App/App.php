@@ -4,6 +4,8 @@ namespace App;
 
 use App\Controllers\HomeController as HC;
 use App\Controllers\AnimalController as AC;
+use App\Controllers\LoginController as LC;
+use App\Middlewares\Auth;
 
 class App
 {
@@ -11,6 +13,7 @@ class App
 
     static public function start()
     {
+        session_start();
         self::router();
     }
 
@@ -22,6 +25,10 @@ class App
         $url = explode('/', $url);
         array_shift($url);
         $method = $_SERVER['REQUEST_METHOD'];
+
+        if (!Auth::authorize($url)) {
+            return self::redirect('login');
+        }
 
         if ($method == 'GET' && count($url) == 1 && $url[0] == '') {
             return ((new HC)->home());
@@ -43,6 +50,12 @@ class App
         }
         if ($method == 'POST' && count($url) == 3 && $url[0] == 'animals' && $url[1] == 'delete') {
             return ((new AC)->delete((int) $url[2]));
+        }
+        if ($method == 'GET' && count($url) == 1 && $url[0] == 'login') {
+            return ((new LC)->login());
+        }
+        if ($method == 'POST' && count($url) == 1 && $url[0] == 'login') {
+            return ((new LC)->doLogin());
         }
     }
 
