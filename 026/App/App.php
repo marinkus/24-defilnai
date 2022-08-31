@@ -57,6 +57,9 @@ class App
         if ($method == 'POST' && count($url) == 1 && $url[0] == 'login') {
             return ((new LC)->doLogin());
         }
+        if ($method == 'POST' && count($url) == 1 && $url[0] == 'logout') {
+            return ((new LC)->logout());
+        }
     }
 
     static public function view($name, $data = [])
