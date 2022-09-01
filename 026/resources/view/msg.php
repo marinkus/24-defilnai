@@ -11,8 +11,10 @@ if (isset($_SESSION['msg'])) {
 
 <?php if (isset($msg)): ?>
     <div class="msg-bin">
-    <div class="msg" style="background: <?=$msg['type'] ?>">
-        <?= $msg['text'] ?>
+        <?php foreach ($msg as $m) : ?>
+    <div class="msg" style="background: <?=$m['type'] ?>">
+        <?= $m['text'] ?>
     </div>
+    <?php endforeach ?>
     </div>
 <?php endif ?>

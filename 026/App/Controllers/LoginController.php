@@ -39,6 +39,8 @@ class LoginController
             }
         }
         M::makeMsg('crimson', 'Wrong username or password');
+        // M::makeMsg('white', 'Dumbass'); Galima naudoti daugiau nei viena msg
+        // M::makeMsg('crimson', 'Try again.');
         return App::redirect('login');
     }
 }
