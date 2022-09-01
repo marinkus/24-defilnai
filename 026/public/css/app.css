@@ -10958,3 +10958,20 @@ h1 span, .h1 span {
 .nav-link {
   padding: 18px 10px;
 }
+
+.msg-bin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.msg-bin .msg {
+  margin: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  border: solid 2px green;
+  font-size: 26px;
+  font-weight: bold;
+  text-align: center;
+  min-width: 300px;
+}

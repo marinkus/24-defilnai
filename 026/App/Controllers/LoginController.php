@@ -5,6 +5,7 @@ namespace App\Controllers;
 
 use App\App;
 use App\DB\Json;
+use App\Services\Messages as M;
 
 class LoginController
 {
@@ -19,6 +20,7 @@ class LoginController
     public function logout()
     {
         unset($_SESSION['login'], $_SESSION['user']);
+        M::makeMsg('grey', 'You are logged out');
         return App::redirect('');
     }
     public function doLogin()
@@ -31,10 +33,12 @@ class LoginController
                 if ($user['password'] == md5($_POST['password'])) {
                     $_SESSION['login'] = 1;
                     $_SESSION['user'] = $user;
+                    M::makeMsg('lime', 'You are logged in successfully.');
                     return App::redirect('animals');
                 }
             }
         }
+        M::makeMsg('crimson', 'Wrong username or password');
         return App::redirect('login');
     }
 }
