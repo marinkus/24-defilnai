@@ -38,3 +38,16 @@ h1 {
         justify-content: flex-end;
     }
 }
+.user-nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    .name {
+        font-size: 22px;
+        font-weight: bold;
+    }
+}
+.nav-link {
+    padding: 18px 10px;
+}

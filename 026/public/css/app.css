@@ -10943,3 +10943,18 @@ h1 span, .h1 span {
   display: flex;
   justify-content: flex-end;
 }
+
+.user-nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+}
+.user-nav .name {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.nav-link {
+  padding: 18px 10px;
+}
