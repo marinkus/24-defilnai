@@ -6,6 +6,7 @@ use App\Controllers\HomeController as HC;
 use App\Controllers\AnimalController as AC;
 use App\Controllers\LoginController as LC;
 use App\Controllers\ApiController as Api;
+use App\Controllers\ReactController as RC;
 use App\Middlewares\Auth;
 
 class App
@@ -70,6 +71,12 @@ class App
         if ($method == 'POST' && count($url) == 2 && $url[0] == 'api' && $url[1] == 'go') {
             return ((new Api)->doApi());
         }
+
+        // React
+
+        if ($method == 'GET' && count($url) == 2 && $url[0] == 'react' && $url[1] == 'list') {
+            return ((new RC)->list());
+        }
     }
 
     static public function view($name, $data = [])
@@ -77,6 +84,16 @@ class App
         extract($data);
         require DIR . 'resources/view/' . $name . '.php';
     }
+
+    static public function json(array $data)
+    {
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: GET, POST');
+        header("Access-Control-Allow-Headers: X-Requested-With");
+        header("Content-Type: application/json");
+        echo json_encode($data);
+    }
+
     static public function redirect($where)
     {
         header('Location: ' . URL . $where);
