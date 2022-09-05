@@ -10975,3 +10975,11 @@ h1 span, .h1 span {
   text-align: center;
   min-width: 300px;
 }
+
+.result {
+  font-size: 18px;
+  font-weight: 600px;
+  color: skyblue;
+  margin-right: 10px;
+  line-height: 20px;
+}

@@ -5,6 +5,7 @@ namespace App;
 use App\Controllers\HomeController as HC;
 use App\Controllers\AnimalController as AC;
 use App\Controllers\LoginController as LC;
+use App\Controllers\ApiController as Api;
 use App\Middlewares\Auth;
 
 class App
@@ -62,6 +63,12 @@ class App
         }
         if ($method == 'POST' && count($url) == 1 && $url[0] == 'logout') {
             return ((new LC)->logout());
+        }
+        if ($method == 'GET' && count($url) == 2 && $url[0] == 'api' && $url[1] == 'go') {
+            return ((new Api)->show());
+        }
+        if ($method == 'POST' && count($url) == 2 && $url[0] == 'api' && $url[1] == 'go') {
+            return ((new Api)->doApi());
         }
     }
 
