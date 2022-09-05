@@ -74,8 +74,16 @@ class App
 
         // React
 
+        if ($method == 'OPTIONS') {
+            header('Access-Control-Allow-Origin: *');
+            header('Access-Control-Allow-Methods: GET, POST');
+            header('Access-Control-Allow-Headers:Content-Type');
+        }
         if ($method == 'GET' && count($url) == 2 && $url[0] == 'react' && $url[1] == 'list') {
             return ((new RC)->list());
+        }
+        if ($method == 'POST' && count($url) == 2 && $url[0] == 'react' && $url[1] == 'list') {
+            return ((new RC)->store());
         }
     }
 
