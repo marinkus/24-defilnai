@@ -36,9 +36,9 @@ class UserController
             'user' => Json::connect()->show($id)
         ]);
     }
-    public function update()
+    public function update(int $id)
     {
-        Json::connect()->create([
+        Json::connect()->update($id, [
             'fname' => $_POST['fname'],
             'sname' => $_POST['sname'],
             'iban' => $_POST['iban'],

@@ -16,25 +16,25 @@ class Json implements DataBase
     {
         $this->file = $file;
         if (!file_exists(DIR . 'App/DB/'.$this->file.'.json')) {
-            file_put_contents(DIR . 'App/DB'.$this->file.'.json', json_encode([]));
+            file_put_contents(DIR . 'App/DB/'.$this->file.'.json', json_encode([]));
         }
         $this->data = json_decode(file_get_contents(DIR . 'App/DB/'.$this->file.'.json'), 1);
     }
 
     private function getId() : int
     {
-        if (!file_exists(DIR . 'App/DB'.$this->file.'_id.json')) {
+        if (!file_exists(DIR . 'App/DB/'.$this->file.'_id.json')) {
             file_put_contents(DIR . 'App/DB'.$this->file.'_id.json', json_encode(0));
         }
         $id = json_decode((file_get_contents(DIR . 'App/DB'.$this->file.'_id.json')));
         $id++;
-        file_put_contents(DIR . 'App/DB'.$this->file.'_id.json', json_encode($id));
+        file_put_contents(DIR . 'App/DB/'.$this->file.'_id.json', json_encode($id));
         return $id;
     }
 
     public function __destruct()
     {
-        file_put_contents(DIR . 'App/DB'.$this->file.'.json', json_encode($this->data));
+        file_put_contents(DIR . 'App/DB/'.$this->file.'.json', json_encode($this->data));
     }
     public function create(array $userData) : void
     {

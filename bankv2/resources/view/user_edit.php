@@ -14,19 +14,19 @@ App\App::view('top', ['title' => $title]);
                     <form action="<?= URL ?>users/update/<?= $user['id'] ?>" method="post">
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" class="form-control" name="type" value="<?= $user['fname']  ?>">
+                        <input type="text" class="form-control" name="fname" value="<?= $user['fname']  ?>">
                     </div>
                     <div class="form-group">
                         <label>Surname</label>
-                        <input type="text" class="form-control" name="type" value="<?= $user['sname']  ?>">
+                        <input type="text" class="form-control" name="sname" value="<?= $user['sname']  ?>">
                     </div>
                     <div class="form-group">
                         <label>IBAN number</label>
-                        <input type="text" class="form-control" name="weight" value="<?= $user['iban'] ?>">
+                        <input type="text" class="form-control" name="iban" value="<?= $user['iban'] ?>">
                     </div>
                     <div class="form-group">
                         <label>Personal code</label>
-                        <input type="text" class="form-control" name="weight" value="<?= $user['idnumber'] ?>">
+                        <input type="text" class="form-control" name="idnumber" value="<?= $user['idnumber'] ?>">
                     </div>
                     <button type="submit" class="btn btn-primary mt-5">Submit</button>
                     </form>
