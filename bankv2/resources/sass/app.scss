@@ -32,3 +32,29 @@
         justify-content: flex-end;
     }
 }
+.nav-link {
+    padding: 18px 10px;
+}
+.msg-bin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    .msg {
+        margin: 20px;
+        padding: 10px;
+        border-radius: 10px;
+        border: solid 2px green;
+        font-size: 26px;
+        font-weight: bold;
+        text-align: center;
+        min-width: 300px;
+    }
+}
+.result {
+    font-size: 18px;
+    font-weight: 600px;
+    color: skyblue;
+    margin-right: 10px;
+    line-height: 20px;
+}

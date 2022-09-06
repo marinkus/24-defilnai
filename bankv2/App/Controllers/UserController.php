@@ -29,4 +29,26 @@ class UserController
             'users' => Json::connect()->showAll()
         ]);
     }
+    public function edit(int $id)
+    {
+        return App::view('user_edit', [
+            'title' => 'Edit Bank account',
+            'user' => Json::connect()->show($id)
+        ]);
+    }
+    public function update()
+    {
+        Json::connect()->create([
+            'fname' => $_POST['fname'],
+            'sname' => $_POST['sname'],
+            'iban' => $_POST['iban'],
+            'idnumber' => $_POST['idnumber']
+        ]);
+        return App::redirect('users');
+    }
+    public function delete(int $id)
+    {
+        Json::connect()->delete($id);
+        return App::redirect('users');
+    }
 }

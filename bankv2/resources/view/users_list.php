@@ -29,8 +29,9 @@ App\App::view('top', ['title' => $title]);
 
                                     </div>
                                     <div class="line__buttons">
-                                    <button type="button" class="btn btn-outline-success m-2">Edit</button>
-                                    <button type="button" class="btn btn-outline-danger m-2">Delete</button>
+                                    <a href="<?= URL . 'users/edit/'. $user['id']?>" type="button" class="btn btn-outline-success m-2">Edit</a>
+                                    <form action="<?= URL . 'users/delete/'. $user['id']?>" method="post">
+                                    <button type="submit" class="btn btn-outline-danger m-2">Delete</button>
                                     </div>
                                 </div>
                             </li>
