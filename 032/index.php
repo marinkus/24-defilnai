@@ -21,10 +21,20 @@ $pdo = new PDO($dsn, $user, $pass, $options);
 $sql = "
     SELECT id, type, height, title 
     FROM trees
+    ORDER BY type DESC, title
 ";
 
 $stmt = $pdo->query($sql);
 $data = $stmt->fetchAll();
+if ('POST' == $_SERVER['REQUEST_METHOD']) {
+    $sql = "
+    DELETE FROM trees
+    WHERE id = " . $_POST['id'];
+
+    $pdo->query($sql);
+    header('Location: http://localhost/defilnai/032/index.php');
+    die;
+}
 ?>
 
 <ul>
@@ -32,4 +42,9 @@ $data = $stmt->fetchAll();
     foreach ($data as $t) : ?>
     <li>ID: <?= $t['id'] ?> Type: <?= ['Palme', 'Spygliuotis', 'Lapuotis'][$t['type'] - 1] ?> Height: <?= $t['height'] ?>m Title: <?= $t['title'] ?></li>
     <?php endforeach ?>
-</ul>
+</ul><br>
+
+<form action="" method="post">
+    ID: <input type="text" name="id"><br>
+    <button type="submit">Delete</button>
+</form>
