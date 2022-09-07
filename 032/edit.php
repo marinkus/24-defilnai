@@ -16,36 +16,40 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 
     $pdo = new PDO($dsn, $user, $pass, $options);
 
+    // INSERT INTO table_name (column1, column2, column3, ...)
+    // VALUES (value1, value2, value3, ...);
+
     $sql = "
-        UPDATE trees
-        SET type = :t, height = :h, title = :title
-        WHERE id = :id
-    ";
+UPDATE trees
+SET type = :t, height = :h, title = :title
+WHERE id = :id
+";
+
+
 
     $stmt = $pdo->prepare($sql);
-
-    $stmt->execute([
-        'title' => $_POST['title'], 
-        't' => $_POST['type'], 
-        'id' => $_POST['id'],
-        'h' => $_POST['height']
-    ]);
-
+    $stmt->execute(
+        [
+            't' => $_POST['type'],
+            'h' => $_POST['height'],
+            'title' => $_POST['title'],
+            'id' => $_POST['id']
+        ]
+    );
 
     header('Location: http://localhost/defilnai/032/');
     die;
 }
 ?>
 
-
 <form action="" method="post">
-ID: <input type="text" name="id"></br></br>
-Title: <input type="text" name="title"> </br></br>
-Height: <input type="text" name="height"> </br></br>
-<select name="type">
-    <option value="1">Lapuotis</option>
-    <option value="2">Spygliuotis</option>
-    <option value="3">Palmė</option>
-</select></br></br>
-<button type="submit">Plant It!</button>
+    ID: <input type="text" name="id"> </br></br>
+    Title: <input type="text" name="title"> </br></br>
+    Height: <input type="text" name="height"> </br></br>
+    <select name="type">
+        <option value="1">Lapuotis</option>
+        <option value="2">Spygliuotis</option>
+        <option value="3">Palmė</option>
+    </select></br></br>
+    <button type="submit">Change It!</button>
 </form>
