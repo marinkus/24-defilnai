@@ -16,26 +16,30 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 
     $pdo = new PDO($dsn, $user, $pass, $options);
 
-    // INSERT INTO table_name (column1, column2, column3, ...)
-    // VALUES (value1, value2, value3, ...);
-
     $sql = "
-INSERT INTO trees 
-(type, height, title)
- VALUES (?, ?, ?)
-";
+        UPDATE trees
+        SET type = :t, height = :h, title = :title
+        WHERE id = :id
+    ";
 
-
-    
     $stmt = $pdo->prepare($sql);
-    $stmt->execute([$_POST['type'], $_POST['height'], $_POST['title']]);
+
+    $stmt->execute([
+        'title' => $_POST['title'], 
+        't' => $_POST['type'], 
+        'id' => $_POST['id'],
+        'h' => $_POST['height']
+    ]);
+
 
     header('Location: http://localhost/defilnai/032/');
     die;
 }
-
 ?>
+
+
 <form action="" method="post">
+ID: <input type="text" name="id"></br></br>
 Title: <input type="text" name="title"> </br></br>
 Height: <input type="text" name="height"> </br></br>
 <select name="type">

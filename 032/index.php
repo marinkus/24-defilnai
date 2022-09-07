@@ -29,9 +29,12 @@ $data = $stmt->fetchAll();
 if ('POST' == $_SERVER['REQUEST_METHOD']) {
     $sql = "
     DELETE FROM trees
-    WHERE id = " . $_POST['id'];
+    WHERE id = ?
+    ";
 
-    $pdo->query($sql);
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$_POST['id']]);
+
     header('Location: http://localhost/defilnai/032/index.php');
     die;
 }
