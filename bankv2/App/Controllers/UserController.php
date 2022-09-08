@@ -61,7 +61,6 @@ class UserController
             'sname' => $_POST['sname'],
             'iban' => $_POST['iban'],
             'idnumber' => $_POST['idnumber'],
-            'funds' => $_POST['funds']
         ]);
         return App::redirect('users');
     }
