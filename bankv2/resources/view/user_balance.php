@@ -13,7 +13,7 @@ App\App::view('top', ['title' => $title]);
                 <div class="card-body">
                     <form action="<?= URL ?>users/balance/<?= $user['id'] ?>" method="post">
                         <h2><?= $user['iban']  ?></h2>
-                        <h3>Funds: <?= $user['funds']  ?></h3>
+                        <h3>Funds: <?= $user['funds']  ?> EUR </h3>
                         <label for="addFunds">Add funds</label>
                         <input type="number" name='addFunds'>
                         <button type="submit" class="btn btn-primary mt-5">Submit</button>

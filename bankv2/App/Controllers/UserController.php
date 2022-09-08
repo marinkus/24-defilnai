@@ -63,7 +63,7 @@ class UserController
         Json::connect()->balance($id, [
             'funds' => $funds + $addFunds,
         ]);
-        return App::redirect('users');
+        return App::redirect('users/balance/'.$id);
     }
     public function update(int $id)
     {

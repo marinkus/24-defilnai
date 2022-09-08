@@ -56,7 +56,7 @@ class Json implements DataBase
         foreach ($this->data as &$user) {
             if ($user['id'] == $userId) {
                 $userData['id'] = $userId;
-                $user['funds'] = $userData['funds'];
+                $user['funds'] += $userData['funds'];
                 break;
             }
         }
