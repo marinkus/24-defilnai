@@ -51,6 +51,16 @@ class Json implements DataBase
             }
         }
     }
+    public function balance(int $userId, array $userData) : void
+    {
+        foreach ($this->data as &$user) {
+            if ($user['id'] == $userId) {
+                $userData['id'] = $userId;
+                $user['funds'] = $userData['funds'];
+                break;
+            }
+        }
+    }
     public function delete(int $userId): void
     {
         foreach ($this->data as $index => $user) {
