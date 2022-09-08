@@ -44,7 +44,7 @@ class App
             return ((new UC)->balance((int) $url[2]));
         }
         if ($method == 'POST' && count($url) == 3 && $url[0] == 'users' && $url[1] == 'balance') {
-            return ((new UC)->update((int) $url[2]));
+            return ((new UC)->addBalance((int) $url[2]));
         }
         if ($method == 'POST' && count($url) == 3 && $url[0] == 'users' && $url[1] == 'update') {
             return ((new UC)->update((int) $url[2]));

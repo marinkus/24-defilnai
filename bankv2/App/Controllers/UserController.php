@@ -54,6 +54,24 @@ class UserController
             'user' => Json::connect()->show($id)
         ]);
     }
+    public function addBalance(int $id)
+    {
+        $name = $_POST['fname'];
+        $surname = $_POST['sname'];
+        $iban = $_POST['iban'];
+        $idnumber = $_POST['idnumber'];
+        $funds = $_POST['funds'];
+        $addFunds = $_POST['addFunds'];
+
+        Json::connect()->update($id, [
+            'funds' => $funds + $addFunds,
+            'fname' => $name,
+            'sname' => $surname,
+            'iban' => $iban,
+            'idnumber' =>  $idnumber,
+        ]);
+        return App::redirect('users');
+    }
     public function update(int $id)
     {
         Json::connect()->update($id, [
