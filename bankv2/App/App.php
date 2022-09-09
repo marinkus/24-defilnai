@@ -46,6 +46,12 @@ class App
         if ($method == 'POST' && count($url) == 3 && $url[0] == 'users' && $url[1] == 'balance') {
             return ((new UC)->addBalance((int) $url[2]));
         }
+        if ($method == 'GET' && count($url) == 3 && $url[0] == 'users' && $url[1] == 'charge') {
+            return ((new UC)->charge((int) $url[2]));
+        }
+        if ($method == 'POST' && count($url) == 3 && $url[0] == 'users' && $url[1] == 'charge') {
+            return ((new UC)->chargeMoney((int) $url[2]));
+        }
         if ($method == 'POST' && count($url) == 3 && $url[0] == 'users' && $url[1] == 'update') {
             return ((new UC)->update((int) $url[2]));
         }

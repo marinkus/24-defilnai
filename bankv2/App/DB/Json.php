@@ -2,6 +2,9 @@
 
 namespace App\DB;
 
+// use App\Controllers\UserController as UC;
+// use App\App;
+
 class Json implements DataBase
 {
     private $data, $file;
@@ -15,33 +18,33 @@ class Json implements DataBase
     private function __construct($file)
     {
         $this->file = $file;
-        if (!file_exists(DIR . 'App/DB/'.$this->file.'.json')) {
-            file_put_contents(DIR . 'App/DB/'.$this->file.'.json', json_encode([]));
+        if (!file_exists(DIR . 'App/DB/' . $this->file . '.json')) {
+            file_put_contents(DIR . 'App/DB/' . $this->file . '.json', json_encode([]));
         }
-        $this->data = json_decode(file_get_contents(DIR . 'App/DB/'.$this->file.'.json'), 1);
+        $this->data = json_decode(file_get_contents(DIR . 'App/DB/' . $this->file . '.json'), 1);
     }
 
-    private function getId() : int
+    private function getId(): int
     {
-        if (!file_exists(DIR . 'App/DB/'.$this->file.'_id.json')) {
-            file_put_contents(DIR . 'App/DB/'.$this->file.'_id.json', json_encode(0));
+        if (!file_exists(DIR . 'App/DB/' . $this->file . '_id.json')) {
+            file_put_contents(DIR . 'App/DB/' . $this->file . '_id.json', json_encode(0));
         }
-        $id = json_decode((file_get_contents(DIR . 'App/DB/'.$this->file.'_id.json')));
+        $id = json_decode((file_get_contents(DIR . 'App/DB/' . $this->file . '_id.json')));
         $id++;
-        file_put_contents(DIR . 'App/DB/'.$this->file.'_id.json', json_encode($id));
+        file_put_contents(DIR . 'App/DB/' . $this->file . '_id.json', json_encode($id));
         return $id;
     }
 
     public function __destruct()
     {
-        file_put_contents(DIR . 'App/DB/'.$this->file.'.json', json_encode($this->data));
+        file_put_contents(DIR . 'App/DB/' . $this->file . '.json', json_encode($this->data));
     }
-    public function create(array $userData) : void
+    public function create(array $userData): void
     {
         $userData['id'] = $this->getId();
         $this->data[] = $userData;
     }
-    public function update(int $userId, array $userData) : void
+    public function update(int $userId, array $userData): void
     {
         foreach ($this->data as &$user) {
             if ($user['id'] == $userId) {
@@ -51,12 +54,22 @@ class Json implements DataBase
             }
         }
     }
-    public function balance(int $userId, array $userData) : void
+    public function balance(int $userId, array $userData): void
     {
         foreach ($this->data as &$user) {
             if ($user['id'] == $userId) {
                 $userData['id'] = $userId;
                 $user['funds'] += $userData['funds'];
+                break;
+            }
+        }
+    }
+    public function charge(int $userId, array $userData): void
+    {
+        foreach ($this->data as &$user) {
+            if ($user['id'] == $userId) {
+                $userData['id'] = $userId;
+                $user['funds'] -= $userData['funds'];
                 break;
             }
         }
@@ -83,5 +96,4 @@ class Json implements DataBase
     {
         return $this->data;
     }
-
 }

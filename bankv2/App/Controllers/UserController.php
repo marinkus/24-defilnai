@@ -54,6 +54,13 @@ class UserController
             'user' => Json::connect()->show($id)
         ]);
     }
+    public function charge(int $id)
+    {
+        return App::view('user_charge', [
+            'title' => 'Charge money',
+            'user' => Json::connect()->show($id)
+        ]);
+    }
     public function addBalance(int $id)
     {
 
@@ -63,7 +70,18 @@ class UserController
         Json::connect()->balance($id, [
             'funds' => $funds + $addFunds,
         ]);
-        return App::redirect('users/balance/'.$id);
+        return App::redirect('users/balance/' . $id);
+    }
+    public function chargeMoney(int $id)
+    {
+
+        $funds = $_POST['funds'];
+        $addFunds = $_POST['addFunds'];
+
+        Json::connect()->balance($id, [
+            'funds' => $funds - $addFunds,
+        ]);
+        return App::redirect('users/charge/' . $id);
     }
     public function update(int $id)
     {
@@ -94,6 +112,12 @@ class UserController
     {
         if (strlen($personalcode) != 11) {
             M::makeMsg('crimson', 'Asmens kodas nėra validus!');
+        }
+    }
+    public function validateAmount(int $number)
+    {
+        if ($number < 0) {
+            M::makeMsg('crimson', 'You have entered not valid amount.');
         }
     }
 }
