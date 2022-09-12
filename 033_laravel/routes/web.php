@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NiceController as Nice;
+use App\Http\Controllers\NiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,6 @@ Route::get('/', function () {
 });
 
 Route::get('/fun/{kiek}/{abc?}', [Nice::class, 'fun']);
+
+Route::get('/suma', [Nice::class, 'showForm'])->name('show');
+Route::post('/suma', [Nice::class, 'doForm'])->name('calculate');
