@@ -22,16 +22,17 @@ class UserController
         $funds = 0;
         // validation
         if ($this->validateName($name) || $this->validateName($surname) || $this->validateIdNumber($idnumber)) {
-            Json::connect()->create([
-                'fname' => $name,
-                'sname' => $surname,
-                'iban' => $iban,
-                'idnumber' =>  $idnumber,
-                'funds' => $funds
-            ]);
             return App::redirect('');
+            die;
         }
-        return App::redirect('users/create');
+        Json::connect()->create([
+            'fname' => $name,
+            'sname' => $surname,
+            'iban' => $iban,
+            'idnumber' =>  $idnumber,
+            'funds' => $funds
+        ]);
+        return App::redirect('');
     }
     public function list()
     {
@@ -85,12 +86,18 @@ class UserController
     }
     public function update(int $id)
     {
-        Json::connect()->update($id, [
-            'fname' => $_POST['fname'],
-            'sname' => $_POST['sname'],
-            'iban' => $_POST['iban'],
-            'idnumber' => $_POST['idnumber'],
-        ]);
+        $name = $_POST['fname'];
+        $surname = $_POST['sname'];
+        $idnumber = $_POST['idnumber'];
+        if ($this->validateName($name) || $this->validateName($surname) || $this->validateIdNumber($idnumber)) {
+            Json::connect()->update($id, [
+                'fname' => $name,
+                'sname' => $surname,
+                'iban' => $_POST['iban'],
+                'idnumber' => $idnumber,
+            ]);
+            return App::redirect('users');
+        }
         return App::redirect('users');
     }
     public function delete(int $id)
