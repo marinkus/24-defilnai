@@ -9,11 +9,12 @@
                         <h2>Edit post</h2>
                     </div>
                     <div class="card-body">
-                        <form action="{{route('store')}}" method="post">
+                        <form action="{{route('update', $blog)}}" method="post">
                             @csrf
+                            @method('put')
                             <div class="mb-3">
                               <label for="title" class="input-group-text">Title</label>
-                              <input name="title" type="text" class="form-control" id="title" name="title" value="{{$blog->title}}">
+                              <input name="title" type="text" class="form-control" sname="title" value="{{$blog->title}}">
                               <div class="form-text">Tell me about your day.</div>
                             </div>
                             <div class="mb-3">

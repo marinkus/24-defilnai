@@ -74,7 +74,10 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
-        //
+        $blog->title = $request->title;
+        $blog->post = $request->post;
+        $blog->save();
+        return redirect()->route('index');;
     }
 
     /**
