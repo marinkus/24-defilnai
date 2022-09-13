@@ -40,7 +40,7 @@ class BlogController extends Controller
         $blog->title = $request->title;
         $blog->post = $request->post;
         $blog->save();
-        return redirect()->back();
+        return redirect()->route('index');;
     }
 
     /**
@@ -85,6 +85,7 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        //
+        $blog->delete();
+        return redirect()->route('index');
     }
 }

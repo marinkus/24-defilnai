@@ -19,7 +19,8 @@
             margin: 0;
         }
     }
-    .buttons {
-        margin: 5px 10px;
-    }
+}
+.buttons {
+    display: flex;
+    margin: 5px 10px;
 }
