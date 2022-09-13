@@ -14,6 +14,7 @@ class BlogController extends Controller
      */
     public function index()
     {
+
         $blogs = Blog::all();
         return view('blog.index', ['blogs' => $blogs]);
     }
@@ -50,7 +51,7 @@ class BlogController extends Controller
         $blog->title = $request->title;
         $blog->post = $request->post;
         $blog->save();
-        return redirect()->route('index');;
+        return redirect()->route('index')->with('success_msg', 'Krasava, geras postas!');
     }
 
     /**

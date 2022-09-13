@@ -94,6 +94,7 @@
         <main class="py-4">
             <h1>My daily BLOG</h1>
 
+
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -103,6 +104,10 @@
                     </ul>
                 </div>
             @endif
+            @if (Session::has('success_msg'))
+                <h2 class="alert alert-success">{{ Session::get('success_msg') }}</h2>
+            @endif
+
             @yield('content')
         </main>
     </div>
