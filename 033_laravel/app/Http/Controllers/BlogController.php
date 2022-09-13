@@ -36,6 +36,16 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
+
+
+        $validated = $request->validate([
+            'title' => 'required|min:4|regex:/^\d+$/i',
+            'post' => 'required',
+        ], [
+            'title.regex' => 'tik skaicius naudojame' // perrasome err message
+        ]);
+
+
         $blog = new Blog;
         $blog->title = $request->title;
         $blog->post = $request->post;
@@ -74,6 +84,13 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
+        $validated = $request->validate([
+            'title' => 'required|min:4|regex:/^\d+$/i',
+            'post' => 'required',
+        ], [
+            'title.regex' => 'tik skaicius naudojame' // perrasome err message
+        ]);
+
         $blog->title = $request->title;
         $blog->post = $request->post;
         $blog->save();

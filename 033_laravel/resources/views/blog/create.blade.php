@@ -13,12 +13,12 @@
                             @csrf
                             <div class="mb-3">
                               <label for="title" class="input-group-text">Title</label>
-                              <input name="title" type="text" class="form-control" id="title" name="title">
+                              <input value="{{old('title')}}" type="text" class="form-control" id="title" name="title">
                               <div class="form-text">Tell me about your day.</div>
                             </div>
                             <div class="mb-3">
                               <label for="post" class="input-group-text">Content</label>
-                              <textarea class="form-control" name="post"></textarea>
+                              <textarea class="form-control" name="post">{{old('post')}}</textarea>
                             </div>
                             <button type="submit" class="btn btn-primary mt-4">Post your post.</button>
                           </form>

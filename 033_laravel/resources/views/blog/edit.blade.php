@@ -14,12 +14,12 @@
                             @method('put')
                             <div class="mb-3">
                               <label for="title" class="input-group-text">Title</label>
-                              <input name="title" type="text" class="form-control" sname="title" value="{{$blog->title}}">
+                              <input name="title" type="text" class="form-control" sname="title" value="{{old('title', $blog->title)}}">
                               <div class="form-text">Tell me about your day.</div>
                             </div>
                             <div class="mb-3">
                               <label for="post" class="input-group-text">Content</label>
-                              <textarea class="form-control" name="post">{{$blog->post}}</textarea>
+                              <textarea class="form-control" name="post">{{old('post', $blog->post)}}</textarea>
                             </div>
                             <button type="submit" class="btn btn-primary mt-4">Update</button>
                             <a href="{{ route('index')}}" class="btn btn-secondary mt-4">Back</a>

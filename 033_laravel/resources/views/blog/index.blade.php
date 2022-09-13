@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h2>Posts</h2>
-                        <a href="{{ route('create') }}" type="button" class="btn btn-info">Create</a>
+                        <a href="{{ route('create') }}" type="button" class="btn btn-info">Create new post</a>
                     </div>
                     <div class="card-body">
                         <ul class="list-group">
