@@ -20,7 +20,7 @@
                                         <div class="buttons">
                                             <a href="{{ route('show', $blog) }}" type="button" class="btn btn-info">Show
                                                 content</a>
-                                            <button type="button" class="btn btn-warning">Edit</button>
+                                            <a href="{{ route('edit', $blog)}}" type="button" class="btn btn-warning">Edit</a>
                                             <form action="{{ route('delete', $blog) }}" method="post">
                                                 @method('delete')
                                                 @csrf

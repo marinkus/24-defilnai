@@ -36,4 +36,5 @@ Route::prefix('blog')->group(function () {
     Route::post('/create', [Blog::class, 'store'])->name('store');
     Route::get('/show/{blog}', [Blog::class, 'show'])->name('show');
     Route::delete('/delete/{blog}', [Blog::class, 'destroy'])->name('delete');
+    Route::get('/edit/{blog}', [Blog::class, 'edit'])->name('edit');
 });

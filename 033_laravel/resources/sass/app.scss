@@ -24,3 +24,10 @@
     display: flex;
     margin: 5px 10px;
 }
+.btn {
+    margin-left: 4px;
+    transform: rotate(0.5deg); // good one
+}
+textarea.form-control {
+    min-height: 200px;
+}
