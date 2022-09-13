@@ -6,3 +6,20 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+.posts-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    .content {
+        h2 {
+            color: indigo;
+            font-size: 24px;
+            margin: 0;
+        }
+    }
+    .buttons {
+        margin: 5px 10px;
+    }
+}

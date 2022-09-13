@@ -18,7 +18,7 @@
                             </div>
                             <div class="mb-3">
                               <label for="post" class="input-group-text">Content</label>
-                              <textarea class="form-control" name="post">Tell me about your day.</textarea>
+                              <textarea class="form-control" name="post"></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary mt-4">Post your post.</button>
                           </form>
