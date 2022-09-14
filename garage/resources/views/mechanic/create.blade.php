@@ -17,7 +17,7 @@
                             </div>
                             <div class="mb-3">
                               <span class="input-group-text">Surname</span>
-                              <input value="{{old('surname')}}" type="text" class="form-control" surname="surname">
+                              <input value="{{old('surname')}}" type="text" class="form-control" name="surname">
                             </div>
                             <button type="submit" class="btn btn-primary mt-4">Create mechanic</button>
                           </form>
