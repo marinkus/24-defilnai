@@ -25,4 +25,7 @@ Route::prefix('wishes')->group(function () {
     Route::get('/', [Wish::class, 'index'])->name('index');
     Route::get('/create', [Wish::class, 'create'])->name('create');
     Route::post('/create', [Wish::class, 'store'])->name('store');
+    Route::get('/edit/{wish}', [Wish::class, 'edit'])->name('edit');
+    Route::put('/edit/{wish}', [Wish::class, 'update'])->name('update');
+    Route::delete('/delete/{wish}', [Wish::class, 'destroy'])->name('delete');
 });

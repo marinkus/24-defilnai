@@ -8,15 +8,15 @@
         <div class="container">
             <div class="col-4">
                 <label class="form-label">Name</label>
-                <input type="text" class="form-control">
+                <input type="text" name="name" class="form-control">
             </div>
             <div class="col-4">
                 <label class="form-label">Class</label>
-                <input type="text" class="form-control" placeholder="For example: 1b">
+                <input type="text" class="form-control" name="class" placeholder="For example: 1b">
             </div>
             <div class="col-4">
                 <label class="form-label">Wish title</label>
-                <input type="text" class="form-control" placeholder="For example: Dog">
+                <input type="text" class="form-control" name="title" placeholder="For example: Dog">
             </div>
             <div class="col-4">
                 <label class="form-label">Describe, why you dream about it and leave a Santa message.</label>
@@ -24,7 +24,7 @@
             </div>
             <div class="col-4">
                 <label for="inputCity" class="form-label">Link to your dream..</label>
-                <input type="url" class="form-control">
+                <input type="url" name="link" class="form-control">
             </div>
             <div class="col-4">
                 <button type="submit" class="btn btn-primary">Dream!</button>

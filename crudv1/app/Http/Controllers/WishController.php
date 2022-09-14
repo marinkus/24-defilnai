@@ -15,7 +15,8 @@ class WishController extends Controller
      */
     public function index()
     {
-        return 'Make a wish...';
+        $wishes = Wish::all();
+        return view('wishes.index', ['wishes' => $wishes]);
     }
 
     /**
@@ -36,7 +37,14 @@ class WishController extends Controller
      */
     public function store(Request $request)
     {
-        dd(request()->all());
+        $wish = new Wish;
+        $wish->title = $request->title;
+        $wish->description = $request->description;
+        $wish->name = $request->name;
+        $wish->class = $request->class;
+        $wish->link = $request->link;
+        $wish->save();
+        return redirect(route('index'));
     }
 
     /**
@@ -58,7 +66,7 @@ class WishController extends Controller
      */
     public function edit(Wish $wish)
     {
-        //
+        return view('wishes.edit', ['wish' => $wish]);
     }
 
     /**
@@ -70,7 +78,13 @@ class WishController extends Controller
      */
     public function update(Request $request, Wish $wish)
     {
-        //
+        $wish->title = $request->title;
+        $wish->description = $request->description;
+        $wish->name = $request->name;
+        $wish->class = $request->class;
+        $wish->link = $request->link;
+        $wish->save();
+        return redirect(route('index'));
     }
 
     /**
@@ -81,6 +95,7 @@ class WishController extends Controller
      */
     public function destroy(Wish $wish)
     {
-        //
+        $wish->delete();
+        return redirect()->route('index');
     }
 }
