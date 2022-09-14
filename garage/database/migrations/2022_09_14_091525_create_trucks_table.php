@@ -20,6 +20,7 @@ return new class extends Migration
             $table->unsignedTinyInteger('make_year');
             $table->text('mechanic_notices');
             $table->unsignedBigInteger('mechanic_id');
+            $table->foreign('mechanic_id')->references('id')->on('mechanics');
             $table->timestamps();
         });
     }
