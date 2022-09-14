@@ -6,11 +6,11 @@
             <div class="col-5">
                 <div class="card">
                     <div class="card-header">
-                        <h2>Post</h2>
+                        <h2>Mechanic</h2>
                     </div>
                     <div class="card-body">
-                        <h3>{{$blog->title}}</h3>
-                        <p>{{$blog->post}}</p>
+                        <h3>{{$mechanic->name}} {{$mechanic->surname}}</h3>
+                        <p>Info will be posted later...</p>
                     </div>
                 </div>
             </div>

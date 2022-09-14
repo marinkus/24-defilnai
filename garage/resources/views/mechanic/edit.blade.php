@@ -6,23 +6,20 @@
             <div class="col-5">
                 <div class="card">
                     <div class="card-header">
-                        <h2>Edit post</h2>
+                        <h2>Edit Mechanic</h2>
                     </div>
                     <div class="card-body">
-                        <form action="{{route('update', $blog)}}" method="post">
+                        <form action="{{route('m_store')}}" method="post">
                             @csrf
-                            @method('put')
                             <div class="mb-3">
-                              <label for="title" class="input-group-text">Title</label>
-                              <input name="title" type="text" class="form-control" sname="title" value="{{old('title', $blog->title)}}">
-                              <div class="form-text">Tell me about your day.</div>
+                              <span class="input-group-text">Name</span>
+                              <input value="{{old('name')}}" type="text" class="form-control"name="name">
                             </div>
                             <div class="mb-3">
-                              <label for="post" class="input-group-text">Content</label>
-                              <textarea class="form-control" name="post">{{old('post', $blog->post)}}</textarea>
+                              <span class="input-group-text">Surname</span>
+                              <input value="{{old('surname')}}" type="text" class="form-control" name="surname">
                             </div>
-                            <button type="submit" class="btn btn-primary mt-4">Update</button>
-                            <a href="{{ route('index')}}" class="btn btn-secondary mt-4">Back</a>
+                            <button type="submit" class="btn btn-primary mt-4">Create mechanic</button>
                           </form>
                     </div>
                 </div>

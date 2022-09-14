@@ -25,8 +25,8 @@ Route::prefix('mechanic')->name('m_')->group(function () {
     Route::get('/', [Mechanic::class, 'index'])->name('index');
     Route::get('/create', [Mechanic::class, 'create'])->name('create');
     Route::post('/create', [Mechanic::class, 'store'])->name('store');
-    Route::get('/show/mechanic{blog}', [Mechanic::class, 'show'])->name('show');
-    Route::delete('/delete/mechanic{blog}', [Mechanic::class, 'destroy'])->name('delete');
-    Route::get('/edit/mechanic{blog}', [Mechanic::class, 'edit'])->name('edit');
-    Route::put('/edit/mechanic{blog}', [Mechanic::class, 'update'])->name('update');
+    Route::get('/show/mechanic/{mechanic}', [Mechanic::class, 'show'])->name('show');
+    Route::delete('/delete/mechanic{/mechanic}', [Mechanic::class, 'destroy'])->name('delete');
+    Route::get('/edit/mechanic/{mechanic}', [Mechanic::class, 'edit'])->name('edit');
+    Route::put('/edit/mechanic/{mechanic}', [Mechanic::class, 'update'])->name('update');
 });
