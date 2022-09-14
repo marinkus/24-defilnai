@@ -26,7 +26,7 @@ Route::prefix('mechanic')->name('m_')->group(function () {
     Route::get('/create', [Mechanic::class, 'create'])->name('create');
     Route::post('/create', [Mechanic::class, 'store'])->name('store');
     Route::get('/show/mechanic/{mechanic}', [Mechanic::class, 'show'])->name('show');
-    Route::delete('/delete/mechanic{/mechanic}', [Mechanic::class, 'destroy'])->name('delete');
+    Route::delete('/delete/mechanic/{mechanic}', [Mechanic::class, 'destroy'])->name('delete');
     Route::get('/edit/mechanic/{mechanic}', [Mechanic::class, 'edit'])->name('edit');
     Route::put('/edit/mechanic/{mechanic}', [Mechanic::class, 'update'])->name('update');
 });

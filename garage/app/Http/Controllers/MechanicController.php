@@ -89,6 +89,6 @@ class MechanicController extends Controller
     public function destroy(Mechanic $mechanic)
     {
         $mechanic->delete();
-        return redirect()->route('index');
+        return redirect()->route('m_index');
     }
 }
