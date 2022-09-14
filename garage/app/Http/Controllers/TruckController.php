@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Truck;
-use App\Http\Requests\StoreTruckRequest;
-use App\Http\Requests\UpdateTruckRequest;
+use \Illuminate\Http\Request;
 
 class TruckController extends Controller
 {
@@ -34,7 +33,7 @@ class TruckController extends Controller
      * @param  \App\Http\Requests\StoreTruckRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreTruckRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -68,7 +67,7 @@ class TruckController extends Controller
      * @param  \App\Models\Truck  $truck
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTruckRequest $request, Truck $truck)
+    public function update(Request $request, Truck $truck)
     {
         //
     }
