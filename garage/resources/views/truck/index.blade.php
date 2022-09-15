@@ -6,22 +6,24 @@
             <div class="col-8">
                 <div class="card">
                     <div class="card-body">
-                        <h2>Mechanics</h2>
+                        <h2>Trucks in garage</h2>
                         <ul class="list-group">
-                            @forelse($mechanics as $mechanic)
+                            @forelse($trucks as $truck)
                                 <li class="list-group-item">
                                     <div class="posts-list">
                                         <div class="content">
-                                            <h3>{{ $mechanic->name }} {{ $mechanic->surname }}</h3>
+                                            <h3>{{ $truck->maker }} {{ $truck->make_year }}</h3>
+                                            <h2>{{ $truck->plate }}</h2>
                                         </div>
                                         <div class="buttons">
-                                            <a href="{{ route('m_show', $mechanic) }}" type="button" class="btn btn-info">Show
+                                            <a href="{{ route('t_show', $truck) }}" type="button" class="btn btn-info">Show
                                                 info</a>
-                                            <a href="{{ route('m_edit', $mechanic)}}" type="button" class="btn btn-warning">Edit</a>
-                                            <form action="{{ route('m_delete', $mechanic) }}" method="post">
+                                            <a href="{{ route('t_edit', $truck) }}" type="button"
+                                                class="btn btn-warning">Edit info</a>
+                                            <form action="{{ route('t_delete', $truck) }}" method="post">
                                                 @method('delete')
                                                 @csrf
-                                                <button type="submit" class="btn btn-danger">Fire!</button>
+                                                <button type="submit" class="btn btn-danger">Delete</button>
                                             </form>
                                         </div>
                                     </div>
