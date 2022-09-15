@@ -18,13 +18,6 @@
                                             <h3>{{ $truck->maker }} {{ $truck->make_year }}</h3>
                                             <h2><span class="btn"> License plate: </span>{{ $truck->plate }}</h2>
                                         </div>
-                                        <div class="buttons">
-                                            <form action="{{ route('t_delete', $truck) }}" method="post">
-                                                @method('delete')
-                                                @csrf
-                                                <button type="submit" class="btn btn-danger">Delete</button>
-                                            </form>
-                                        </div>
                                     </div>
                                 </li>
                             @empty
