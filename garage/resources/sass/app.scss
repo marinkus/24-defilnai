@@ -32,3 +32,25 @@
 textarea.form-control {
     min-height: 200px;
 }
+.truck-show {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .title {
+        color: indigo;
+        font-size: 24px;
+    }
+    .description {
+        font-size: 16px;
+        color: grey;
+    }
+    .plate {
+        font-size: 20px;
+        color: crimson;
+    }
+}
+.small-text {
+    font-size: 16px;
+    color: black;
+}
