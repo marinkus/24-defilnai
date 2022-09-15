@@ -13,6 +13,7 @@
                                     <div class="posts-list">
                                         <div class="content">
                                             <h3>{{ $mechanic->name }} {{ $mechanic->surname }}</h3>
+                                            <span>Number of trucks: {{$mechanic->getTrucks()->count()}}</span>
                                         </div>
                                         <div class="buttons">
                                             <a href="{{ route('m_show', $mechanic) }}" type="button" class="btn btn-info">Show
