@@ -17,7 +17,7 @@
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text">Make year</span>
-                                <input value="{{ old('make_year') }}" type="text" class="form-control"name="make_year">
+                                <input value="{{ old('make_year') }}" type="number" class="form-control"name="make_year">
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text">License plate</span>
