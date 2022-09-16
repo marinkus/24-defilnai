@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Saloon;
-use App\Http\Requests\StoreSaloonRequest;
-use App\Http\Requests\UpdateSaloonRequest;
+use \Illuminate\Http\Request;
 
 class SaloonController extends Controller
 {
@@ -15,7 +14,8 @@ class SaloonController extends Controller
      */
     public function index()
     {
-        //
+        $saloons = Saloon::all();
+        return view('saloon.index', ['saloons' => $saloons]);
     }
 
     /**
@@ -25,18 +25,23 @@ class SaloonController extends Controller
      */
     public function create()
     {
-        //
+        return view('saloon.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreSaloonRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSaloonRequest $request)
+    public function store(Request $request)
     {
-        //
+        $saloon = new Saloon;
+        $saloon->title = $request->title;
+        $saloon->address = $request->address;
+        $saloon->phone = $request->phone;
+        $saloon->save();
+        return redirect()->route('saloon_index');
     }
 
     /**
@@ -47,7 +52,7 @@ class SaloonController extends Controller
      */
     public function show(Saloon $saloon)
     {
-        //
+        return view('saloon.show', ['saloon' => $saloon]);
     }
 
     /**
@@ -58,19 +63,23 @@ class SaloonController extends Controller
      */
     public function edit(Saloon $saloon)
     {
-        //
+        return view('saloon.edit', ['saloon' => $saloon]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateSaloonRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Saloon  $saloon
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSaloonRequest $request, Saloon $saloon)
+    public function update(Request $request, Saloon $saloon)
     {
-        //
+        $saloon->title = $request->title;
+        $saloon->address = $request->address;
+        $saloon->phone = $request->phone;
+        $saloon->save();
+        return redirect()->route('saloon_index');
     }
 
     /**
@@ -81,6 +90,7 @@ class SaloonController extends Controller
      */
     public function destroy(Saloon $saloon)
     {
-        //
+        $saloon->delete();
+        return redirect()->route('saloon_index');
     }
 }

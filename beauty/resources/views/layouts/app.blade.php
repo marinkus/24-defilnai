@@ -66,6 +66,18 @@
                                     </form>
                                 </div>
                             </li>
+                            {{-- Saloon dropdown --}}
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Beauty saloons
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('saloon_index') }}"> List of beauty saloons </a>
+                                    <a class="dropdown-item" href="{{ route('saloon_create') }}"> Add new saloon </a>
+                                </div>
+                            </li>
                         @endguest
                     </ul>
                 </div>
