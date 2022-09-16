@@ -78,6 +78,18 @@
                                     <a class="dropdown-item" href="{{ route('saloon_create') }}"> Add new saloon </a>
                                 </div>
                             </li>
+                            {{-- Masters dropdown --}}
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Beauty masters
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('master_index') }}"> List of beauty masters </a>
+                                    <a class="dropdown-item" href="{{ route('master_create') }}"> Add new master </a>
+                                </div>
+                            </li>
                         @endguest
                     </ul>
                 </div>
