@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Service;
-use App\Http\Requests\StoreServiceRequest;
-use App\Http\Requests\UpdateServiceRequest;
+use App\Models\Saloon;
+use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
@@ -15,7 +15,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        //
+        $services = Service::all();
+        return view('service.index', ['services' => $services]);
     }
 
     /**
@@ -25,18 +26,25 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+        $saloons = Saloon::all();
+        return view('service.create', ['saloons' => $saloons]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreServiceRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreServiceRequest $request)
+    public function store(Request $request)
     {
-        //
+        $service = new Service;
+        $service->title = $request->title;
+        $service->duration = $request->duration;
+        $service->price = $request->price;
+        $service->saloon_id = $request->saloon_id;
+        $service->save();
+        return redirect()->route('service_index');
     }
 
     /**
@@ -47,7 +55,7 @@ class ServiceController extends Controller
      */
     public function show(Service $service)
     {
-        //
+        // return view('service.show', ['service' => $service]);
     }
 
     /**
@@ -58,19 +66,25 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        //
+        $saloons = Saloon::all();
+        return view('service.edit', ['service' => $service, 'saloons' => $saloons]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateServiceRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateServiceRequest $request, Service $service)
+    public function update(Request $request, Service $service)
     {
-        //
+        $service->title = $request->title;
+        $service->duration = $request->duration;
+        $service->price = $request->price;
+        $service->saloon_id = $request->saloon_id;
+        $service->save();
+        return redirect()->route('service_index');
     }
 
     /**
@@ -81,6 +95,7 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        //
+        $service->delete();
+        return redirect()->route('service_index');
     }
 }

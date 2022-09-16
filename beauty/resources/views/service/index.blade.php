@@ -6,28 +6,28 @@
             <div class="col-8">
                 <div class="card">
                     <div class="card-body">
-                        <h2>List of Saloons</h2>
+                        <h2>All services database:</h2>
                         <ul class="list-group">
-                            @forelse($saloons as $saloon)
+                            @forelse($services as $service)
                                 <li class="list-group-item">
                                     <div class="posts-list">
                                         <div class="content">
-                                            <h3>{{ $saloon->title }}</h3>
-                                            <h2>Address: {{ $saloon->address }}, Phone: {{ $saloon->phone }}</h2>
+                                            <h3>{{ $service->title }}</h3>
+                                            <p>Duration: {{ $service->duration }} min</p>
+                                            <p>Price: {{ $service->price }} EUR</p>
                                         </div>
                                         <div class="buttons">
-                                            <a href="{{ route('saloon_show', $saloon) }}" type="button" class="btn btn-info">Saloon info</a>
-                                            <a href="{{ route('saloon_edit', $saloon)}}" type="button" class="btn btn-warning">Edit</a>
-                                            <form action="{{ route('saloon_delete', $saloon) }}" method="post">
+                                            <a href="{{ route('service_edit', $service)}}" type="button" class="btn btn-warning">Edit</a>
+                                            <form action="{{ route('service_delete', $service) }}" method="post">
                                                 @method('delete')
                                                 @csrf
-                                                <button type="submit" class="btn btn-danger">Bankrupt</button>
+                                                <button type="submit" class="btn btn-danger">Delete service</button>
                                             </form>
                                         </div>
                                     </div>
                                 </li>
                             @empty
-                                <li class="list-group-item">No saloons found</li>
+                                <li class="list-group-item">No services found.</li>
                             @endforelse
                         </ul>
 

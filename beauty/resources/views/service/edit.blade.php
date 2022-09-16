@@ -6,21 +6,25 @@
             <div class="col-5">
                 <div class="card">
                     <div class="card-header">
-                        <h2>Change Master info</h2>
+                        <h2>Change Service info</h2>
                     </div>
                     <div class="card-body">
-                        <form action="{{route('master_update', $master)}}" method="post">
+                        <form action="{{route('service_update', $service, $saloons)}}" method="post">
                             @csrf
                             @method('put')
                             <div class="mb-3">
-                              <span class="input-group-text">Name</span>
-                              <input value="{{$master->name}}" type="text" class="form-control"name="name">
+                              <span class="input-group-text">Name of the service:</span>
+                              <input value="{{$service->title}}" type="text" class="form-control"name="title">
                             </div>
                             <div class="mb-3">
-                              <span class="input-group-text">Surname</span>
-                              <input value="{{$master->surname}}" type="text" class="form-control" name="surname">
+                              <span class="input-group-text">Duration:</span>
+                              <input value="{{$service->duration}}" type="text" class="form-control" name="duration">
                             </div>
-                            <select class="form-select mb-3" value= {{$master->saloon_id}} name="saloon_id">
+                            <div class="mb-3">
+                              <span class="input-group-text">Price:</span>
+                              <input value="{{$service->price}}" type="text" class="form-control" name="price">
+                            </div>
+                            <select class="form-select mb-3" value= {{$service->saloon_id}} name="saloon_id">
                                 <option value="0">Choose saloon:</option>
                                 @foreach($saloons as $saloon)
                                 <option value="{{$saloon->id}}">{{$saloon->title}}</option>

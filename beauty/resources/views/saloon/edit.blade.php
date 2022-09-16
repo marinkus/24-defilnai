@@ -6,7 +6,7 @@
             <div class="col-5">
                 <div class="card">
                     <div class="card-header">
-                        <h2>New Saloon</h2>
+                        <h2>Edit Saloon</h2>
                     </div>
                     <div class="card-body">
                         <form action="{{route('saloon_update', $saloon)}}" method="post">

@@ -6,3 +6,9 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}

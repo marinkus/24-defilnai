@@ -11,7 +11,7 @@
                     <div class="card-body">
                         <h3>Address: {{ $saloon->address }}, Phone: {{ $saloon->phone }}</h3>
                         <ul class="list-group">
-                            {{-- @forelse($saloon->getMasters as $master)
+                            @forelse($saloon->getMasters as $master)
                                 <li class="list-group-item">
                                     <div class="posts-list">
                                         <div class="content">
@@ -20,8 +20,8 @@
                                     </div>
                                 </li>
                             @empty
-                                <li class="list-group-item">No mechanics found</li>
-                            @endforelse --}}
+                                <li class="list-group-item">This saloon has no beauty masters.</li>
+                            @endforelse
                         </ul>
                     </div>
                 </div>

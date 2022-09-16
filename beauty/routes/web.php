@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SaloonController as Saloon;
 use App\Http\Controllers\MasterController as Master;
+use App\Http\Controllers\ServiceController as Service;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,4 +40,12 @@ Route::prefix('master')->name('master_')->group(function () {
     Route::delete('/delete/{master}', [Master::class, 'destroy'])->name('delete');
     Route::get('/edit/{master}', [Master::class, 'edit'])->name('edit');
     Route::put('/edit/{master}', [Master::class, 'update'])->name('update');
+});
+Route::prefix('service')->name('service_')->group(function () {
+    Route::get('/', [Service::class, 'index'])->name('index');
+    Route::get('/create', [Service::class, 'create'])->name('create');
+    Route::post('/create', [Service::class, 'store'])->name('store');
+    Route::delete('/delete/{service}', [Service::class, 'destroy'])->name('delete');
+    Route::get('/edit/{service}', [Service::class, 'edit'])->name('edit');
+    Route::put('/edit/{service}', [Service::class, 'update'])->name('update');
 });
