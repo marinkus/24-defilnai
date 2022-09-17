@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->tinyInteger('duration');
-            $table->tinyInteger('price');
+            $table->smallInteger('duration');
+            $table->smallInteger('price');
             $table->unsignedBigInteger('saloon_id');
             $table->foreign('saloon_id')->references('id')->on('saloons');
             $table->timestamps();
