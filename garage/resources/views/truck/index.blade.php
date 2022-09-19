@@ -15,7 +15,10 @@
                                             <h3>{{ $truck->maker }} {{ $truck->make_year }}</h3>
                                             <h2><span class="btn"> License plate: </span>{{ $truck->plate }}</h2>
                                                 <h2><span class="btn"> Mechanic working: </span><a href="{{route('m_show', $truck->getMechanic->id)}}">{{$truck->getMechanic->name}} {{$truck->getMechanic->surname}}</a></h2>
-                                        </div>
+                                        @if ($truck->photo)
+                                        <h3>With photo</h3>
+                                        @endif
+                                            </div>
                                         <div class="buttons">
                                             <a href="{{ route('t_show', $truck) }}" type="button" class="btn btn-info">Show
                                                 info</a>
