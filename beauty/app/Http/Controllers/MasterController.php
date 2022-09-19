@@ -66,7 +66,8 @@ class MasterController extends Controller
      */
     public function edit(Master $master)
     {
-        return view('master.edit', ['master' => $master]);
+        $saloons = Saloon::all();
+        return view('master.edit', ['master' => $master, 'saloons' => $saloons]);
     }
 
     /**

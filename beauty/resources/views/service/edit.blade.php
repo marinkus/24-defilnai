@@ -24,8 +24,8 @@
                               <span class="input-group-text">Price:</span>
                               <input value="{{$service->price}}" type="text" class="form-control" name="price">
                             </div>
+                            <span class="input-group-text">Choose saloon:</span>
                             <select class="form-select mb-3" value= {{$service->saloon_id}} name="saloon_id">
-                                <option value="0">Choose saloon:</option>
                                 @foreach($saloons as $saloon)
                                 <option value="{{$saloon->id}}">{{$saloon->title}}</option>
                                 @endforeach
