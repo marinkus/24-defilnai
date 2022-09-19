@@ -28,8 +28,11 @@
                                 @foreach($mechanics as $mechanic)
                                 <option value="{{$mechanic->id}}" @if ($mechanic->id == old('mechanic_id')) selected @endif>{{$mechanic->name}} {{$mechanic->surname}}</option>
                                 @endforeach
-
                             </select>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Photo</span>
+                                <input type="file" class="form-control"name="photo">
+                            </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text">Mechanic notice</span>
                                 <textarea class="form_control" type="text" cols="40" rows="15" class="form-control"
