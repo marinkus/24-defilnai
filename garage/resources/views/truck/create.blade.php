@@ -9,7 +9,7 @@
                         <h2>New Truck</h2>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('t_store') }}" method="post">
+                        <form action="{{ route('t_store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="input-group mb-3">
                                 <span class="input-group-text">Maker</span>
