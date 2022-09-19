@@ -67,7 +67,8 @@ class TruckController extends Controller
      */
     public function edit(Truck $truck)
     {
-        return view('truck.edit', ['truck' => $truck]);
+        $mechanics = Mechanic::all();
+        return view('truck.edit', ['truck' => $truck, 'mechanics' => $mechanics]);
     }
 
     /**
