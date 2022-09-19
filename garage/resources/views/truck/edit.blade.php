@@ -30,6 +30,12 @@
                             @if($truck->photo)
                             <div class="image">
                                 <img src="{{$truck->photo}}" alt="photo">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="1" id="delete-photo" name="delete_photo">
+                                    <label class="form-check-label" for="delete-photo">
+                                      Delete photo
+                                    </label>
+                                  </div>
                             </div>
                             @endif
                             <div class="input-group mb-3">
@@ -42,7 +48,6 @@
                                     <option value="{{ $mechanic->id }}" @if ($mechanic->id == old('mechanic_id',$truck->mechanic_id)) selected @endif>
                                         {{ $mechanic->name }} {{ $mechanic->surname }}</option>
                                 @endforeach
-
                             </select>
                             <div class="input-group mb-3">
                                 <span class="input-group-text">Mechanic notice</span>
