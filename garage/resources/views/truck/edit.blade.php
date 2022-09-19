@@ -9,7 +9,7 @@
                         <h2>Edit Truck</h2>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('t_update', $truck) }}" method="post">
+                        <form action="{{ route('t_update', $truck) }}" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('put')
                             <div class="input-group mb-3">
@@ -26,6 +26,15 @@
                                 <span class="input-group-text">License plate</span>
                                 <input value="{{ old('plate', $truck->plate) }}" type="text" class="form-control"
                                     name="plate">
+                            </div>
+                            @if($truck->photo)
+                            <div class="image">
+                                <img src="{{$truck->photo}}" alt="photo">
+                            </div>
+                            @endif
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Photo</span>
+                                <input type="file" class="form-control" name="photo">
                             </div>
                             <select class="form-select mb-3" name="mechanic_id">
                                 <option selected value="0">Choose mechanic</option>
