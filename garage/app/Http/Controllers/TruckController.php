@@ -54,7 +54,7 @@ class TruckController extends Controller
 
             // $Image->save(public_path() . '/images/' . $file);
 
-            $photo->move(public_path().'/trucks', $file);
+            $photo->move(public_path() . '/trucks', $file);
 
             $truck->photo = asset('/trucks') . '/' . $file;
         }
@@ -118,6 +118,9 @@ class TruckController extends Controller
      */
     public function destroy(Truck $truck)
     {
+        if ($truck->photo) {
+            unlink(public_path().'/trucks/' .pathinfo($truck->photo, PATHINFO_FILENAME).'.'.pathinfo($truck->photo, PATHINFO_EXTENSION));
+        }
         $truck->delete();
         return redirect()->route('t_index');
     }
