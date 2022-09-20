@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container --content">
         <div class="row justify-content-center">
             <div class="col-9">
                 <div class="card">
@@ -40,7 +40,7 @@
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-3">
-                                                    <select name="sort" class="form-select mt-1">
+                                                    <select name="per_page" class="form-select mt-1">
                                                         <option value="5"
                                                             @if ('5' == $perPage) selected @endif>5</option>
                                                         <option value="10"
