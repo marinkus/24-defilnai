@@ -23,7 +23,7 @@ class MechanicController extends Controller
             default => Mechanic::paginate(5)->withQueryString()
         };
 
-        return view('mechanic.index', ['mechanics' => $mechanics, 'sortSelect' => $request->sort]);
+        return view('mechanic.index', ['mechanics' => $mechanics, 'sortSelect' => $request->sort, 'perPage' => $request->sort]);
     }
 
     /**
