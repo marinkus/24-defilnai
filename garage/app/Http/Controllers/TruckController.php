@@ -27,7 +27,10 @@ class TruckController extends Controller
      */
     public function create()
     {
-        $mechanics = Mechanic::all();
+        $mechanics = Mechanic::orderBy('name')->orderBy('surname', 'desc')->get();
+
+        // $mechanics = $mechanics->sortBy('name');
+
         return view('truck.create', ['mechanics' => $mechanics]);
     }
 
@@ -51,7 +54,7 @@ class TruckController extends Controller
 
             $file = $name . '-' . rand(100000, 999999) . '.' . $ext;
 
-            $Image = Image::make($photo)->pixelate(12);
+            $Image = Image::make($photo)->resize(100, 100);
 
             $Image->save(public_path() . '/trucks/' . $file);
 
@@ -89,7 +92,7 @@ class TruckController extends Controller
      */
     public function edit(Truck $truck)
     {
-        $mechanics = Mechanic::all();
+        $mechanics = Mechanic::orderBy('name')->orderBy('surname', 'desc')->get();
         return view('truck.edit', ['truck' => $truck, 'mechanics' => $mechanics]);
     }
 
@@ -123,7 +126,7 @@ class TruckController extends Controller
             $ext = $photo->getClientOriginalExtension();
             $name = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
             $file = $name . '-' . rand(100000, 999999) . '.' . $ext;
-            $Image = Image::make($photo)->pixelate(12);
+            $Image = Image::make($photo)->resize(100, 100);
             $Image->save(public_path() . '/trucks/' . $file);
             // $photo->move(public_path() . '/trucks', $file);
             $truck->photo = asset('/trucks') . '/' . $file;
