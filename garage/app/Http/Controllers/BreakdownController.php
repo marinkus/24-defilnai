@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Breakdown;
+use App\Models\Mechanic;
 use Illuminate\Http\Request;
 
 class BreakdownController extends Controller
@@ -14,7 +15,8 @@ class BreakdownController extends Controller
      */
     public function index()
     {
-        return view('breakdown.index');
+        $mechanics = Mechanic::orderBy('name')->get();
+        return view('breakdown.index', ['mechanics' => $mechanics]);
     }
 
     /**
