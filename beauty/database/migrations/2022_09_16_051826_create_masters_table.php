@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('surname');
             $table->unsignedBigInteger('saloon_id');
             $table->foreign('saloon_id')->references('id')->on('saloons');
+            $table->string('image', 255)->nullable();
             $table->timestamps();
         });
     }

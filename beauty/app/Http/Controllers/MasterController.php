@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Master;
 use App\Models\Saloon;
 use Illuminate\Http\Request;
+use Image;
 
 
 class MasterController extends Controller
@@ -40,6 +41,24 @@ class MasterController extends Controller
     public function store(Request $request)
     {
         $master = new Master;
+        if ($request->file('image')) {
+            $image = $request->file('image');
+
+            $ext = $image->getClientOriginalExtension();
+
+            $name = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+
+            $file = $name . '-' . rand(100000, 999999) . '.' . $ext;
+
+            $Image = Image::make($image)->resize(100, 100);
+
+            $Image->save(public_path() . '/masters/' . $file);
+
+            // $image->move(public_path() . '/masters', $file);
+
+            $master->image = asset('/masters') . '/' . $file;
+        }
+
         $master->name = $request->name;
         $master->surname = $request->surname;
         $master->saloon_id = $request->saloon_id;
@@ -82,6 +101,25 @@ class MasterController extends Controller
         $master->name = $request->name;
         $master->surname = $request->surname;
         $master->saloon_id = $request->saloon_id;
+
+        if ($request->delete_image) {
+            unlink(public_path() . '/masters/' . pathinfo($master->image, PATHINFO_FILENAME) . '.' . pathinfo($master->image, PATHINFO_EXTENSION));
+            $master->image = null;
+        }
+
+        if ($request->file('image')) {
+            if ($master->image) {
+                unlink(public_path() . '/masters/' . pathinfo($master->image, PATHINFO_FILENAME) . '.' . pathinfo($master->image, PATHINFO_EXTENSION));
+            }
+            $image = $request->file('image');
+            $ext = $image->getClientOriginalExtension();
+            $name = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+            $file = $name . '-' . rand(100000, 999999) . '.' . $ext;
+            $Image = Image::make($image)->resize(100, 100);
+            $Image->save(public_path() . '/masters/' . $file);
+            $master->image = asset('/masters') . '/' . $file;
+        }
+
         $master->save();
         return redirect()->route('master_index');
     }

@@ -9,7 +9,7 @@
                         <h2>Change Master info</h2>
                     </div>
                     <div class="card-body">
-                        <form action="{{route('master_update', $master, $saloons)}}" method="post">
+                        <form action="{{route('master_update', $master, $saloons)}}" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('put')
                             <div class="mb-3">
@@ -26,6 +26,9 @@
                                 <option value="{{$saloon->id}}">{{$saloon->title}}</option>
                                 @endforeach
                             </select>
+                            @if ($master->image == null)
+                            <input type="file" class="form-control mt-4">
+                            @endif
                             <button type="submit" class="btn btn-primary mt-4">Save</button>
                           </form>
                     </div>

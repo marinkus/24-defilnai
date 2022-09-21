@@ -16,8 +16,9 @@ class TruckController extends Controller
      */
     public function index()
     {
+        $mechanics = Mechanic::all();
         $trucks = Truck::all();
-        return view('truck.index', ['trucks' => $trucks]);
+        return view('truck.index', ['trucks' => $trucks, 'mechanics' => $mechanics]);
     }
 
     /**

@@ -9,7 +9,7 @@
                         <h2>Add new Master</h2>
                     </div>
                     <div class="card-body">
-                        <form action="{{route('master_store')}}" method="post">
+                        <form action="{{route('master_store')}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
                               <span class="input-group-text">Name</span>
@@ -25,6 +25,7 @@
                                 <option value="{{$saloon->id}}">{{$saloon->title}}</option>
                                 @endforeach
                             </select>
+                            <input type="file" class="form-control mt-4">
                             <button type="submit" class="btn btn-primary mt-4">Create master</button>
                           </form>
                     </div>
