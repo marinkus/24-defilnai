@@ -66,6 +66,7 @@
 
                 </div>
             </div>
+            {{ $trucks->links() }}
         </div>
     </div>
     </div>

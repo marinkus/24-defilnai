@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MechanicController as Mechanic;
 use App\Http\Controllers\TruckController as Truck;
+use App\Http\Controllers\BreakdownController as Breakdown;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,4 +40,7 @@ Route::prefix('truck')->name('t_')->group(function () {
     Route::delete('/delete/{truck}', [Truck::class, 'destroy'])->name('delete');
     Route::get('/edit/{truck}', [Truck::class, 'edit'])->name('edit');
     Route::put('/edit/{truck}', [Truck::class, 'update'])->name('update');
+});
+Route::prefix('breakdown')->name('b_')->group(function () {
+    Route::get('/', [Breakdown::class, 'index'])->name('index');
 });

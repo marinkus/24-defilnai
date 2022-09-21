@@ -93,6 +93,11 @@
                                     <a class="dropdown-item" href="{{ route('t_create') }}"> Add truck</a>
                                 </div>
                             </li>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link" href="{{ route('b_index') }}" role="button">
+                                    Breakdowns
+                                </a>
+                            </li>
                         @endguest
                     </ul>
                 </div>
