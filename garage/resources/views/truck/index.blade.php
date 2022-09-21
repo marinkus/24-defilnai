@@ -1,27 +1,33 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container --content">
         <div class="row justify-contnent-center">
             <div class="col-8">
                 <div class="card">
                     <form action="{{ route('t_index') }}" method="get">
                         <div class="container">
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-4">
                                     <select class="form-select" name="meh_id">
+                                        <option value="0">All</option>
                                         @foreach ($mechanics as $mechanic)
-                                            <option value="{{ $mechanic->id }}">{{ $mechanic->name }}
+                                            <option value="{{ $mechanic->id }}"
+                                                @if ($meh_id == $mechanic->id) selected @endif>{{ $mechanic->name }}
                                                 {{ $mechanic->surname }}</option>
                                         @endforeach
                                     </select>
                                 </div>
+                                <div class="col-8">
+                                    <div class="col-4 input-group mb-3">
+                                        <button type="submit" class="input-group-text">Search</button>
+                                        <input type="text" class="form-control" value="{{ $s }}" name="s">
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-6">
-                            <button type="submit" class="btn btn-primary m-1">Sort</button>
-                            <a href="{{ route('m_index') }}" class="btn btn-secondary m-1">Reset</a>
-                        </div>
+                            <div class="col-4">
+                                <a href="{{ route('t_index') }}" class="btn btn-secondary m-1">Reset</a>
+                            </div>
                     </form>
                 </div>
                 <div class="card-body">

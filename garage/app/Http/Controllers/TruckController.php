@@ -14,11 +14,36 @@ class TruckController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $mechanics = Mechanic::all();
         $trucks = Truck::all();
-        return view('truck.index', ['trucks' => $trucks, 'mechanics' => $mechanics]);
+        if ($request->meh_id) {
+            $id = (int) $request->meh_id;
+            if ($request->s) {
+                $trucks = Truck::where('mechanic_id', $id)->where(function ($query) use ($request) {
+                    $query->where('maker', 'like', '%' . $request->s . '%')
+                        ->orWhere('plate', 'like', '%' . $request->s . '%');
+                })->get();
+            } else {
+                $trucks = Truck::where('mechanic_id', $id)->get();
+            }
+        } else {
+            if ($request->s) {
+                $trucks = Truck::where('maker', 'like', '%' . $request->s . '%')->get();
+            } else {
+                $trucks = Truck::all();
+            }
+        }
+
+
+        $mechanics = Mechanic::orderBy('surname')->get();
+
+        return view('truck.index', [
+            'trucks' => $trucks,
+            'mechanics' => $mechanics,
+            'meh_id' => $id ?? 0,
+            's' => $request->s ?? ''
+        ]);
     }
 
     /**
