@@ -17,7 +17,7 @@ class MasterController extends Controller
      */
     public function index()
     {
-        $masters = Master::all();
+        $masters = Master::paginate(15)->withQueryString();
         return view('master.index', ['masters' => $masters]);
     }
 
@@ -41,6 +41,7 @@ class MasterController extends Controller
     public function store(Request $request)
     {
         $master = new Master;
+
         if ($request->file('image')) {
             $image = $request->file('image');
 
@@ -58,7 +59,6 @@ class MasterController extends Controller
 
             $master->image = asset('/masters') . '/' . $file;
         }
-
         $master->name = $request->name;
         $master->surname = $request->surname;
         $master->saloon_id = $request->saloon_id;

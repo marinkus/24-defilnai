@@ -28,8 +28,8 @@
                                 <li class="list-group-item">No masters found</li>
                             @endforelse
                         </ul>
-
                     </div>
+                    {{ $masters->links() }}
                 </div>
             </div>
         </div>

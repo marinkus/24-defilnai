@@ -9,6 +9,9 @@
                         <h2>Master</h2>
                     </div>
                     <div class="card-body">
+                        @if ($master->image)
+                        <img src="{{$master->image}}" alt="photo">
+                        @endif
                         <h3>{{ $master->name }} {{ $master->surname }}</h3>
                         <h4>Workplace: {{ $master->getSaloon->title}}</h4>
                     </div>

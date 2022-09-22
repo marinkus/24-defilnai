@@ -25,7 +25,7 @@
                                 <option value="{{$saloon->id}}">{{$saloon->title}}</option>
                                 @endforeach
                             </select>
-                            <input type="file" class="form-control mt-4">
+                            <input type="file" class="form-control mt-4" name="image">
                             <button type="submit" class="btn btn-primary mt-4">Create master</button>
                           </form>
                     </div>
