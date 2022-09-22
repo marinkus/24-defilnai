@@ -1,4 +1,4 @@
-   <div class="container">
+   <div id="breakdown" class="container">
        <div class="row justify-contnent-center">
            <div class="col-12">
                <div class="card">
@@ -7,14 +7,17 @@
                    </div>
                    <div class="card-body">
 
-                    <select class="form-select mb-3" name="mechanic_id">
-                        <option selected value="0">Choose mechanic</option>
-                        @foreach($mechanics as $mechanic)
-                        <option value="{{$mechanic->id}}">{{$mechanic->name}} {{$mechanic->surname}}</option>
-                        @endforeach
-                    </select>
+                       <select class="form-select mb-3" name="mechanic_id">
+                           <option selected value="0">Choose mechanic</option>
+                           @foreach ($mechanics as $mechanic)
+                               <option value="{{ $mechanic->id }}">{{ $mechanic->name }} {{ $mechanic->surname }}
+                               </option>
+                           @endforeach
+                       </select>
 
-                    <button type="submit" class="btn btn-primary mt-4">Add problem</button>
+                       <div id="trucks-list"></div>
+
+                       <button type="submit" class="btn btn-primary mt-4">Add problem</button>
                    </div>
                </div>
            </div>
