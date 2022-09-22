@@ -44,4 +44,6 @@ Route::prefix('truck')->name('t_')->group(function () {
 Route::prefix('breakdown')->name('b_')->group(function () {
     Route::get('/', [Breakdown::class, 'index'])->name('index');
     Route::get('/trucks-list/{mechanic_id}', [Breakdown::class, 'trucksList']);
+    Route::post('/create', [Breakdown::class, 'store']);
+    Route::get('/list', [Breakdown::class, 'list']);
 });
