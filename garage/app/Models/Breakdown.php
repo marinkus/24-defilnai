@@ -15,5 +15,8 @@ class Breakdown extends Model
         2 => 'In progress',
         3 => 'Finished'
     ];
+    public function getTruck() {
+        return $this->belongsTo(Truck::class, 'truck_id','id');
+    }
 
 }
