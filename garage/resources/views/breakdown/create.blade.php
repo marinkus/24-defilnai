@@ -22,9 +22,9 @@
                            <input data-create type="text" class="form-control" name="title">
                        </div>
                        <select data-create class="form-select mb-3" name="status">
-                           <option value="1">Created</option>
-                           <option value="2">In progress</option>
-                           <option value="3">Done</option>
+                        @foreach ($status as $key => $value)
+                        <option value={{ $key }}">{{ $value }}</option>
+                        @endforeach
                        </select>
                        <div class="input-group mb-3">
                            <span class="input-group-text">Notes</span>

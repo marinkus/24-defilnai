@@ -53,5 +53,19 @@ const getList = () => {
     axios.get(breakdownUrl + '/list')
         .then(res => {
             breakdownsList.innerHTML = res.data.html;
+            deleteEvent;
+        });
+}
+const deleteEvent = () => {
+    document.querySelectorAll('.delete--button')
+        .forEach(b => {
+            b.addEventListener('click', () => {
+                axios.delete(breakdownUrl + '/' + b.dataset.id)
+                .then(res => {
+                    if (res.data.refresh  == 'list') {
+                        getList();
+                    }
+                })
+            });
         })
 }
