@@ -9,11 +9,10 @@ use Image;
 
 class TruckController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(Request $request)
     {
         // Search
@@ -32,8 +31,8 @@ class TruckController extends Controller
         } else {
             if ($request->s) {
                 $trucks = Truck::where('maker', 'like', '%' . $request->s . '%')
-                        ->orWhere('make_year', 'like', '%' . $request->s . '%')
-                        ->orWhere('plate', 'like', '%' . $request->s . '%')->paginate(15)->withQueryString();
+                    ->orWhere('make_year', 'like', '%' . $request->s . '%')
+                    ->orWhere('plate', 'like', '%' . $request->s . '%')->paginate(15)->withQueryString();
             } else {
                 $trucks = Truck::paginate(15)->withQueryString();
             }

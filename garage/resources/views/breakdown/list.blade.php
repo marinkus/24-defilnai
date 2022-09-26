@@ -3,7 +3,7 @@
         <div class="col-6">
             <div class="card">
                 <div class="card-header">
-                    <h2>Breakdowns/h2>
+                    <h2>Breakdowns</h2>
                 </div>
                 <div class="card-body">
                     <div class="list-group">
@@ -12,7 +12,7 @@
                             <li class="list-group-item">
                                 <div class="trucks-list">
                                     <div class="content">
-                                        <h2><span></span>{{$breakdown->title}}</h2>
+                                        <h2>{{$breakdown->title}}</h2>
                                         <h4><span>status: </span>{{$breakdown->status}}</h4>
                                     </div>
                                 </div>
