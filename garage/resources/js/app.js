@@ -81,7 +81,7 @@ const modalEvent = () => {
                 fadeModal.show();
                 axios.get(breakdownUrl + '/modal/' + b.dataset.id)
                     .then(res => {
-                        modal.innerHTML = res.data.html;
+                        modal.querySelector('.modal-dialog').innerHTML = res.data.html;
                     })
             })
         })
