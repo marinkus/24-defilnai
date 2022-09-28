@@ -35,6 +35,8 @@ Route::get('/red-square', [S::class, 'redSquare']);
 
 // Second lesson routes
 Route::post('/add-square', [S::class, 'addSquare']);
+Route::get('/get-square', [S::class, 'getSquare']);
+Route::delete('/reset-squares', [S::class, 'resetSquares']);
 
 
 
