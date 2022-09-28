@@ -13,6 +13,8 @@
         border: 4px dotted indigo;
         font-size: 30px;
         letter-spacing: 2px;
+        // transform: rotate(0.5deg);
+        animation: spin infinite 10s linear;
     }
 }
 .input-bin {
@@ -46,5 +48,13 @@
         margin: 20px;
         border: none;
         background-color: transparent;
+    }
+}
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
     }
 }
