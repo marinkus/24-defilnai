@@ -11,16 +11,16 @@ class SquareController extends Controller
     public function redSquare()
     {
         return Inertia::render('RedSquare', [
-            'color' => 'skyblue',
+            'size' => '200'
         ]);
     }
 
-    public function redSquareBlade()
-    {
-        return view('RedSquare', [
-            'color' => 'crimson',
-            'size' => '78'
-        ]);
-    }
+    // public function redSquareBlade()
+    // {
+    //     return view('RedSquare', [
+    //         'color' => 'crimson',
+    //         'size' => '78'
+    //     ]);
+    // }
 
 }

@@ -1,11 +1,21 @@
 import '../../sass/square.scss';
 
-function RedSquare({color}) {
+function RedSquare({size}) {
 
     return (
+        <>
+        <div className="square-bin">
         <div className="square" style={{
-            backgroundColor: color
-        }}></div>
+            width: size + 'px',
+            height: size + 'px'
+        }}>BBS</div>
+        </div>
+        <div className="input-bin">
+            <button>Add</button>
+            <input type="text" />
+            <input type="color" />
+        </div>
+        </>
     );
 }
 
