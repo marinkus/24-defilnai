@@ -48,4 +48,5 @@ Route::prefix('breakdown')->name('b_')->group(function () {
     Route::get('/list', [Breakdown::class, 'list']);
     Route::get('/modal/{breakdown}', [Breakdown::class, 'modal']);
     Route::delete('/{breakdown}', [Breakdown::class, 'destroy']);
+    Route::put('/edit/{breakdown}', [Breakdown::class, 'update']);
 });

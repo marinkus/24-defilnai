@@ -9,14 +9,14 @@ use Illuminate\Http\Request;
 
 class BreakdownController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $mechanics = Mechanic::orderBy('name')->get();
+        $mechanics = Mechanic::orderBy('surname')->get();
         return view('breakdown.index', [
             'mechanics' => $mechanics,
             'status' => Breakdown::STATUS
@@ -25,7 +25,7 @@ class BreakdownController extends Controller
 
     public function trucksList(int $mechanicId)
     {
-        $trucks = Truck::where('mechanic_id', $mechanicId)->orderBy('maker')->get();
+        $trucks = Truck::where('mechanic_id', $mechanicId)->orderBy('plate')->get();
         $html = view('breakdown.trucks_list')->with('trucks', $trucks)->render();
         return response()->json([
             'html' => $html
@@ -35,32 +35,26 @@ class BreakdownController extends Controller
     public function list()
     {
         $breakdowns = Breakdown::orderBy('updated_at', 'desc')->get();
-        $html = view('breakdown.list')->with('breakdowns', $breakdowns)->with('status', Breakdown::STATUS)->render();
+        $html = view('breakdown.list')
+        ->with('breakdowns', $breakdowns)
+        ->with('status', Breakdown::STATUS)
+        ->render();
         return response()->json([
-            'html' => $html
+            'html' => $html,
         ]);
     }
 
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $breakdown = new Breakdown;
-        $breakdown->truck_id = (int)$request->truck_id ?? 0;
+
+        $breakdown->truck_id = (int) $request->truck_id;
         $breakdown->title = $request->title;
         $breakdown->notes = $request->notes;
-        $breakdown->status = (int)$request->status;
-        $breakdown->price = (float)$request->price;
-        $breakdown->discount = (float)$request->discount;
+        $breakdown->status = (int) $request->status;
+        $breakdown->price = (float) $request->price;
+        $breakdown->discount = (float) $request->discount;
 
         $breakdown->save();
 
@@ -68,22 +62,27 @@ class BreakdownController extends Controller
             'msg' => 'All good',
             'status' => 'OK'
         ]);
+
+    }
+
+
+    public function modal(Breakdown $breakdown)
+    {
+        $html = view('breakdown.modal_content')
+        ->with('breakdown', $breakdown)
+        ->with('status', Breakdown::STATUS)
+        ->render();
+        return response()->json([
+            'html' => $html,
+        ]);
     }
 
     /**
-     * Display the specified resource.
+     * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Breakdown  $breakdown
      * @return \Illuminate\Http\Response
      */
-    public function modal(Breakdown $breakdown)
-    {
-        $html = view('breakdown.modal_content')->with('breakdown', $breakdown)->with('status', Breakdown::STATUS)->render();
-        return response()->json([
-            'html' => $html
-        ]);
-    }
-
     public function edit(Breakdown $breakdown)
     {
         //
@@ -98,7 +97,19 @@ class BreakdownController extends Controller
      */
     public function update(Request $request, Breakdown $breakdown)
     {
-        //
+        $breakdown->truck_id = (int) $request->truck_id;
+        $breakdown->title = $request->title;
+        $breakdown->notes = $request->notes;
+        $breakdown->status = (int) $request->status;
+        $breakdown->price = (float) $request->price;
+        $breakdown->discount = (float) $request->discount;
+
+        $breakdown->save();
+
+        return response()->json([
+            'msg' => 'All good',
+            'status' => 'OK'
+        ]);
     }
 
     /**
