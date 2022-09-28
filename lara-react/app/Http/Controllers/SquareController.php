@@ -23,4 +23,17 @@ class SquareController extends Controller
     //     ]);
     // }
 
+    public function addSquare(Request $request)
+    {
+        $squares = $request->session()->get('sq', []);
+        $squares[] =  [
+            'text' => $request->text,
+            'color' => $request->color
+        ];
+        $squares = $request->session()->put('sq', $squares);
+
+        return response()->json([
+            'squares' => $squares
+        ]);
+    }
 }

@@ -29,8 +29,13 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-// First routes testing
+// Class work, routes testing
 Route::get('/red-square', [S::class, 'redSquare']);
-Route::get('/red-square-blade', [S::class, 'redSquareBlade']);
+// Route::get('/red-square-blade', [S::class, 'redSquareBlade']);
+
+// Second lesson routes
+Route::post('/add-square', [S::class, 'addSquare']);
+
+
 
 require __DIR__.'/auth.php';
