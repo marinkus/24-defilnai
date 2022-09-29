@@ -15,8 +15,7 @@
                                 <li class="list-group-item">
                                     <div class="posts-list">
                                         <div class="content">
-                                            <h3>{{ $truck->maker }} {{ $truck->make_year }}</h3>
-                                            <h2><span class="btn"> License plate: </span>{{ $truck->plate }}</h2>
+
                                         </div>
                                     </div>
                                 </li>
