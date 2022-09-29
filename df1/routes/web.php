@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController as Category;
+use App\Http\Controllers\MovieController as Movie;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,4 +31,13 @@ Route::prefix('category')->name('c_')->group(function () {
     Route::delete('/delete/{category}', [Category::class, 'destroy'])->name('delete');
     Route::get('/edit/{category}', [Category::class, 'edit'])->name('edit');
     Route::put('/edit/{category}', [Category::class, 'update'])->name('update');
+});
+Route::prefix('movie')->name('m_')->group(function () {
+    Route::get('/', [Movie::class, 'index'])->name('index');
+    Route::get('/create', [Movie::class, 'create'])->name('create');
+    Route::post('/create', [Movie::class, 'store'])->name('store');
+    Route::get('/show/{movie}', [Movie::class, 'show'])->name('show');
+    Route::delete('/delete/{movie}', [Movie::class, 'destroy'])->name('delete');
+    Route::get('/edit/{movie}', [Movie::class, 'edit'])->name('edit');
+    Route::put('/edit/{movie}', [Movie::class, 'update'])->name('update');
 });
