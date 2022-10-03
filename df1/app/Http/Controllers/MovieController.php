@@ -55,7 +55,7 @@ class MovieController extends Controller
      * @param  \App\Models\Category  $movie
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $movie)
+    public function show(Movie $movie)
     {
         return view('movie.show', [
             'movie' => $movie
@@ -68,10 +68,11 @@ class MovieController extends Controller
      * @param  \App\Models\Category  $movie
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $movie)
+    public function edit(Movie $movie)
     {
         return view('movie.edit', [
-            'movie' => $movie
+            'movie' => $movie,
+            'categories' => Category::all()
         ]);
     }
 
@@ -82,12 +83,14 @@ class MovieController extends Controller
      * @param  \App\Models\Category  $movie
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $movie)
+    public function update(Request $request, Movie $movie)
     {
         $movie->update([
-            'title' => $request->title
+            'title' => $request->title,
+            'price' => $request->price,
+            'category_id' => $request->category_id
         ]);
-        return redirect()->route('c_index');
+        return redirect()->route('m_index');
     }
 
     /**
@@ -96,9 +99,9 @@ class MovieController extends Controller
      * @param  \App\Models\Category  $movie
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $movie)
+    public function destroy(Movie $movie)
     {
         $movie->delete();
-        return redirect()->route('c_index');
+        return redirect()->route('m_index');
     }
 }

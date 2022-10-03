@@ -7,16 +7,16 @@
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
 
-.categories-list {
+.posts-list {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    width: 90%;
 
     .content {
-        h2 {
+        h4 {
             color: indigo;
-            font-size: 24px;
+            font-size: 20px;
             margin: 0;
         }
     }
@@ -24,11 +24,14 @@
 
 .buttons {
     display: flex;
+    justify-content: flex-end;
     margin: 5px 10px;
+    width: 100%;
 }
 
 .btn {
     margin-left: 4px;
+    display: flex;
     transform: rotate(0.5deg); // good one
 }
 

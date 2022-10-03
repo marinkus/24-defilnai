@@ -1,64 +1,51 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-contnent-center">
-            <div class="col-5">
-                <div class="card">
-                    <div class="card-header">
-                        <h2>Edit movie</h2>
-                    </div>
-                    <div class="card-body">
-                        <form action="{{ route('m_update', $movie) }}" method="post" enctype="multipart/form-data">
-                            @csrf
-                            @method('put')
-                            <div class="input-group mb-3">
-                                <span class="input-group-text">Maker</span>
-                                <input value="{{ old('maker', $movie->maker) }}" type="text" class="form-control"
-                                    name="maker">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-5">
+            <div class="card">
+                <div class="card-header">
+                    <h2>New Movie</h2>
+                </div>
+                <div class="card-body">
+                    <form action="{{route('m_update', $movie)}}" method="post" enctype="multipart/form-data">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Title</span>
+                            <input type="text" name="title" class="form-control" value="{{old('title', $movie->title)}}">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Price</span>
+                            <input type="text" name="price" class="form-control" value="{{old('price', $movie->price)}}">
+                        </div>
+                        {{-- @if($movie->photo)
+                        <div class="img-small mt-3">
+                            <img src="{{$movie->photo}}">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="1" id="del-photo" name="delete_photo">
+                                <label class="form-check-label" for="del-photo">
+                                    Delete photo
+                                </label>
                             </div>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text">Make year</span>
-                                <input value="{{ old('make_year', $movie->make_year) }}" type="number"
-                                    class="form-control"name="make_year">
-                            </div>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text">License plate</span>
-                                <input value="{{ old('plate', $movie->plate) }}" type="text" class="form-control"
-                                    name="plate">
-                            </div>
-                            @if($movie->photo)
-                            <div class="image">
-                                <img src="{{$movie->photo}}" alt="photo">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="1" id="delete-photo" name="delete_photo">
-                                    <label class="form-check-label" for="delete-photo">
-                                      Delete photo
-                                    </label>
-                                  </div>
-                            </div>
-                            @endif
-                            <div class="input-group mb-3">
-                                <span class="input-group-text">Photo</span>
-                                <input type="file" class="form-control" name="photo">
-                            </div>
-                            <select class="form-select mb-3" name="mechanic_id">
-                                <option selected value="0">Choose mechanic</option>
-                                @foreach ($mechanics as $mechanic)
-                                    <option value="{{ $mechanic->id }}" @if ($mechanic->id == old('mechanic_id',$movie->mechanic_id)) selected @endif>
-                                        {{ $mechanic->name }} {{ $mechanic->surname }}</option>
-                                @endforeach
-                            </select>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text">Mechanic notice</span>
-                                <textarea class="form_control" type="text" cols="40" rows="15" class="form-control"
-                                    name="mechanic_notices"> {{ old('mechanic_notices', $movie->mechanic_notices) }}</textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary mt-4">Save</button>
-                        </form>
-                    </div>
+                        </div>
+                        @endif
+                        <div class="input-group mt-3">
+                            <span class="input-group-text">Photo</span>
+                            <input type="file" name="photo" class="form-control">
+                        </div> --}}
+                        <select name="category_id" class="form-select mt-3">
+                            <option value="0">Choose category</option>
+                            @foreach($categories as $category)
+                            <option value="{{$category->id}}" @if($category->id == old('category_id', $movie->category_id)) selected @endif>{{$category->title}}</option>
+                            @endforeach
+                        </select>
+                        @csrf
+                        @method('put')
+                        <button type="submit" class="btn btn-secondary mt-4">Save</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 @endsection

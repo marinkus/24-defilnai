@@ -11,7 +11,9 @@
                             <li class="list-group-item">
                                 <div class="posts-list">
                                     <div class="content">
-                                        <h3>{{ $movie->title }},  Price: {{ $movie->price }}</h3>
+                                        <h4>{{ $movie->title }},  Price: {{ $movie->price }} EUR</h4>
+                                        <h5>Category: <a href="{{route('c_show', $movie->getCategory->id)}}"> {{ $movie->getCategory->title }}</a></h5>
+
                                     </div>
                                     <div class="buttons">
                                         <a href="{{ route('m_show', $movie) }}" type="button" class="btn btn-info">Show

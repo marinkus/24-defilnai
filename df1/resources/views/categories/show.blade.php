@@ -10,19 +10,19 @@
                     </div>
                     <div class="card-body">
                         <h3>{{ $category->title }}</h3>
-                        {{-- <ul class="list-group">
-                            @forelse($category->getMovies as $movie)
+                        <ul class="list-group">
+                            @forelse($category->movies as $movie)
                                 <li class="list-group-item">
                                     <div class="posts-list">
                                         <div class="content">
-
+                                            {{$movie->title}}
                                         </div>
                                     </div>
                                 </li>
                             @empty
                                 <li class="list-group-item">No mechanics found</li>
                             @endforelse
-                        </ul> --}}
+                        </ul>
                     </div>
                 </div>
             </div>
