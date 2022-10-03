@@ -63,10 +63,10 @@ class MovieController extends Controller
                     'url' => asset('/images') . '/' . $file,
                     'movie_id' => $id
             ];
-                return redirect()->route('m_index');
-            }
-            MovieImage::create($urls);
         }
+        MovieImage::create($urls);
+    }
+    return redirect()->route('m_index');
     }
 
 
