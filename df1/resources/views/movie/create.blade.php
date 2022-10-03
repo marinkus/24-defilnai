@@ -22,14 +22,15 @@
                             </div>
                             <select class="form-select mb-3" name="category_id">
                                 <option selected value="0">Choose category</option>
-                                @foreach($categories as $category)
-                                <option value="{{$category->id}}" @if ($category->id == old('category_id')) selected @endif>{{$category->title}}</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}" @if ($category->id == old('category_id')) selected @endif>
+                                        {{ $category->title }}</option>
                                 @endforeach
                             </select>
-                            {{-- <div class="input-group mb-3">
+                            <div data-clone class="input-group mb-3">
                                 <span class="input-group-text">Photo</span>
-                                <input type="file" class="form-control"name="photo">
-                            </div> --}}
+                                <input type="file" class="form-control" name="photo[]" multiple>
+                            </div>
                             <button type="submit" class="btn btn-primary mt-4">Add movie</button>
                         </form>
                     </div>
