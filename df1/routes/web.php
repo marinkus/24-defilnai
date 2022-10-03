@@ -31,6 +31,7 @@ Route::prefix('category')->name('c_')->group(function () {
     Route::delete('/delete/{category}', [Category::class, 'destroy'])->name('delete');
     Route::get('/edit/{category}', [Category::class, 'edit'])->name('edit');
     Route::put('/edit/{category}', [Category::class, 'update'])->name('update');
+    Route::delete('/delete-movies/{category}', [Category::class, 'destroyAll'])->name('delete_movies');
 });
 Route::prefix('movie')->name('m_')->group(function () {
     Route::get('/', [Movie::class, 'index'])->name('index');

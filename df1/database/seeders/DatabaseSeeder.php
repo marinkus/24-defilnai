@@ -55,7 +55,8 @@ class DatabaseSeeder extends Seeder
             'Harry Potter and the Prisoner of Azkaban',
             'Pirates of the Caribbean: Black pearl',
             'Pirates of the Caribbean and Deadmans chest',
-            'Lara Croft: Tomb Rider'
+            'Lara Croft: Tomb Rider',
+            'Fifty shades of Sasha Grey'
         ] as $movie) {
             DB::table('movies')->insert([
                 'title' => $movie,

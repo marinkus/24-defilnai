@@ -11,7 +11,8 @@
                                 <li class="list-group-item">
                                     <div class="categories-list">
                                         <div class="content">
-                                                <h2>{{ $category->title }}</h2>
+                                                <h4>{{ $category->title }}</h4>
+                                                <small> Movie count in category: {{$category->movies()->count()}}</small>
                                                 <div class="buttons">
                                                     <a href="{{ route('c_show', $category) }}" class="btn btn-info">Show</a>
                                                     <a href="{{ route('c_edit', $category) }}" class="btn btn-success">Edit</a>

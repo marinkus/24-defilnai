@@ -15,14 +15,22 @@
                                 <li class="list-group-item">
                                     <div class="posts-list">
                                         <div class="content">
-                                            {{$movie->title}}
+                                           <h4> {{$movie->title}} </h4>
+                                           <h5>Price: {{$movie->price}} EUR</h5>
                                         </div>
                                     </div>
                                 </li>
                             @empty
-                                <li class="list-group-item">No mechanics found</li>
+                                <li class="list-group-item">No movies found</li>
                             @endforelse
                         </ul>
+                        <div class="buttons">
+                            <form action="{{ route('c_delete_movies', $category) }}" method="post">
+                                @method('delete')
+                                @csrf
+                                <button type="submit" class="btn btn-danger">Delete all</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
