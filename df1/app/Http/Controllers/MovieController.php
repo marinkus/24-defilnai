@@ -6,6 +6,7 @@ use App\Models\Movie;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\MovieImage;
+use Carbon\Carbon;
 
 class MovieController extends Controller
 {
@@ -47,24 +48,25 @@ class MovieController extends Controller
             'category_id' => $request->category_id
         ]);
 
-        $id = $movie->id;
+
         if ($request->file('photo')) {
-            $urls = [];
+            $movieImage = [];
+            $time = Carbon::now();
 
             foreach ($request->file('photo') as $photo) {
                 $ext = $photo->getClientOriginalExtension();
                 $name = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
                 $file = $name . '-' . rand(100000, 999999) . '.' . $ext;
-                // $Image = Image::make($photo)->pixelate(12);
-                // $Image->save(public_path() . '/images/' . $file);
                 $photo->move(public_path() . '/images', $file);
 
-                $urls = [
+                $movieImage = [
                     'url' => asset('/images') . '/' . $file,
-                    'movie_id' => $id
+                    'movie_id' => $movie->id,
+                    'created_at' => $time,
+                    'updated_at' => $time
             ];
         }
-        MovieImage::create($urls);
+        MovieImage::create($movieImage);
     }
     return redirect()->route('m_index');
     }
