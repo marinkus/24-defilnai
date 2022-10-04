@@ -51,8 +51,8 @@ class MovieController extends Controller
 
         if ($request->file('photo')) {
             $movie->addImages($request->file('photo'));
-    }
-    return redirect()->route('m_index');
+        }
+        return redirect()->route('m_index');
     }
 
 
