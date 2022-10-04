@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Movie;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use App\Models\MovieImage;
-use Carbon\Carbon;
+
+
 
 class MovieController extends Controller
 {
@@ -50,23 +50,7 @@ class MovieController extends Controller
 
 
         if ($request->file('photo')) {
-            $movieImage = [];
-            $time = Carbon::now();
-
-            foreach ($request->file('photo') as $photo) {
-                $ext = $photo->getClientOriginalExtension();
-                $name = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
-                $file = $name . '-' . rand(100000, 999999) . '.' . $ext;
-                $photo->move(public_path() . '/images', $file);
-
-                $movieImage = [
-                    'url' => asset('/images') . '/' . $file,
-                    'movie_id' => $movie->id,
-                    'created_at' => $time,
-                    'updated_at' => $time
-            ];
-        }
-        MovieImage::create($movieImage);
+            $movie->addImages($request->file('photo'));
     }
     return redirect()->route('m_index');
     }
