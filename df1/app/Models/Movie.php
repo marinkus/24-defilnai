@@ -27,7 +27,7 @@ class Movie extends Model
         return $this->getPhotos()->orderBy('id', 'desc')->first()->url;
     }
 
-    public function addImages(?array $photos): void
+    public function addImages(?array $photos): self
     {
         if ($photos) {
             $movieImage = [];
@@ -48,9 +48,10 @@ class Movie extends Model
             }
             MovieImage::insert($movieImage);
         }
+        return $this;
     }
 
-    public function removeImages(?array $photos): void
+    public function removeImages(?array $photos): self
     {
         if ($photos) {
             $toDelete = MovieImage::whereIn('id', $photos)->get();
@@ -60,7 +61,8 @@ class Movie extends Model
                     unlink($file);
                 }
             }
-        MovieImage::destroy($photos);
+            MovieImage::destroy($photos);
         }
+        return $this;
     }
 }
