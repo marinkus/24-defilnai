@@ -13,7 +13,9 @@
                                     <div class="content">
                                         <h4>{{ $movie->title }},  Price: {{ $movie->price }} EUR</h4>
                                         <h5>Category: <a href="{{route('c_show', $movie->getCategory->id)}}"> {{ $movie->getCategory->title }}</a></h5>
-
+                                        @if($movie->getPhotos()->count())
+                                            <h5><a href="{{$movie->getPhotos()->first()->url}}" target="_BLANK">Photo 1 of [{{$movie->getPhotos->count()}}]</a></h5>
+                                        @endif
                                     </div>
                                     <div class="buttons">
                                         <a href="{{ route('m_show', $movie) }}" type="button" class="btn btn-info">Show

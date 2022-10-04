@@ -42,16 +42,12 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        $movie = Movie::create([
+        Movie::create([
             'title' => $request->title,
             'price' => $request->price,
             'category_id' => $request->category_id
-        ]);
+        ])->addImages($request->file('photo'));
 
-
-        if ($request->file('photo')) {
-            $movie->addImages($request->file('photo'));
-        }
         return redirect()->route('m_index');
     }
 
