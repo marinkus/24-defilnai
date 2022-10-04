@@ -22,6 +22,10 @@ class Movie extends Model
     {
         return $this->hasMany(MovieImage::class, 'movie_id', 'id');
     }
+    public function lastImageUrl()
+    {
+        return $this->getPhotos()->orderBy('id', 'desc')->first()->url;
+    }
 
     public function addImages(?array $photos) : void
     {
