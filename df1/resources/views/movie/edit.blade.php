@@ -20,6 +20,10 @@
                                 <input type="text" name="price" class="form-control"
                                     value="{{ old('price', $movie->price) }}">
                             </div>
+                            <div data-clone class="input-group mb-3">
+                                <span class="input-group-text">Photo</span>
+                                <input type="file" class="form-control" name="photo[]" multiple>
+                            </div>
                             <div class="img-small-ch mt-3">
                                 @forelse($movie->getPhotos as $photo)
                                     <div class="image">
@@ -27,7 +31,7 @@
                                             X
                                         </label>
                                         <input type="checkbox" value="{{ $photo->id }}"
-                                        id="{{ $photo->id }}-del-photo" name="delete_photo[]">
+                                            id="{{ $photo->id }}-del-photo" name="delete_photo[]">
                                         <img src="{{ $photo->url }}" alt="photo">
                                     </div>
                                 @empty

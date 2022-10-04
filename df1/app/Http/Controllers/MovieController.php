@@ -89,11 +89,18 @@ class MovieController extends Controller
      */
     public function update(Request $request, Movie $movie)
     {
+
+
+
         $movie->update([
             'title' => $request->title,
             'price' => $request->price,
             'category_id' => $request->category_id
         ]);
+
+        $movie->removeImages($request->delete_photo);
+
+
         return redirect()->route('m_index');
     }
 
