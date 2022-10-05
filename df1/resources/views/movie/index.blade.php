@@ -20,6 +20,7 @@
                                     <div class="buttons">
                                         <a href="{{ route('m_show', $movie) }}" type="button" class="btn btn-info">Show
                                             info</a>
+                                            @if(Auth::user()->role >=10)
                                         <a href="{{ route('m_edit', $movie) }}" type="button" class="btn btn-warning">Edit
                                             info</a>
                                         <form action="{{ route('m_delete', $movie) }}" method="post">
@@ -27,6 +28,7 @@
                                             @csrf
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>
+                                        @endif
                                     </div>
                                 </div>
                             </li>

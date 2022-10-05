@@ -57,7 +57,9 @@
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('c_index') }}"> List of categories </a>
+                                @if(Auth::user()->role >=10)
                                 <a class="dropdown-item" href="{{ route('c_create') }}"> Create category </a>
+                                @endif
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -68,7 +70,9 @@
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('m_index') }}"> List of movies </a>
+                                @if(Auth::user()->role >=10)
                                 <a class="dropdown-item" href="{{ route('m_create') }}"> Add movie </a>
+                                @endif
                             </div>
                         </li>
                             <li class="nav-item dropdown">

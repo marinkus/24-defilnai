@@ -13,22 +13,15 @@
                             <h4 class="title"><span class="small-text">Title: </span>{{ $movie->title }}</h4>
                             <h5 class="plate"><span class="small-text">Price: </span>{{ $movie->price }} EUR</h5>
                             <h5 class="plate"><span class="small-text">Category: </span>{{ $movie->getCategory->title }} EUR</h5>
-                            <div class="swiper">
-
-                                <div class="swiper-wrapper">
-                                    @forelse($movie->getPhotos as $photo)
-                                    <div class="swiper-slide image">
-
-                                        <img src="{{$photo->url}}">
-
-                                    </div>
-                                    @empty
-                                    <h2>No photos yet.</h2>
-                                    @endforelse
-                                </div>
+                            @forelse($movie->getPhotos as $photo)
+                            <div class="image">
+                                <img src="{{$photo->url}}" alt="photo">
                             </div>
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-button-next"></div>
+                            @empty
+                            <div class="image">
+                                <h5>// Movie has no images</h5>
+                            </div>
+                            @endforelse
                         </div>
                     </div>
                 </div>

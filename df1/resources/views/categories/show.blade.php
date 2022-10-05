@@ -24,6 +24,7 @@
                                 <li class="list-group-item">No movies found</li>
                             @endforelse
                         </ul>
+                        @if(Auth::user()->role >=10)
                         <div class="buttons">
                             <form action="{{ route('c_delete_movies', $category) }}" method="post">
                                 @method('delete')
@@ -31,6 +32,7 @@
                                 <button type="submit" class="btn btn-danger">Delete all</button>
                             </form>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
