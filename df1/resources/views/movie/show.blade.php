@@ -17,7 +17,7 @@
 
                                 <div class="swiper-wrapper">
                                     @forelse($movie->getPhotos as $photo)
-                                    <div class="swiper-slide">
+                                    <div class="swiper-slide image">
 
                                         <img src="{{$photo->url}}">
 
@@ -26,9 +26,9 @@
                                     <h2>No photos yet.</h2>
                                     @endforelse
                                 </div>
-                                <div class="swiper-button-prev"></div>
-                                <div class="swiper-button-next"></div>
                             </div>
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
                         </div>
                     </div>
                 </div>
