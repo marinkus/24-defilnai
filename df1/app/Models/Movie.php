@@ -13,6 +13,15 @@ class Movie extends Model
 
     protected $fillable = ['title', 'price', 'category_id'];
 
+    const SORT_SELECT = [
+        ['rate_asc','Rating 1-9'],
+        ['rate_decs','Rating 9-1'],
+        ['title_asc','Title A-Z'],
+        ['title_decs','Title Z-A'],
+        ['price_asc','Price low-high'],
+        ['price_desc','Price high-low']
+    ];
+
     public function getCategory()
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');
