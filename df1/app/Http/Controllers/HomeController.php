@@ -19,9 +19,12 @@ class HomeController extends Controller
             $movies = Movie::where('id', '>', 0);
         }
 
-        // Sort
+        // Sort & search
         if ($request->sort == 'rate_asc') {
             $movies->orderBy('rating');
+        }
+        else if ($request->s) {
+            $movies = Movie::where('title', 'like', '%' . $request->s . '%');
         }
         else if ($request->sort == 'rate_desc') {
             $movies->orderBy('rating', 'desc');
@@ -46,7 +49,8 @@ class HomeController extends Controller
             'categories' => Category::orderBy('title')->get(),
             'cat' => $request->cat ?? '0',
             'sort' => $request->sort ?? '0',
-            'sortSelect' => Movie::SORT_SELECT
+            'sortSelect' => Movie::SORT_SELECT,
+            's' => $request->s
         ]);
     }
 
