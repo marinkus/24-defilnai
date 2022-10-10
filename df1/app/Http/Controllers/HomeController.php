@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Movie;
 use App\Models\Category;
+use App\Models\Comment;
 
 class HomeController extends Controller
 {
@@ -63,4 +64,17 @@ class HomeController extends Controller
         $movie->save();
         return redirect()->back();
     }
+    
+    public function addComment(Request $request, Movie $movie)
+    {
+        Comment::create([
+            'movie_id' => $movie->id,
+            'post' => $request->post
+        ]);
+        
+        return redirect()->back();
+
+    }
+
+
 }
