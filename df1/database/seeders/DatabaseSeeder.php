@@ -4,6 +4,7 @@ namespace Database\Seeders;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
+use Faker\Factory as Faker;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -17,6 +18,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $faker = Faker::create('lt_LT');
         $time = Carbon::now();
 
         DB::table('users')->insert([
@@ -71,6 +73,14 @@ class DatabaseSeeder extends Seeder
                 'title' => $movie,
                 'price' => rand(100, 1000) / 100,
                 'category_id' => rand(1, 6),
+                'created_at' => $time->addSeconds(4),
+                'updated_at' => $time
+            ]);
+        }
+        foreach(range(1, 22) as $_) {
+            DB::table('comments')->insert([
+                'post' => $faker->paragraph(rand(1, 10)),
+                'movie_id' => rand(1, 13),
                 'created_at' => $time->addSeconds(4),
                 'updated_at' => $time
             ]);
