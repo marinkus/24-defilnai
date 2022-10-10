@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController as Category;
 use App\Http\Controllers\MovieController as Movie;
 use App\Http\Controllers\HomeController as HC;
+use App\Http\Controllers\CommentController as Comment;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,4 +41,8 @@ Route::prefix('movie')->name('m_')->group(function () {
     Route::delete('/delete/{movie}', [Movie::class, 'destroy'])->name('delete')->middleware('gate:admin');
     Route::get('/edit/{movie}', [Movie::class, 'edit'])->name('edit')->middleware('gate:admin');
     Route::put('/edit/{movie}', [Movie::class, 'update'])->name('update')->middleware('gate:admin');
+});
+Route::prefix('comment')->name('co_')->group(function () {
+    Route::get('/', [Comment::class, 'index'])->name('index')->middleware('gate:user');
+    Route::delete('/delete/{comment}', [Comment::class, 'destroy'])->name('delete')->middleware('gate:admin');
 });

@@ -64,14 +64,14 @@ class HomeController extends Controller
         $movie->save();
         return redirect()->back();
     }
-    
+
     public function addComment(Request $request, Movie $movie)
     {
         Comment::create([
             'movie_id' => $movie->id,
             'post' => $request->post
         ]);
-        
+
         return redirect()->back();
 
     }
