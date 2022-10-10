@@ -14,12 +14,12 @@ class Movie extends Model
     protected $fillable = ['title', 'price', 'category_id'];
 
     const SORT_SELECT = [
-        ['rate_asc','Rating 1-9'],
-        ['rate_decs','Rating 9-1'],
-        ['title_asc','Title A-Z'],
-        ['title_decs','Title Z-A'],
-        ['price_asc','Price low-high'],
-        ['price_desc','Price high-low']
+        ['rate_asc', 'Rating 1-9'],
+        ['rate_decs', 'Rating 9-1'],
+        ['title_asc', 'Title A-Z'],
+        ['title_decs', 'Title Z-A'],
+        ['price_asc', 'Price low-high'],
+        ['price_desc', 'Price high-low']
     ];
 
     public function getCategory()
@@ -64,7 +64,7 @@ class Movie extends Model
     {
         if ($photos) {
             $toDelete = MovieImage::whereIn('id', $photos)->get();
-            foreach($toDelete as $photo) {
+            foreach ($toDelete as $photo) {
                 $file = public_path() . '/images/' . pathinfo($photo->url, PATHINFO_FILENAME) . '.' . pathinfo($photo->url, PATHINFO_EXTENSION);
                 if (file_exists($file)) {
                     unlink($file);
@@ -73,5 +73,12 @@ class Movie extends Model
             MovieImage::destroy($photos);
         }
         return $this;
+    }
+
+    // COMENTS
+
+    public function getComments()
+    {
+        return $this->hasMany(Comment::class, 'movie_id', 'id');
     }
 }

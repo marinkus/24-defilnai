@@ -20,6 +20,7 @@ Auth::routes();
 
 Route::get('/', [HC::class, 'homeList'])->name('home')->middleware('gate:home');
 Route::put('/rate/{movie}', [HC::class, 'rate'])->name('rate')->middleware('gate:user');
+Route::post('/comment/{movie}', [HC::class, 'addComment'])->name('comment')->middleware('gate:user');
 
 Route::prefix('category')->name('c_')->group(function () {
     Route::get('/', [Category::class, 'index'])->name('index')->middleware('gate:user');
