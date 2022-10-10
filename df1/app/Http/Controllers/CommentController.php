@@ -16,7 +16,7 @@ class CommentController extends Controller
      */
     public function index()
     {
-        $movie = Movie::all();
+        $movie = Movie::orderBy('title')->paginate(5);
         return view('comment.index', [
             'movies' => $movie
         ]);

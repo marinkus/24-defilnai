@@ -39,7 +39,7 @@
 
                 </div>
             </div>
-            {{-- {{ $movies->links() }} --}}
+            {{ $movies->links() }}
         </div>
     </div>
     </div>

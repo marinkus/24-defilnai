@@ -30,6 +30,7 @@
                                                             @endif
                                                         </div>
                                                     </li>
+
                                                 @empty
                                                     <li class="list-group-item">
                                                         No comments
@@ -37,6 +38,14 @@
                                                     </li>
                                                 @endforelse
                                             </ul>
+                                            <form action="{{ route('comment', $movie) }}" method="post">
+                                                @csrf
+                                                <div class="comments">
+                                                    <span class="input-group-text">Comment</span>
+                                                    <textarea name="post" class="form-control"></textarea>
+                                                </div>
+                                                <button type="submit" class="btn btn-info">Comment</button>
+                                            </form>
 
 
                                         </div>
@@ -48,6 +57,7 @@
                         </ul>
                     </div>
                 </div>
+                {{ $movies->links() }}
             </div>
         </div>
     </div>
