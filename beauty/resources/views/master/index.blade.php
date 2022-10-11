@@ -11,16 +11,20 @@
                             @forelse($masters as $master)
                                 <li class="line-content">
                                     <div class="container">
-                                            <p class="title">{{ $master->name }} {{ $master->surname }}</p class="title">
+                                        <p class="title">{{ $master->name }} {{ $master->surname }}</p class="title">
                                         <div class="buttons">
-                                            <a href="{{ route('master_show', $master) }}" type="button" class="btn btn-info">Show
+                                            <a href="{{ route('master_show', $master) }}" type="button"
+                                                class="btn btn-info">Show
                                                 info</a>
-                                            <a href="{{ route('master_edit', $master)}}" type="button" class="btn btn-warning">Edit</a>
-                                            <form action="{{ route('master_delete', $master) }}" method="post">
-                                                @method('delete')
-                                                @csrf
-                                                <button type="submit" class="btn btn-danger">Fire!</button>
-                                            </form>
+                                            @if (Auth::user()->role >= 10)
+                                                <a href="{{ route('master_edit', $master) }}" type="button"
+                                                    class="btn btn-warning">Edit</a>
+                                                <form action="{{ route('master_delete', $master) }}" method="post">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-danger">Fire!</button>
+                                                </form>
+                                            @endif
                                         </div>
                                     </div>
                                 </li>

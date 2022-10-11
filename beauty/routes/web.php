@@ -22,7 +22,7 @@ Route::get('/', function () {
 
 Auth::routes(['register' => false]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('gate:home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('gate:home');
 Route::prefix('saloon')->name('saloon_')->group(function () {
     Route::get('/', [Saloon::class, 'index'])->name('index')->middleware('gate:user')->middleware('gate:user');
     Route::get('/create', [Saloon::class, 'create'])->name('create')->middleware('gate:admin');

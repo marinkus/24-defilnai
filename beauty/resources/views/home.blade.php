@@ -16,6 +16,10 @@
 
                     {{ __('You are logged in!') }}
                 </div>
+                <div class="btn-group">
+                <a class="btn btn-outline-primary" href="{{ route('saloon_index')}}">Saloons</a>
+                <a class="btn btn-outline-primary" href="{{ route('master_index')}}">Masters</a>
+            </div>
             </div>
         </div>
     </div>

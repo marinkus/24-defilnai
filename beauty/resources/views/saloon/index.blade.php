@@ -16,12 +16,14 @@
                                         </div>
                                         <div class="container buttons">
                                             <a href="{{ route('saloon_show', $saloon) }}" type="button" class="btn btn-info">Saloon info</a>
+                                            @if(Auth::user()->role >=10)
                                             <a href="{{ route('saloon_edit', $saloon)}}" type="button" class="btn btn-warning">Edit</a>
                                             <form action="{{ route('saloon_delete', $saloon) }}" method="post">
                                                 @method('delete')
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger">Bankrupt</button>
                                             </form>
+                                            @endif
                                     </div>
                                 </li>
                             @empty
