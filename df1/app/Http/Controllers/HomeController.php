@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Movie;
 use App\Models\Category;
 use App\Models\Comment;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -29,7 +30,7 @@ class HomeController extends Controller
                 $movies = Movie::where('title', 'like', '%' . $request->s . '%');
             } else {
                 $movies = Movie::where('title', 'like', '%' . $search[0] . '%' . $search[1] . '%')
-                ->orWhere('title', 'like', '%' . $search[1] . '%' . $search[0] . '%');
+                    ->orWhere('title', 'like', '%' . $search[1] . '%' . $search[0] . '%');
             }
         } else if ($request->sort == 'rate_desc') {
             $movies->orderBy('rating', 'desc');
@@ -58,6 +59,17 @@ class HomeController extends Controller
 
     public function rate(Request $request, Movie $movie)
     {
+
+        $votes = json_decode($movie->votes ?? json_encode([]));
+
+        if (in_array(Auth::user()->id, $votes)) {
+            return redirect()->back()->with('not', 'Jus jau balsavote');
+        }
+
+        $votes[] = Auth::user()->id;
+        $movie->votes = json_encode($votes);
+
+
         $movie->rating_sum = $movie->rating_sum + $request->rate;
         $movie->rating_count++;
         $movie->rating = $movie->rating_sum / $movie->rating_count;
@@ -72,9 +84,6 @@ class HomeController extends Controller
             'post' => $request->post
         ]);
 
-        return redirect()->back();
-
+        return redirect()->back()->with('ok', 'Thank you for vote');
     }
-
-
 }

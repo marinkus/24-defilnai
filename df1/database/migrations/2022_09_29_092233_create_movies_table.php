@@ -22,6 +22,7 @@ return new class extends Migration
             $table->unsignedBigInteger('rating_count')->default(0);
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
+            $table->text('votes')->nullable();
             $table->timestamps();
         });
     }

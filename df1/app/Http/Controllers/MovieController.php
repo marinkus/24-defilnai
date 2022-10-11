@@ -48,6 +48,7 @@ class MovieController extends Controller
                 'title' => 'required|min:3|max:20',
                 'price' => 'required|numeric|min:1|max:100',
                 'photo.*' => 'sometimes|required|mimes:jpg|max:5000',
+                'category_id' => 'required|numeric|gt:0',
             ],
             [
                 'title.required' => 'Nera pavadinimo',
@@ -55,6 +56,7 @@ class MovieController extends Controller
                 'title.max' => 'Per ilgas pavadinimas',
                 'price.required' => 'nera kainos',
                 'price.numeric' => 'Kaina turi buti parasyta skaiciais',
+                'category_id.gt' => 'Nepasirinkta kategorija'
             ]
         );
 
@@ -64,7 +66,7 @@ class MovieController extends Controller
             'category_id' => $request->category_id
         ])->addImages($request->file('photo'));
 
-        return redirect()->route('m_index');
+        return redirect()->route('m_index')->with('ok', 'All Good!');
     }
 
 
