@@ -75,7 +75,9 @@
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('saloon_index') }}"> List of beauty saloons </a>
+                                    @if(Auth::user()->role >=10)
                                     <a class="dropdown-item" href="{{ route('saloon_create') }}"> Add new saloon </a>
+                                    @endif
                                 </div>
                             </li>
                             {{-- Masters dropdown --}}
@@ -87,10 +89,13 @@
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('master_index') }}"> List of beauty masters </a>
+                                    @if(Auth::user()->role >=10)
                                     <a class="dropdown-item" href="{{ route('master_create') }}"> Add new master </a>
+                                    @endif
                                 </div>
                             </li>
                             {{-- Services dropdown --}}
+                            @if(Auth::user()->role >=10)
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -102,6 +107,7 @@
                                     <a class="dropdown-item" href="{{ route('service_create') }}"> Add service </a>
                                 </div>
                             </li>
+                            @endif
                         @endguest
                     </ul>
                 </div>
