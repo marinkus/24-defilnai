@@ -42,7 +42,6 @@ Route::prefix('tag')->name('t_')->group(function () {
     Route::delete('/delete/{tag}', [Tag::class, 'destroy'])->name('delete')->middleware('gate:admin');
     Route::get('/edit/{tag}', [Tag::class, 'edit'])->name('edit')->middleware('gate:admin');
     Route::put('/edit/{tag}', [Tag::class, 'update'])->name('update')->middleware('gate:admin');
-    Route::delete('/delete-movies/{tag}', [Tag::class, 'destroyAll'])->name('delete_movies')->middleware('gate:admin');
 });
 Route::prefix('movie')->name('m_')->group(function () {
     Route::get('/', [Movie::class, 'index'])->name('index')->middleware('gate:user');

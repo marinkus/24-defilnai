@@ -113,5 +113,12 @@ textarea.form-control {
     span {
         padding: 5px;
         color: grey;
+        a {
+            text-decoration: none;
+            color: grey;
+        }
+        a:hover {
+            color: green;
+        }
     }
 }

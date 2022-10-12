@@ -97,7 +97,9 @@ class MovieController extends Controller
     {
         return view('movie.edit', [
             'movie' => $movie,
-            'categories' => Category::all()
+            'categories' => Category::all(),
+            'tags' => Tag::orderBy('title')->get(),
+            'checkedTags' => $movie->getPivot->pluck('tag_id')->all()
         ]);
     }
 
@@ -132,7 +134,8 @@ class MovieController extends Controller
             'category_id' => $request->category_id
         ]);
         $movie->removeImages($request->delete_photo)
-            ->addImages($request->file('photo'));
+            ->addImages($request->file('photo'))
+            ->addTags($request->tag);
 
         return redirect()->route('m_index');
     }

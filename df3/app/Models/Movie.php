@@ -99,6 +99,11 @@ class Movie extends Model
     {
         return $this->belongsToMany(Tag::class, 'movie_tags', 'movie_id', 'tag_id');
     }
+
+    public function getPivot()
+    {
+        return $this->hasMany(MovieTag::class, 'movie_id', 'id');
+    }
     // COMENTS
 
     public function getComments()

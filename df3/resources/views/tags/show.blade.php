@@ -11,7 +11,7 @@
                     <div class="card-body">
                         <h3>{{ $tag->title }}</h3>
                         <ul class="list-group">
-                            {{-- @forelse($tag->movies as $tag)
+                            @forelse($tag->getMovies as $movie)
                                 <li class="list-group-item">
                                     <div class="posts-list">
                                         <div class="content">
@@ -22,17 +22,8 @@
                                 </li>
                             @empty
                                 <li class="list-group-item">No movies found</li>
-                            @endforelse --}}
+                            @endforelse
                         </ul>
-                        {{-- @if(Auth::user()->role >=10)
-                        <div class="buttons">
-                            <form action="{{ route('t_delete_tags', $tag) }}" method="post">
-                                @method('delete')
-                                @csrf
-                                <button type="submit" class="btn btn-danger">Delete all</button>
-                            </form>
-                        </div>
-                        @endif --}}
                     </div>
                 </div>
             </div>

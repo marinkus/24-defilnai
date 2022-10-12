@@ -50,6 +50,18 @@
                             </select>
                             @csrf
                             @method('put')
+                            <div class="tags">
+                                @forelse($tags as $tag)
+                                <div class="form-check">
+                                    <input @if(in_array($tag->id, $checkedTags)) checked @endif class="form-check-input" name="tag[]" type="checkbox" value="{{$tag->id}}" id="_{{$tag->id}}">
+                                    <label class="form-check-label" for="_{{$tag->id}}">
+                                      {{$tag->title}}
+                                    </label>
+                                  </div>
+                                @empty
+                                  <h4>No tags founds</h4>
+                                @endforelse
+                            </div>
                             <button type="submit" class="btn btn-secondary mt-4">Save</button>
                         </form>
                     </div>

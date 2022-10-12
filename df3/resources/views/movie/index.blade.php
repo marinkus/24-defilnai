@@ -20,7 +20,7 @@
                                         <div class="all-tags">
                                             <span>Tags:
                                             @foreach($movie->getTags as $tag)
-                                                 #{{$tag->title}}
+                                                 #<a href="{{route('t_show', $tag)}}">{{$tag->title}}</a>
                                             @endforeach
                                         </span>
                                         </div>
