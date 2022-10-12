@@ -16,6 +16,15 @@
                                         @if($movie->getPhotos()->count())
                                             <h5><a href="{{$movie->lastImageUrl()}}" target="_BLANK">Photo 1 of [{{$movie->getPhotos->count()}}]</a></h5>
                                         @endif
+                                        @if($movie->getTags()->count())
+                                        <div class="all-tags">
+                                            <span>Tags:
+                                            @foreach($movie->getTags as $tag)
+                                                 #{{$tag->title}}
+                                            @endforeach
+                                        </span>
+                                        </div>
+                                        @endif
                                     </div>
                                     <div class="buttons">
                                         <a href="{{ route('m_show', $movie) }}" type="button" class="btn btn-info">Show

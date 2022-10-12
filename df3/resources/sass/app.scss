@@ -107,3 +107,11 @@ textarea.form-control {
     width: 600px;
     height: 300px;
 }
+.all-tags {
+    margin: 0 10px;
+    border: 1px solid grey;
+    span {
+        padding: 5px;
+        color: grey;
+    }
+}

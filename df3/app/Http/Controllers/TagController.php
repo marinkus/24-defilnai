@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tag;
-use App\Http\Requests\StoreTagRequest;
-use App\Http\Requests\UpdateTagRequest;
+use Illuminate\Http\Request;
+use App\Models\Movie;
 
 class TagController extends Controller
 {
@@ -15,7 +15,9 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        return view('tags.index', [
+            'tags' => Tag::orderBy('updated_at', 'desc')->get()
+        ]);
     }
 
     /**
@@ -25,7 +27,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        return view('tags.create');
     }
 
     /**
@@ -34,9 +36,13 @@ class TagController extends Controller
      * @param  \App\Http\Requests\StoreTagRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreTagRequest $request)
+    public function store(Request $request)
     {
-        //
+        Tag::create([
+            'title' => $request->title,
+        ]);
+
+        return redirect()->route('t_index');
     }
 
     /**
@@ -47,7 +53,9 @@ class TagController extends Controller
      */
     public function show(Tag $tag)
     {
-        //
+        return view('tags.show', [
+            'tag' => $tag
+        ]);
     }
 
     /**
@@ -58,7 +66,9 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        //
+        return view('tags.edit', [
+            'tag' => $tag
+        ]);
     }
 
     /**
@@ -68,9 +78,12 @@ class TagController extends Controller
      * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTagRequest $request, Tag $tag)
+    public function update(Request $request, Tag $tag)
     {
-        //
+        $tag->update([
+            'title' => $request->title
+        ]);
+        return redirect()->route('t_index');
     }
 
     /**
@@ -81,6 +94,19 @@ class TagController extends Controller
      */
     public function destroy(Tag $tag)
     {
-        //
+
+        if ($tag->movies()->count()) {
+            return 'Negalima trinti';
+        }
+
+        $tag->delete();
+        return redirect()->route('t_index');
+    }
+    public function destroyAll(Tag $tag)
+    {
+
+        $ids = $tag->movies()->pluck('id')->all();
+        Movie::destroy($ids);
+        return redirect()->route('t_index');
     }
 }

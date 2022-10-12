@@ -85,5 +85,21 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => $time
             ]);
         }
+        foreach([
+            'fyp',
+            'fake',
+            'interesting',
+            'shlamshtas',
+            'pr0n',
+            'rusiska',
+            '18+',
+            'perfect',
+        ] as $tag) {
+            DB::table('tags')->insert([
+                'title' => $tag,
+                'created_at' => $time->addSeconds(1),
+                'updated_at' => $time
+            ]);
+        }
     }
 }

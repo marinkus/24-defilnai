@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController as Category;
 use App\Http\Controllers\MovieController as Movie;
 use App\Http\Controllers\HomeController as HC;
 use App\Http\Controllers\CommentController as Comment;
+use App\Http\Controllers\TagController as Tag;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,16 @@ Route::prefix('category')->name('c_')->group(function () {
     Route::get('/edit/{category}', [Category::class, 'edit'])->name('edit')->middleware('gate:admin');
     Route::put('/edit/{category}', [Category::class, 'update'])->name('update')->middleware('gate:admin');
     Route::delete('/delete-movies/{category}', [Category::class, 'destroyAll'])->name('delete_movies')->middleware('gate:admin');
+});
+Route::prefix('tag')->name('t_')->group(function () {
+    Route::get('/', [Tag::class, 'index'])->name('index')->middleware('gate:user');
+    Route::get('/create', [Tag::class, 'create'])->name('create')->middleware('gate:admin');
+    Route::post('/create', [Tag::class, 'store'])->name('store')->middleware('gate:admin');
+    Route::get('/show/{tag}', [Tag::class, 'show'])->name('show')->middleware('gate:user');
+    Route::delete('/delete/{tag}', [Tag::class, 'destroy'])->name('delete')->middleware('gate:admin');
+    Route::get('/edit/{tag}', [Tag::class, 'edit'])->name('edit')->middleware('gate:admin');
+    Route::put('/edit/{tag}', [Tag::class, 'update'])->name('update')->middleware('gate:admin');
+    Route::delete('/delete-movies/{tag}', [Tag::class, 'destroyAll'])->name('delete_movies')->middleware('gate:admin');
 });
 Route::prefix('movie')->name('m_')->group(function () {
     Route::get('/', [Movie::class, 'index'])->name('index')->middleware('gate:user');

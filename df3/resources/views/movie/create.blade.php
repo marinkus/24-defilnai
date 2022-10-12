@@ -31,6 +31,18 @@
                                 <span class="input-group-text">Photo</span>
                                 <input type="file" class="form-control" name="photo[]" multiple>
                             </div>
+                            <div class="tags">
+                                @forelse($tags as $tag)
+                                <div class="form-check">
+                                    <input class="form-check-input" name="tag[]" type="checkbox" value="{{$tag->id}}" id="_{{$tag->id}}">
+                                    <label class="form-check-label" for="_{{$tag->id}}">
+                                      {{$tag->title}}
+                                    </label>
+                                  </div>
+                                @empty
+                                  <h4>No tags founds</h4>
+                                @endforelse
+                            </div>
                             <button type="submit" class="btn btn-primary mt-4">Add movie</button>
                         </form>
                     </div>

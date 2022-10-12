@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 use App\Models\MovieImage;
+use App\Models\Tags;
 
 class Movie extends Model
 {
@@ -75,6 +76,29 @@ class Movie extends Model
         return $this;
     }
 
+    public function addTags(?array $tags): self
+    {
+        if ($tags) {
+            $movieTag = [];
+            $time = Carbon::now();
+
+            foreach ($tags as $tag) {
+
+                $movieTag[] = [
+                    'movie_id' => $this->id,
+                    'tag_id' => $tag,
+                    'created_at' => $time,
+                    'updated_at' => $time
+                ];
+            }
+            MovieTag::insert($movieTag);
+        }
+        return $this;
+    }
+    public function getTags()
+    {
+        return $this->belongsToMany(Tag::class, 'movie_tags', 'movie_id', 'tag_id');
+    }
     // COMENTS
 
     public function getComments()
