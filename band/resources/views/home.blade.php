@@ -21,8 +21,12 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-8">
-                {{-- <h2>Choose your restaurant:</h2> --}}
-                <a href="{{route('restaurant_index')}}">Restaurant list</a>
+                <h2>Choose your restaurant:</h2>
+                <ul>
+                @foreach($restaurants as $restaurant)
+                    <li><a href="{{route('restaurant_show', $restaurant)}}">{{$restaurant->title}}</a></li>
+                @endforeach
+            </ul>
             </div>
         </div>
     </div>

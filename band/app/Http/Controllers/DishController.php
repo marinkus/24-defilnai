@@ -90,6 +90,9 @@ class DishController extends Controller
                 'title' => 'required|min:3|max:20',
                 'price' => 'required|numeric|min:1|max:100',
                 'restaurant_id' => 'required|numeric|gt:0',
+            ],
+            [
+                'restaurant_id.gt' => 'Choose restaurant'
             ]
         );
         $dish = new Dish;

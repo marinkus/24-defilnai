@@ -7,6 +7,7 @@
                 <h3>Address: {{ $restaurant->address }}, {{ $restaurant->city }}</h3>
             </div>
         <div class="row">
+            <a href="{{ route('dish_create', $dish) }}">add dish</a>
                 <h3 class="title">MENU</h3>
 
                 @forelse($restaurant->getDishes as $dish)

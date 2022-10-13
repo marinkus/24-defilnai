@@ -38,6 +38,14 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate(
+            [
+                'title' => 'required|min:3|max:20',
+                'address' => 'required|min:3|max:20',
+                'city' => 'required|min:3|max:20',
+                'worktime' => 'required|min:3|max:5',
+            ]
+        );
         $restaurant = new Restaurant;
         $restaurant->title = $request->title;
         $restaurant->address = $request->address;
@@ -53,9 +61,9 @@ class RestaurantController extends Controller
      * @param  \App\Models\restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function show(Restaurant $restaurant)
+    public function show(Restaurant $restaurant, Dish $dish)
     {
-        return view('restaurant.show', ['restaurant' => $restaurant]);
+        return view('restaurant.show', ['restaurant' => $restaurant, 'dish' => $dish]);
     }
 
     /**
@@ -103,6 +111,14 @@ class RestaurantController extends Controller
      */
     public function update(Request $request, restaurant $restaurant)
     {
+        $request->validate(
+            [
+                'title' => 'required|min:3|max:20',
+                'address' => 'required|min:3|max:20',
+                'city' => 'required|min:3|max:20',
+                'worktime' => 'required|min:3|max:5',
+            ]
+        );
         $restaurant->title = $request->title;
         $restaurant->address = $request->address;
         $restaurant->city = $request->city;
