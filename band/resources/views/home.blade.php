@@ -5,7 +5,8 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
+                    <div class="card-header">{{ __('Dashboard') }}
+                    </div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -19,15 +20,32 @@
                 </div>
             </div>
         </div>
+
         <div class="row justify-content-center">
+
             <div class="col-8">
+                <form action="{{ route('home') }}" method="get">
+                    <div class="col-5">
+                        <select name="sort" class="form-select mt-1">
+                            <option value="0">All</option>
+                            @foreach ($sortSelect as $option)
+                                <option value="{{ $option[0] }}" @if ($sort == $option[0]) selected @endif>
+                                    {{ $option[1] }}
+                                </option>
+                            @endforeach
+                        </select>
+                        <button type="submit" class="input-group-text mt-1">Sort</button>
+                    </div>
+
+                </form>
                 <h2>Choose your restaurant:</h2>
                 <ul>
-                @foreach($restaurants as $restaurant)
-                    <li><a href="{{route('restaurant_show', $restaurant)}}">{{$restaurant->title}}</a></li>
-                @endforeach
-            </ul>
+                    @foreach ($restaurants as $restaurant)
+                        <li><a href="{{ route('restaurant_show', $restaurant) }}">{{ $restaurant->title }}</a></li>
+                    @endforeach
+                </ul>
             </div>
         </div>
+    </div>
     </div>
 @endsection

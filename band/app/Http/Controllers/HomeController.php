@@ -22,9 +22,20 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        $restaurants = Restaurant::all();
-        return view('home', ['restaurants' => $restaurants]);
+        $restaurants = Restaurant::orderBy('id');
+
+        if ($request->sort == 'title_asc') {
+            $restaurants = Restaurant::orderBy('title');
+        } else if ($request->sort == 'title_desc') {
+            $restaurants = Restaurant::orderBy('title', 'desc');
+        }
+
+        return view('home', [
+            'restaurants' =>  $restaurants->get(),
+            'sortSelect' => Restaurant::SORT_SELECT,
+            'sort' => $request->sort ?? '0',
+        ]);
     }
 }

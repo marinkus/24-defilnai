@@ -15,17 +15,15 @@ use App\Http\Controllers\DishController as Dish;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+
 
 Auth::routes();
 
 // Auth::routes(['register' => false]);
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('gate:home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::prefix('restaurant')->name('restaurant_')->group(function () {
-    Route::get('/', [Restaurant::class, 'index'])->name('index')->middleware('gate:user')->middleware('gate:user');
+    Route::get('/', [Restaurant::class, 'index'])->name('index')->middleware('gate:user');
     Route::get('/create', [Restaurant::class, 'create'])->name('create')->middleware('gate:admin');
     Route::post('/create', [Restaurant::class, 'store'])->name('store')->middleware('gate:admin');
     Route::get('/show/{restaurant}', [Restaurant::class, 'show'])->name('show')->middleware('gate:user');
