@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Restaurant;
+use App\Models\Dish;
+use Auth;
 use \Illuminate\Http\Request;
 
 class RestaurantController extends Controller
@@ -66,6 +68,31 @@ class RestaurantController extends Controller
     {
         return view('restaurant.edit', ['restaurant' => $restaurant]);
     }
+
+
+
+
+
+    public function rate(Request $request, Dish $dish)
+    {
+
+        $votes = json_decode($dish->votes ?? json_encode([]));
+
+        if (in_array(Auth::user()->id, $votes)) {
+            return redirect()->back()->with('msg', 'Jus jau balsavote');
+        }
+
+        $votes[] = Auth::user()->id;
+        $dish->votes = json_encode($votes);
+
+
+        $dish->rating_sum = $dish->rating_sum + $request->rate;
+        $dish->rating_count++;
+        $dish->rating = $dish->rating_sum / $dish->rating_count;
+        $dish->save();
+        return redirect()->back();
+    }
+
 
     /**
      * Update the specified resource in storage.

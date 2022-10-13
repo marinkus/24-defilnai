@@ -20,7 +20,11 @@ return new class extends Migration
             $table->unsignedBigInteger('restaurant_id');
             $table->foreign('restaurant_id')->references('id')->on('restaurants');
             $table->string('image', 255)->nullable();
+            $table->float('rating', 4, 2)->nullable();
+            $table->unsignedBigInteger('rating_sum')->default(0);
+            $table->unsignedBigInteger('rating_count')->default(0);
             $table->timestamps();
+            $table->text('votes')->nullable();
         });
     }
 

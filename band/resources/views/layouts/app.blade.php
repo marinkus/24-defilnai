@@ -72,6 +72,7 @@
                                 </div>
                             </li>
                         @endguest
+                        {{-- ADMIN PANEL --}}
 
                         @if (Auth::user()->role >= 10)
                             <li class="nav-item dropdown">
@@ -81,21 +82,74 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('restaurant_index') }}"> List of restaurants
-                                        saloons </a>
-                                    <a class="dropdown-item" href="{{ route('restaurant_create') }}"> Add new restaurant
+                                    <a class="dropdown-item" href="{{ route('restaurant_index') }}"> List of
+                                        restaurants</a>
+                                    <a class="dropdown-item" href="{{ route('restaurant_create') }}"> Add new
+                                        restaurant
                                     </a>
+                                    <a class="dropdown-item" href="{{ route('dish_index') }}"> List of dishes </a>
+                                    <a class="dropdown-item" href="{{ route('dish_create') }}"> Add new dish
+                                    </a>
+                                </div>
                         @endif
+                        </li>
+                    </ul>
                 </div>
-                </li>
-                </ul>
             </div>
-    </div>
-    </nav>
+        </nav>
 
-    <main class="py-4">
-        @yield('content')
-    </main>
+        <main class="py-4">
+            @if(Session::has('ok'))
+
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-6 m-4">
+                        <div class="alert alert-success">
+                            {{ Session::get('ok')}}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            @endif
+
+            {{-- MSG --}}
+            @if ($errors->any())
+
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-6 m-4">
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            @endif
+            @if(Session::has('msg'))
+
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-6 m-4">
+                        <div class="alert alert-success">
+                            {{ Session::get('msg')}}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            @endif
+
+            @yield('content')
+        </main>
     </div>
 </body>
 

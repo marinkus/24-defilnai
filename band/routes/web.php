@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestaurantController as Restaurant;
-use App\Http\Controllers\DishesController as Dish;
+use App\Http\Controllers\DishController as Dish;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,13 +15,13 @@ use App\Http\Controllers\DishesController as Dish;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-// Auth::routes();
+Auth::routes();
 
-Auth::routes(['register' => false]);
+// Auth::routes(['register' => false]);
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('gate:home');
 Route::prefix('restaurant')->name('restaurant_')->group(function () {
@@ -32,6 +32,7 @@ Route::prefix('restaurant')->name('restaurant_')->group(function () {
     Route::delete('/delete/{restaurant}', [Restaurant::class, 'destroy'])->name('delete')->middleware('gate:admin');
     Route::get('/edit/{restaurant}', [Restaurant::class, 'edit'])->name('edit')->middleware('gate:admin');
     Route::put('/edit/{restaurant}', [Restaurant::class, 'update'])->name('update')->middleware('gate:admin');
+    Route::put('/rate/{dish}', [Restaurant::class, 'rate'])->name('rate')->middleware('gate:user');
 });
 Route::prefix('dish')->name('dish_')->group(function () {
     Route::get('/', [Dish::class, 'index'])->name('index')->middleware('gate:user');

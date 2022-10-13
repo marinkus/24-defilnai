@@ -34,5 +34,17 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('123'),
             'role' => 10
         ]);
+        DB::table('restaurants')->insert([
+            'title' => 'Karpyne',
+            'address' => 'Smiltynes 2',
+            'city' => 'Klaipeda',
+            'worktime' => '8-12'
+        ]);
+        DB::table('restaurants')->insert([
+            'title' => 'Saltinelis',
+            'address' => 'Kauno 2',
+            'city' => 'Vievis',
+            'worktime' => '10-22'
+        ]);
     }
 }
