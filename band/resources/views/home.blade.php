@@ -39,9 +39,9 @@
 
                 </form>
                 <h2>Choose your restaurant:</h2>
-                <ul>
+                <ul class="list-group">
                     @foreach ($restaurants as $restaurant)
-                        <li><a href="{{ route('restaurant_show', $restaurant) }}">{{ $restaurant->title }}</a></li>
+                        <li class="line-content"><a href="{{ route('restaurant_show', $restaurant) }}">{{ $restaurant->title }}</a><span>{{ $restaurant->city }}</span></li>
                     @endforeach
                 </ul>
             </div>
