@@ -17,50 +17,6 @@ class DishController extends Controller
      */
     public function index()
     {
-        // Sort & filter
-
-        //         if ($request->cat) {
-        //     $movies = Movie::where('category_id', $request->cat);
-        // } else {
-        //     $movies = Movie::where('id', '>', 0);
-        // }
-
-        // // Sort & search
-        // if ($request->sort == 'rate_asc') {
-        //     $movies->orderBy('rating');
-        // } else if ($request->s) {
-
-        //     $search = explode(' ', $request->s);
-        //     if (count($search) == 1) {
-        //         $movies = Movie::where('title', 'like', '%' . $request->s . '%');
-        //     } else {
-        //         $movies = Movie::where('title', 'like', '%' . $search[0] . '%' . $search[1] . '%')
-        //             ->orWhere('title', 'like', '%' . $search[1] . '%' . $search[0] . '%');
-        //     }
-        // } else if ($request->sort == 'rate_desc') {
-        //     $movies->orderBy('rating', 'desc');
-        // } else if ($request->sort == 'title_asc') {
-        //     $movies->orderBy('title');
-        // } else if ($request->sort == 'title_asc') {
-        //     $movies->orderBy('title', 'desc');
-        // } else if ($request->sort == 'price_asc') {
-        //     $movies->orderBy('price');
-        // } else if ($request->sort == 'price_asc') {
-        //     $movies->orderBy('price', 'desc');
-        // }
-
-
-
-        // return view('home.index', [
-        //     'movies' => $movies->paginate(5)->withQueryString(),
-        //     'categories' => Category::orderBy('title')->get(),
-        //     'cat' => $request->cat ?? '0',
-        //     'sort' => $request->sort ?? '0',
-        //     'sortSelect' => Movie::SORT_SELECT,
-        //     's' => $request->s
-        // ]);
-
-
 
         $dishes = Dish::paginate(15)->withQueryString();
         return view('dish.index', ['dishes' => $dishes]);
