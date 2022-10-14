@@ -19,12 +19,7 @@
                                 <span class="input-group-text">Price in euros</span>
                                 <input value="{{old('price')}}" type="text" class="form-control" name="price">
                             </div>
-                            <select class="form-select mb-3" name="restaurant_id">
-                                <option selected value="0">Choose restaurant:</option>
-                                @foreach($restaurants as $restaurant)
-                                <option value="{{$restaurant->id}}">{{$restaurant->title}}</option>
-                                @endforeach
-                            </select>
+                            <input type="hidden" name="restaurant_id" value="{{$id}}">
 
                             <input type="file" class="form-control mt-4" name="image">
 

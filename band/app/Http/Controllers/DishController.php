@@ -28,10 +28,13 @@ class DishController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $restaurants = Restaurant::all();
-        return view('dish.create', ['restaurants' => $restaurants]);
+        return view('dish.create', [
+            'restaurants' => $restaurants,
+            'id' => $request->id
+        ]);
     }
 
     /**

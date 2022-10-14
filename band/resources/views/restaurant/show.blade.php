@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-4">
                 <h3 class="title">MENU</h3>
-                <a class="dish-link" href="{{ route('dish_create', $restaurant) }}">Add new shedevre to menu</a>
+                <a class="dish-link" href="{{ route('dish_create', ['id' => $restaurant->id]) }}">Add new shedevre to menu</a>
 
             </div>
         </div>
