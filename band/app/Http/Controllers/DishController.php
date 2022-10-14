@@ -77,7 +77,7 @@ class DishController extends Controller
         $dish->price = $request->price;
         $dish->restaurant_id = $request->restaurant_id;
         $dish->save();
-        return redirect()->route('dish_index')->with('msg', 'Created');
+        return redirect()->back()->with('msg', 'Created');
     }
 
     /**

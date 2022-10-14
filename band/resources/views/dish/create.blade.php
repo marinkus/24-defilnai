@@ -27,10 +27,10 @@
                             </select>
 
                             <input type="file" class="form-control mt-4" name="image">
+
                             <button type="submit" class="btn btn-primary mt-4">Create dish</button>
-                        </form>
+                          </form>
                     </div>
-                    <h3> Restaurant: {{$restaurant->title}} </h3>
                 </div>
             </div>
         </div>
