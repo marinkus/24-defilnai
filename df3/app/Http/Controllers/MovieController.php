@@ -47,7 +47,7 @@ class MovieController extends Controller
 
         $request->validate(
             [
-                'title' => 'required|min:3|max:20',
+                'title' => 'required|min:3|max:40',
                 'price' => 'required|numeric|min:1|max:100',
                 'photo.*' => 'sometimes|required|mimes:jpg|max:5000',
                 'category_id' => 'required|numeric|gt:0',
@@ -115,7 +115,7 @@ class MovieController extends Controller
 
         $request->validate(
             [
-                'title' => 'required|min:3|max:20',
+                'title' => 'required|min:3|max:60',
                 'price' => 'required|numeric|min:1|max:100',
                 'photo.*' => 'sometimes|required|mimes:jpg|max:5000',
             ],
@@ -135,6 +135,7 @@ class MovieController extends Controller
         ]);
         $movie->removeImages($request->delete_photo)
             ->addImages($request->file('photo'))
+            ->removeTags($request->tag)
             ->addTags($request->tag);
 
         return redirect()->route('m_index');

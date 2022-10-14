@@ -79,10 +79,15 @@ class Movie extends Model
     public function addTags(?array $tags): self
     {
         if ($tags) {
+
+            $tagsNow = $this->getPivot()->pluck('tag_id')->all();
+            $tags = array_map(fn ($id) => (int) $id, $tags);
+            $insertTags = array_diff($tags, $tagsNow);
+
             $movieTag = [];
             $time = Carbon::now();
 
-            foreach ($tags as $tag) {
+            foreach ($insertTags as $tag) {
 
                 $movieTag[] = [
                     'movie_id' => $this->id,
@@ -103,6 +108,15 @@ class Movie extends Model
     public function getPivot()
     {
         return $this->hasMany(MovieTag::class, 'movie_id', 'id');
+    }
+
+    public function removeTags(?array $tags): self
+    {
+        $tagsNow = $this->getPivot()->pluck('tag_id')->all();
+        $tags = array_map(fn ($id) => (int) $id, $tags ?? []);
+        $deleteTags = array_diff($tagsNow, $tags);
+        MovieTag::where('tag_id', $deleteTags)->delete();
+        return $this;
     }
     // COMENTS
 
