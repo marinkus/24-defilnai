@@ -18,6 +18,7 @@ class DishController extends Controller
     public function index()
     {
 
+
         $dishes = Dish::paginate(15)->withQueryString();
         return view('dish.index', ['dishes' => $dishes]);
     }
