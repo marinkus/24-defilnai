@@ -36,7 +36,12 @@ class ShopController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $shop = new Shop;
+        $shop->title = $request->title;
+        $shop->address = $request->address;
+        $shop->city = $request->city;
+        $shop->save;
+        return redirect()->back();
     }
 
     /**
@@ -47,7 +52,7 @@ class ShopController extends Controller
      */
     public function show(Shop $shop)
     {
-        //
+        return view('shop.show', ['shop' => $shop]);
     }
 
     /**
@@ -59,6 +64,7 @@ class ShopController extends Controller
     public function edit(Shop $shop)
     {
         //
+        return view('shop.edit', ['shop' => $shop]);
     }
 
     /**
@@ -70,7 +76,11 @@ class ShopController extends Controller
      */
     public function update(Request $request, Shop $shop)
     {
-        //
+        $shop->title = $request->title;
+        $shop->address = $request->address;
+        $shop->city = $request->city;
+        $shop->save;
+        return redirect()->back();
     }
 
     /**
@@ -81,6 +91,7 @@ class ShopController extends Controller
      */
     public function destroy(Shop $shop)
     {
-        //
+        $shop->delete();
+        return redirect()->back();
     }
 }
