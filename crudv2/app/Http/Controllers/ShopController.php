@@ -40,8 +40,8 @@ class ShopController extends Controller
         $shop->title = $request->title;
         $shop->address = $request->address;
         $shop->city = $request->city;
-        $shop->save;
-        return redirect()->back();
+        $shop->save();
+        return redirect()->route('shop_index');
     }
 
     /**
@@ -79,7 +79,7 @@ class ShopController extends Controller
         $shop->title = $request->title;
         $shop->address = $request->address;
         $shop->city = $request->city;
-        $shop->save;
+        $shop->save();
         return redirect()->back();
     }
 
@@ -92,6 +92,6 @@ class ShopController extends Controller
     public function destroy(Shop $shop)
     {
         $shop->delete();
-        return redirect()->back();
+        return redirect()->route('shop_index');
     }
 }
