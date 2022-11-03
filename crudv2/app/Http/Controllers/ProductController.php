@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use Image;
 
 class ProductController extends Controller
 {
@@ -26,7 +27,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('product.create');
     }
 
     /**
@@ -37,7 +38,32 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        //
+        $product = new Product;
+
+        if ($request->file('image')) {
+            $image = $request->file('image');
+
+            $ext = $image->getClientOriginalExtension();
+
+            $name = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+
+            $file = $name . '-' . rand(100000, 999999) . '.' . $ext;
+
+            $Image = Image::make($image)->resize(100, 100);
+
+            $Image->save(public_path() . '/products/' . $file);
+
+            // $image->move(public_path() . '/products', $file);
+
+            $product->image = asset('/products') . '/' . $file;
+        }
+
+        $product->title = $request->title;
+        $product->category = $request->category;
+        $product->price = $request->price;
+        $product->shop_id = $request->shop_id;
+        $product->save;
+        return redirect()->back();
     }
 
     /**
@@ -48,7 +74,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('product.show', ['product' => $product]);
     }
 
     /**
@@ -59,7 +85,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('product.edit', ['product' => $product]);
     }
 
     /**
@@ -71,7 +97,31 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        $product->title = $request->title;
+        $product->category = $request->category;
+        $product->price = $request->price;
+        $product->shop_id = $request->shop_id;
+
+        if ($request->delete_image) {
+            unlink(public_path() . '/products/' . pathinfo($product->image, PATHINFO_FILENAME) . '.' . pathinfo($product->image, PATHINFO_EXTENSION));
+            $product->image = null;
+        }
+
+        if ($request->file('image')) {
+            if ($product->image) {
+                unlink(public_path() . '/products/' . pathinfo($product->image, PATHINFO_FILENAME) . '.' . pathinfo($product->image, PATHINFO_EXTENSION));
+            }
+            $image = $request->file('image');
+            $ext = $image->getClientOriginalExtension();
+            $name = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+            $file = $name . '-' . rand(100000, 999999) . '.' . $ext;
+            $Image = Image::make($image)->resize(100, 100);
+            $Image->save(public_path() . '/products/' . $file);
+            $product->image = asset('/products') . '/' . $file;
+        }
+
+        $product->save;
+        return redirect()->back();
     }
 
     /**
