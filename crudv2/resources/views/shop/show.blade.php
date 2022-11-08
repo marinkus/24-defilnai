@@ -9,7 +9,8 @@
                         <h2>{{ $shop->title }}</h2>
                     </div>
                     <div class="card-body">
-                        <h3>Price:  Eur</h3>
+                        <h2>{{ $shop->title }}</h2>
+
                     </div>
                 </div>
             </div>

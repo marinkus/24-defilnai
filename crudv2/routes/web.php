@@ -16,7 +16,8 @@ use App\Http\Controllers\ShopController as Shop;
 
 
 
-Auth::routes();
+// Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::prefix('shop')->name('shop_')->group(function () {
