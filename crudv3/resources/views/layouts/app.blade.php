@@ -66,6 +66,26 @@
                                     </form>
                                 </div>
                             </li>
+                            @if (Auth::user()->role >= 10)
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        Admin panel
+                                    </a>
+
+                                    {{-- <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('restaurant_index') }}"> List of
+                                            restaurants</a>
+                                        <a class="dropdown-item" href="{{ route('restaurant_create') }}"> Add new
+                                            restaurant
+                                        </a>
+                                        <a class="dropdown-item" href="{{ route('dish_index') }}"> List of dishes </a>
+                                        <a class="dropdown-item" href="{{ route('dish_create') }}"> Add new dish
+                                        </a>
+                                    </div> --}}
+                                </li>
+                            @endif
+
                         @endguest
                     </ul>
                 </div>
